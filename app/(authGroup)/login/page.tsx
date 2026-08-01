@@ -19,7 +19,7 @@ export default function LoginPage() {
               Rent<span className="text-[#1F4D3E]">Nest</span>
             </span>
           </Link>
-          <h1 className="font-heading text-xl font-bold text-[#1B211E]">
+          <h1 className="font-heading text-xl font-bold text-[#1B211E] ">
             Sign in to your account
           </h1>
           <p className="font-sans text-xs text-gray-600">
@@ -88,7 +88,7 @@ export default function LoginPage() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full py-2.5 px-4 bg-[#1F4D3E] hover:bg-[#173B2F] text-white font-mono-spec font-bold text-xs rounded-md shadow-sm flex items-center justify-center gap-2 transition-all"
+              className="w-full py-2.5 px-4 bg-[#1F4D3E] hover:bg-[#173B2F] text-white font-mono-spec font-bold text-xs rounded-md shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
             >
               <span>SIGN IN TO RENTNEST</span>
               <ArrowRight className="w-4 h-4 text-[#C98A2C]" />
