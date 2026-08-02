@@ -1,41 +1,46 @@
-
-import { Building, FileText, CheckCircle } from "lucide-react";
-import { getLandlordProperties, getLandlordRentalRequests } from "../_actions/dashboardActions";
+import { Building, FileText, DollarSign } from "lucide-react";
+import {
+  getLandlordProperties,
+  getLandlordRentalRequests,
+  getMyPayments,
+} from "../_actions/dashboardActions";
 
 export default async function LandlordDashboardPage() {
-  const [propertiesRes, requestsRes] = await Promise.all([
+  const [propertiesRes, requestsRes, paymentsRes] = await Promise.all([
     getLandlordProperties(),
     getLandlordRentalRequests(),
+    getMyPayments(),
   ]);
 
   const properties = propertiesRes.data?.properties || [];
   const requests = requestsRes.data?.requests || [];
+  const payments = paymentsRes.data?.payments || [];
+
+  const activeRequests = requests.filter(
+    (r: { status: string }) => r.status === "PENDING",
+  ).length;
+
+  const totalEarnings = payments
+    .filter((p: { status: string }) => p.status === "COMPLETED")
+    .reduce((sum: number, p: { amount: number }) => sum + p.amount, 0);
 
   const stats = [
     {
-      label: "My Properties",
+      label: "Total Properties",
       value: properties.length,
       icon: Building,
       color: "bg-[#1F4D3E]",
     },
     {
-      label: "Total Requests",
-      value: requests.length,
-      icon: FileText,
-      color: "bg-blue-500",
-    },
-    {
-      label: "Pending",
-      value: requests.filter((r: { status: string }) => r.status === "PENDING")
-        .length,
+      label: "Active Requests",
+      value: activeRequests,
       icon: FileText,
       color: "bg-yellow-500",
     },
     {
-      label: "Active Rentals",
-      value: requests.filter((r: { status: string }) => r.status === "ACTIVE")
-        .length,
-      icon: CheckCircle,
+      label: "Total Earnings",
+      value: `৳${totalEarnings.toLocaleString()}`,
+      icon: DollarSign,
       color: "bg-green-500",
     },
   ];
@@ -45,7 +50,7 @@ export default async function LandlordDashboardPage() {
       <h1 className="font-heading text-2xl font-bold text-[#1B211E]">
         Landlord Dashboard
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {stats.map((stat) => (
           <div
             key={stat.label}
