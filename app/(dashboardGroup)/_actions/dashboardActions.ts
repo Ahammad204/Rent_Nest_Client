@@ -31,9 +31,7 @@ export const getMyPayments = async () => {
 };
 
 export const getRentalRequestById = async (id: string) => {
-  return authFetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/rentals/${id}`,
-  );
+  return authFetch(`${process.env.NEXT_PUBLIC_API_URL}/api/rentals/${id}`);
 };
 
 export const getAllUsers = async () => {
@@ -67,9 +65,7 @@ export const banUnbanUser = async (
 };
 
 export const getAllPropertiesAdmin = async () => {
-  return authFetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/admin/properties`,
-  );
+  return authFetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/properties`);
 };
 
 export const getAllRentalsAdmin = async () => {
@@ -84,17 +80,14 @@ export const getLandlordProperties = async () => {
     return { success: false, data: {} };
   }
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/properties`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-      cache: "no-store",
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/properties`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
     },
-  );
+    cache: "no-store",
+  });
 
   return res.json();
 };
@@ -165,17 +158,14 @@ export const createProperty = async (payload: {
     return { success: false, message: "Not authenticated" };
   }
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/properties`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
-      },
-      body: JSON.stringify(payload),
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/properties`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
     },
-  );
+    body: JSON.stringify(payload),
+  });
 
   return res.json();
 };
@@ -226,4 +216,64 @@ export const deleteProperty = async (propertyId: string) => {
   );
 
   return res.json();
+};
+
+export const createPaymentSession = async (rentalRequestId: string) => {
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get("accessToken")?.value;
+
+  if (!accessToken) {
+    throw new Error("Not authenticated");
+  }
+
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/payments/create`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({ rentalRequestId }),
+    },
+  );
+
+  const result = await res.json();
+  if (!result.success) {
+    throw new Error(result.message);
+  }
+  return result;
+};
+
+export const getPaymentBySessionId = async (sessionId: string) => {
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get("accessToken")?.value;
+
+  if (!accessToken) {
+    return { success: false, data: {} };
+  }
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/payments`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    cache: "no-store",
+  });
+
+  const result = await res.json();
+
+  if (!result.success || !result.data?.payments) {
+    return { success: false, data: {} };
+  }
+
+  const payment = result.data.payments.find(
+    (p: { transactionId: string }) => p.transactionId === sessionId,
+  );
+
+  return {
+    success: !!payment,
+    data: { payment: payment || null },
+  };
 };
