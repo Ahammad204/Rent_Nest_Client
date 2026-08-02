@@ -58,21 +58,31 @@ export default async function TenantRequestsPage() {
                       </p>
                     )}
                   </div>
-                  <span
-                    className={`px-2 py-0.5 text-[10px] font-bold uppercase rounded ${
-                      request.status === "ACTIVE"
-                        ? "bg-green-100 text-green-700"
-                        : request.status === "APPROVED"
-                          ? "bg-blue-100 text-blue-700"
-                          : request.status === "PENDING"
-                            ? "bg-yellow-100 text-yellow-700"
-                            : request.status === "REJECTED"
-                              ? "bg-red-100 text-red-700"
-                              : "bg-gray-100 text-gray-700"
-                    }`}
-                  >
-                    {request.status}
-                  </span>
+                  <div className="flex items-center gap-2">
+                    <span
+                      className={`px-2 py-0.5 text-[10px] font-bold uppercase rounded ${
+                        request.status === "ACTIVE"
+                          ? "bg-green-100 text-green-700"
+                          : request.status === "APPROVED"
+                            ? "bg-blue-100 text-blue-700"
+                            : request.status === "PENDING"
+                              ? "bg-yellow-100 text-yellow-700"
+                              : request.status === "REJECTED"
+                                ? "bg-red-100 text-red-700"
+                                : "bg-gray-100 text-gray-700"
+                      }`}
+                    >
+                      {request.status}
+                    </span>
+                    {request.status === "APPROVED" && (
+                      <Link
+                        href={`/dashboard/requests/${request.id}/pay`}
+                        className="px-3 py-1 bg-[#C98A2C] hover:bg-[#AF7623] text-white text-[10px] font-bold uppercase rounded transition-colors"
+                      >
+                        PAY NOW
+                      </Link>
+                    )}
+                  </div>
                 </div>
               </div>
             ),
