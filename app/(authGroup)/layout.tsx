@@ -1,3 +1,4 @@
+import { Footer } from "@/components/shared/footer";
 import { Navbar } from "@/components/shared/navbar";
 import { getMe } from "@/service/getMe";
 
@@ -15,6 +16,7 @@ export default async function AuthLayout({
      
       {children}
     </div>
+    <Footer />
     </div>
   );
 };
