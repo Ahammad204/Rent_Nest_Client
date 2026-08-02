@@ -3,23 +3,27 @@
 import { cookies } from "next/headers";
 
 const authFetch = async (url: string) => {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get("accessToken")?.value;
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
 
-  if (!accessToken) {
+    if (!accessToken) {
+      return { success: false, data: {} };
+    }
+
+    const res = await fetch(url, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      cache: "no-store",
+    });
+
+    return res.json();
+  } catch {
     return { success: false, data: {} };
   }
-
-  const res = await fetch(url, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-    },
-    cache: "no-store",
-  });
-
-  return res.json();
 };
 
 export const getMyRentalRequests = async () => {
@@ -42,26 +46,30 @@ export const banUnbanUser = async (
   userId: string,
   status: "ACTIVE" | "BANNED",
 ) => {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get("accessToken")?.value;
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
 
-  if (!accessToken) {
-    return { success: false, message: "Not authenticated" };
-  }
+    if (!accessToken) {
+      return { success: false, message: "Not authenticated" };
+    }
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/admin/users/${userId}`,
-    {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/admin/users/${userId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({ status }),
       },
-      body: JSON.stringify({ status }),
-    },
-  );
+    );
 
-  return res.json();
+    return res.json();
+  } catch {
+    return { success: false, message: "Network error. Please try again." };
+  }
 };
 
 export const getAllPropertiesAdmin = async () => {
@@ -73,72 +81,84 @@ export const getAllRentalsAdmin = async () => {
 };
 
 export const getLandlordProperties = async () => {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get("accessToken")?.value;
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
 
-  if (!accessToken) {
-    return { success: false, data: {} };
-  }
+    if (!accessToken) {
+      return { success: false, data: {} };
+    }
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/properties`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-    },
-    cache: "no-store",
-  });
-
-  return res.json();
-};
-
-export const getLandlordRentalRequests = async () => {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get("accessToken")?.value;
-
-  if (!accessToken) {
-    return { success: false, data: {} };
-  }
-
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/rentals/landlord`,
-    {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/properties`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
       cache: "no-store",
-    },
-  );
+    });
 
-  return res.json();
+    return res.json();
+  } catch {
+    return { success: false, data: {} };
+  }
+};
+
+export const getLandlordRentalRequests = async () => {
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
+
+    if (!accessToken) {
+      return { success: false, data: {} };
+    }
+
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/rentals/landlord`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        cache: "no-store",
+      },
+    );
+
+    return res.json();
+  } catch {
+    return { success: false, data: {} };
+  }
 };
 
 export const updateRentalRequestStatus = async (
   rentalId: string,
   status: "APPROVED" | "REJECTED",
 ) => {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get("accessToken")?.value;
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
 
-  if (!accessToken) {
-    return { success: false, message: "Not authenticated" };
-  }
+    if (!accessToken) {
+      return { success: false, message: "Not authenticated" };
+    }
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/rentals/landlord/${rentalId}`,
-    {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/rentals/landlord/${rentalId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({ status }),
       },
-      body: JSON.stringify({ status }),
-    },
-  );
+    );
 
-  return res.json();
+    return res.json();
+  } catch {
+    return { success: false, message: "Network error. Please try again." };
+  }
 };
 
 export const createProperty = async (payload: {
@@ -151,131 +171,154 @@ export const createProperty = async (payload: {
   amenities?: string[];
   images?: string[];
 }) => {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get("accessToken")?.value;
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
 
-  if (!accessToken) {
-    return { success: false, message: "Not authenticated" };
+    if (!accessToken) {
+      return { success: false, message: "Not authenticated" };
+    }
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/properties`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify(payload),
+    });
+
+    return res.json();
+  } catch {
+    return { success: false, message: "Network error. Please try again." };
   }
-
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/properties`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-    },
-    body: JSON.stringify(payload),
-  });
-
-  return res.json();
 };
 
 export const updateProperty = async (
   propertyId: string,
   payload: Record<string, unknown>,
 ) => {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get("accessToken")?.value;
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
 
-  if (!accessToken) {
-    return { success: false, message: "Not authenticated" };
-  }
+    if (!accessToken) {
+      return { success: false, message: "Not authenticated" };
+    }
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/properties/${propertyId}`,
-    {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/properties/${propertyId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(payload),
       },
-      body: JSON.stringify(payload),
-    },
-  );
+    );
 
-  return res.json();
+    return res.json();
+  } catch {
+    return { success: false, message: "Network error. Please try again." };
+  }
 };
 
 export const deleteProperty = async (propertyId: string) => {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get("accessToken")?.value;
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
 
-  if (!accessToken) {
-    return { success: false, message: "Not authenticated" };
-  }
+    if (!accessToken) {
+      return { success: false, message: "Not authenticated" };
+    }
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/properties/${propertyId}`,
-    {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/properties/${propertyId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
       },
-    },
-  );
+    );
 
-  return res.json();
+    return res.json();
+  } catch {
+    return { success: false, message: "Network error. Please try again." };
+  }
 };
 
 export const createPaymentSession = async (rentalRequestId: string) => {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get("accessToken")?.value;
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
 
-  if (!accessToken) {
-    throw new Error("Not authenticated");
+    if (!accessToken) {
+      throw new Error("Not authenticated");
+    }
+
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/payments/create`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify({ rentalRequestId }),
+      },
+    );
+
+    const result = await res.json();
+    if (!result.success) {
+      throw new Error(result.message);
+    }
+    return result;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw error;
+    }
+    throw new Error("Network error. Please try again.");
   }
+};
 
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/payments/create`,
-    {
-      method: "POST",
+export const getPaymentBySessionId = async (sessionId: string) => {
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
+
+    if (!accessToken) {
+      return { success: false, data: {} };
+    }
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/payments`, {
+      method: "GET",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
-      body: JSON.stringify({ rentalRequestId }),
-    },
-  );
+      cache: "no-store",
+    });
 
-  const result = await res.json();
-  if (!result.success) {
-    throw new Error(result.message);
-  }
-  return result;
-};
+    const result = await res.json();
 
-export const getPaymentBySessionId = async (sessionId: string) => {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get("accessToken")?.value;
+    if (!result.success || !result.data?.payments) {
+      return { success: false, data: {} };
+    }
 
-  if (!accessToken) {
+    const payment = result.data.payments.find(
+      (p: { transactionId: string }) => p.transactionId === sessionId,
+    );
+
+    return {
+      success: !!payment,
+      data: { payment: payment || null },
+    };
+  } catch {
     return { success: false, data: {} };
   }
-
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/payments`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-    },
-    cache: "no-store",
-  });
-
-  const result = await res.json();
-
-  if (!result.success || !result.data?.payments) {
-    return { success: false, data: {} };
-  }
-
-  const payment = result.data.payments.find(
-    (p: { transactionId: string }) => p.transactionId === sessionId,
-  );
-
-  return {
-    success: !!payment,
-    data: { payment: payment || null },
-  };
 };
 
 export const createReview = async (payload: {
@@ -283,25 +326,32 @@ export const createReview = async (payload: {
   rating: number;
   comment?: string;
 }) => {
-  const cookieStore = await cookies();
-  const accessToken = cookieStore.get("accessToken")?.value;
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
 
-  if (!accessToken) {
-    throw new Error("Not authenticated");
+    if (!accessToken) {
+      throw new Error("Not authenticated");
+    }
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/reviews`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const result = await res.json();
+    if (!result.success) {
+      throw new Error(result.message);
+    }
+    return result;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw error;
+    }
+    throw new Error("Network error. Please try again.");
   }
-
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/reviews`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
-    },
-    body: JSON.stringify(payload),
-  });
-
-  const result = await res.json();
-  if (!result.success) {
-    throw new Error(result.message);
-  }
-  return result;
 };

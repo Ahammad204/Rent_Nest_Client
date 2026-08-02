@@ -1,24 +1,33 @@
+"use client";
+
 import Link from "next/link";
 
-export default function NotFound() {
+export default function AuthError({
+  error,
+  reset,
+}: {
+  error: Error & { digest?: string };
+  reset: () => void;
+}) {
   return (
     <div className="min-h-[60vh] flex flex-col items-center justify-center gap-4 text-center px-4">
-      <h2 className="text-2xl font-bold text-gray-900">Page Not Found</h2>
+      <h2 className="text-2xl font-bold text-gray-900">Authentication Error</h2>
       <p className="text-gray-600 max-w-md">
-        The page you are looking for does not exist or has been moved.
+        {error.message ||
+          "Something went wrong during authentication. Please try again."}
       </p>
       <div className="flex gap-3">
-        <Link
-          href="/"
+        <button
+          onClick={reset}
           className="px-6 py-2 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition-colors"
         >
-          Go Home
-        </Link>
+          Try Again
+        </button>
         <Link
-          href="/properties"
+          href="/login"
           className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
         >
-          Browse Properties
+          Back to Login
         </Link>
       </div>
     </div>
