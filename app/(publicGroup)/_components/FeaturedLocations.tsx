@@ -82,11 +82,7 @@ export function FeaturedLocations() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-                  <div className="absolute top-2 left-2">
-                    <span className="font-mono-spec text-[9px] bg-[#1F4D3E] text-white px-2 py-0.5 rounded border border-[#173B2F] font-semibold">
-                      {city.listingsCount}
-                    </span>
-                  </div>
+                
 
                   <div className="absolute bottom-2 left-2 right-2 text-white">
                     <div className="font-heading font-bold text-base flex items-center justify-between">

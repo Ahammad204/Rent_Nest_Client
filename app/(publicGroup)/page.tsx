@@ -5,6 +5,7 @@ import { Hero } from "./_components/Hero";
 import { ArrowRight } from "lucide-react";
 import { TrustStatsBar } from "./_components/TrustStatsBar";
 import { FeaturedLocations } from "./_components/FeaturedLocations";
+import { HowItWorks } from "./_components/HowItWorks";
 
 export default async function Home() {
   const res = await getProperties({ page: "1", limit: "6" });
@@ -33,6 +34,7 @@ export default async function Home() {
           </Link>
         </div>
       </div>
+      <HowItWorks />
     </div>
   );
 }
