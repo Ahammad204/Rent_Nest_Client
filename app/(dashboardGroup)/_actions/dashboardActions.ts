@@ -184,7 +184,7 @@ export const updateProperty = async (
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/api/properties/${propertyId}`,
     {
-      method: "PATCH",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
