@@ -33,3 +33,21 @@ export interface RegisterResponse {
     role: string;
   };
 }
+
+export interface UserProfile {
+  id: string;
+  name: string;
+  email: string;
+  role: "TENANT" | "LANDLORD" | "ADMIN";
+  status: "ACTIVE" | "BANNED";
+  createdAt: string;
+  updatedAt: string;
+  profiles: {
+    id: string;
+    phone: string | null;
+    bio: string | null;
+    userId: string;
+    createdAt: string;
+    updatedAt: string;
+  }[];
+}
