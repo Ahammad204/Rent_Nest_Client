@@ -1,17 +1,42 @@
-
-import { Users, Building, FileText, CheckCircle } from "lucide-react";
-import { getAllPropertiesAdmin, getAllRentalsAdmin, getAllUsers } from "../_actions/dashboardActions";
+import {
+  Users,
+  Building,
+  FileText,
+  CheckCircle,
+  Clock,
+  DollarSign,
+} from "lucide-react";
+import {
+  getAllPropertiesAdmin,
+  getAllRentalsAdmin,
+  getAllUsers,
+  getMyPayments,
+} from "../_actions/dashboardActions";
 
 export default async function AdminDashboardPage() {
-  const [usersRes, propertiesRes, rentalsRes] = await Promise.all([
+  const [usersRes, propertiesRes, rentalsRes, paymentsRes] = await Promise.all([
     getAllUsers(),
     getAllPropertiesAdmin(),
     getAllRentalsAdmin(),
+    getMyPayments(),
   ]);
 
   const users = usersRes.data?.users || [];
   const properties = propertiesRes.data?.properties || [];
   const rentals = rentalsRes.data?.rentals || [];
+  const payments = paymentsRes.data?.payments || [];
+
+  const pendingRequests = rentals.filter(
+    (r: { status: string }) => r.status === "PENDING",
+  ).length;
+
+  const activeRentals = rentals.filter(
+    (r: { status: string }) => r.status === "ACTIVE",
+  ).length;
+
+  const totalRevenue = payments
+    .filter((p: { status: string }) => p.status === "COMPLETED")
+    .reduce((sum: number, p: { amount: number }) => sum + p.amount, 0);
 
   const stats = [
     {
@@ -30,14 +55,25 @@ export default async function AdminDashboardPage() {
       label: "Total Rentals",
       value: rentals.length,
       icon: FileText,
+      color: "bg-purple-500",
+    },
+    {
+      label: "Pending Requests",
+      value: pendingRequests,
+      icon: Clock,
       color: "bg-yellow-500",
     },
     {
       label: "Active Rentals",
-      value: rentals.filter((r: { status: string }) => r.status === "ACTIVE")
-        .length,
+      value: activeRentals,
       icon: CheckCircle,
       color: "bg-green-500",
+    },
+    {
+      label: "Total Revenue",
+      value: `৳${totalRevenue.toLocaleString()}`,
+      icon: DollarSign,
+      color: "bg-emerald-600",
     },
   ];
 
@@ -46,7 +82,7 @@ export default async function AdminDashboardPage() {
       <h1 className="font-heading text-2xl font-bold text-[#1B211E]">
         Admin Dashboard
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {stats.map((stat) => (
           <div
             key={stat.label}
