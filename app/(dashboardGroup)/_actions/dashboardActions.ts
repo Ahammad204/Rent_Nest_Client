@@ -277,3 +277,31 @@ export const getPaymentBySessionId = async (sessionId: string) => {
     data: { payment: payment || null },
   };
 };
+
+export const createReview = async (payload: {
+  rentalRequestId: string;
+  rating: number;
+  comment?: string;
+}) => {
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get("accessToken")?.value;
+
+  if (!accessToken) {
+    throw new Error("Not authenticated");
+  }
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/reviews`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const result = await res.json();
+  if (!result.success) {
+    throw new Error(result.message);
+  }
+  return result;
+};
