@@ -5,7 +5,9 @@ import type {
   IProperty,
   ICategory,
   PropertyMeta,
+  IPropertyDetail,
 } from "@/lib/types";
+import { cookies } from "next/headers";
 
 export const getProperties = async (params?: {
   page?: string;
@@ -50,5 +52,61 @@ export const getCategories = async () => {
   });
 
   const result: ApiResponse<{ categories: ICategory[] }> = await res.json();
+  return result;
+};
+
+export const getPropertyById = async (id: string) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/properties/${id}`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      cache: "no-store",
+    },
+  );
+
+  const result: ApiResponse<{ property: IPropertyDetail }> = await res.json();
+  return result;
+};
+
+export const getReviewsByProperty = async (propertyId: string) => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/reviews/property/${propertyId}`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      cache: "no-store",
+    },
+  );
+
+  const result = await res.json();
+  return result;
+};
+
+export const createRentalRequest = async (payload: {
+  propertyId: string;
+  moveInDate?: string;
+  message?: string;
+}) => {
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get("accessToken")?.value;
+
+  if (!accessToken) {
+    throw new Error("Not authenticated");
+  }
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/rentals`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(payload),
+  });
+
+  const result = await res.json();
+  if (!result.success) {
+    throw new Error(result.message);
+  }
   return result;
 };

@@ -92,3 +92,22 @@ export interface PropertyMeta {
   limit: number;
   total: number;
 }
+
+export interface IReview {
+  id: string;
+  rating: number;
+  comment: string | null;
+  createdAt: string;
+  updatedAt: string;
+  tenantId: string;
+  propertyId: string;
+  rentalRequestId: string;
+  tenant: {
+    id: string;
+    name: string;
+  };
+}
+
+export interface IPropertyDetail extends IProperty {
+  reviews: IReview[];
+}
