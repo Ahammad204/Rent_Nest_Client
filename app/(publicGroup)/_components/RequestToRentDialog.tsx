@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Key } from "lucide-react";
+import { Key, Clock, CheckCircle } from "lucide-react";
 import { toast } from "sonner";
 import {
   Dialog,
@@ -24,12 +24,14 @@ interface RequestToRentDialogProps {
   user: UserProfile | null;
   propertyId: string;
   propertyTitle: string;
+  rentalStatus: string | null;
 }
 
 export function RequestToRentDialog({
   user,
   propertyId,
   propertyTitle,
+  rentalStatus,
 }: RequestToRentDialogProps) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -49,6 +51,10 @@ export function RequestToRentDialog({
     },
   });
 
+  const isPending = rentalStatus === "PENDING";
+  const isRented = rentalStatus === "APPROVED" || rentalStatus === "ACTIVE";
+  const canRequest = !isPending && !isRented;
+
   const handleTriggerClick = () => {
     if (!user) {
       router.push("/login");
@@ -58,6 +64,7 @@ export function RequestToRentDialog({
       toast.error("Only tenants can request to rent properties.");
       return;
     }
+    if (!canRequest) return;
     setRentalError(null);
     setOpen(true);
   };
@@ -96,6 +103,30 @@ export function RequestToRentDialog({
       reset();
     }
   };
+
+  if (isPending) {
+    return (
+      <button
+        disabled
+        className="w-full py-3 px-4 bg-gray-200 text-gray-500 font-mono-spec font-bold text-xs rounded-md flex items-center justify-center gap-2 cursor-not-allowed"
+      >
+        <Clock className="w-4 h-4" />
+        <span>REQUEST PENDING</span>
+      </button>
+    );
+  }
+
+  if (isRented) {
+    return (
+      <button
+        disabled
+        className="w-full py-3 px-4 bg-gray-200 text-gray-500 font-mono-spec font-bold text-xs rounded-md flex items-center justify-center gap-2 cursor-not-allowed"
+      >
+        <CheckCircle className="w-4 h-4" />
+        <span>ALREADY RENTED</span>
+      </button>
+    );
+  }
 
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>

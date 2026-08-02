@@ -111,3 +111,27 @@ export interface IReview {
 export interface IPropertyDetail extends IProperty {
   reviews: IReview[];
 }
+
+export type RentalStatus =
+  | "PENDING"
+  | "APPROVED"
+  | "ACTIVE"
+  | "REJECTED"
+  | "COMPLETED";
+
+export interface IRentalRequest {
+  id: string;
+  status: RentalStatus;
+  moveInDate: string | null;
+  message: string | null;
+  tenantId: string;
+  propertyId: string;
+  createdAt: string;
+  updatedAt: string;
+  property: {
+    id: string;
+    title: string;
+    location: string;
+    price: number;
+  };
+}

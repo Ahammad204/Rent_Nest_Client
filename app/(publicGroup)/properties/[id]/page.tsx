@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import {
   getPropertyById,
   getReviewsByProperty,
+  getMyRentalRequests,
 } from "../../_actions/propertyActions";
 import { getMe } from "@/service/getMe";
 import { PropertyGallery } from "../../_components/PropertyGallery";
@@ -35,6 +36,18 @@ export default async function PropertyDetailPage({
   const averageRating = reviewsRes.data?.averageRating || 0;
   const totalReviews = reviewsRes.data?.totalReviews || 0;
 
+  let rentalStatus: string | null = null;
+  if (user?.role === "TENANT") {
+    const rentalsRes = await getMyRentalRequests();
+    const requests = rentalsRes.data?.requests || [];
+    const match = requests.find(
+      (r: { propertyId: string; status: string }) => r.propertyId === id,
+    );
+    if (match) {
+      rentalStatus = match.status;
+    }
+  }
+
   return (
     <div className="min-h-screen bg-[#F4F5F1]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -56,10 +69,10 @@ export default async function PropertyDetailPage({
                 <span className="text-sm text-gray-500 ml-1">/month</span>
               </div>
               <RequestToRentDialog
-
                 user={user}
                 propertyId={property.id}
                 propertyTitle={property.title}
+                rentalStatus={rentalStatus}
               />
             </div>
 

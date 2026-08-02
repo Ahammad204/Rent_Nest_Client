@@ -110,3 +110,24 @@ export const createRentalRequest = async (payload: {
   }
   return result;
 };
+
+export const getMyRentalRequests = async () => {
+  const cookieStore = await cookies();
+  const accessToken = cookieStore.get("accessToken")?.value;
+
+  if (!accessToken) {
+    return { success: false, data: { requests: [] } };
+  }
+
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/rentals`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    cache: "no-store",
+  });
+
+  const result = await res.json();
+  return result;
+};
