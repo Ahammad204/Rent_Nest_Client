@@ -21,11 +21,8 @@ export const getMe = async () => {
         "Content-Type": "application/json",
         Authorization: `Bearer ${accessToken}`,
       },
-      cache: "force-cache",
-      next: {
-        revalidate: 60 * 60 * 24,
-        tags: ["my-profile"],
-      },
+      cache: "no-store",
+
     }
   );
 

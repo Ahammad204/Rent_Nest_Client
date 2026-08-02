@@ -7,10 +7,10 @@ export default async function AuthLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const user = await getMe();
+  const userRes = await getMe();
   return (
     <div>
-       <Navbar user={user}></Navbar>
+       <Navbar user={userRes.success ? userRes.data.profile : null} />
       <div className="max-w-7xl mx-auto">
      
       {children}

@@ -51,3 +51,44 @@ export interface UserProfile {
     updatedAt: string;
   }[];
 }
+
+export interface IProperty {
+  id: string;
+  title: string;
+  description: string | null;
+  price: number;
+  location: string;
+  propertyType: string;
+  amenities: string[];
+  status: "AVAILABLE" | "RENTED";
+  images: string[];
+  createdAt: string;
+  updatedAt: string;
+  landlordId: string;
+  categoryId: string | null;
+  landlord: {
+    id: string;
+    name: string;
+    email: string;
+    profiles: { phone: string | null }[];
+  };
+  category: {
+    id: string;
+    name: string;
+    description: string | null;
+  } | null;
+}
+
+export interface ICategory {
+  id: string;
+  name: string;
+  description: string | null;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface PropertyMeta {
+  page: number;
+  limit: number;
+  total: number;
+}
