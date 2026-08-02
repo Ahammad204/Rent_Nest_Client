@@ -9,6 +9,7 @@ import { HowItWorks } from "./_components/HowItWorks";
 import { IProperty, IReview, Testimonial } from "@/lib/types";
 import { Testimonials } from "./_components/Testimonials";
 import { FaqSection } from "./_components/FaqSection";
+import { NewsletterCta } from "./_components/NewsletterCta";
 
 export default async function Home() {
   const res = await getProperties({ page: "1", limit: "6" });
@@ -71,6 +72,7 @@ export default async function Home() {
       <HowItWorks />
        <Testimonials reviews={testimonials} />
        <FaqSection />
+       <NewsletterCta />
     </div>
   );
 }
