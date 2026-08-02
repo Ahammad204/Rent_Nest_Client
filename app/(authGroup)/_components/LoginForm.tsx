@@ -10,9 +10,8 @@ import { FormField } from "./FormField";
 import { loginSchema, type LoginFormData } from "@/lib/validations/auth";
 import { loginUser } from "../_actions/authActions";
 import { ApiService } from "@/service/api";
-import { jwtDecode } from "jwt-decode";
-import type { UserPayload } from "@/lib/types";
 import { decodeToken } from "@/utils/jwt";
+import { toast } from "sonner";
 
 export function LoginForm() {
   const router = useRouter();
@@ -31,11 +30,13 @@ export function LoginForm() {
     setServerError("");
     try {
       const res = await loginUser(data.email, data.password);
-
       if (!res.success) {
-        setServerError(res.message);
+        toast.error(res.message);
         return;
       }
+
+      toast.success("Signed in successfully!");
+
 
       const decoded = decodeToken(res.data.accessToken);
       if (decoded?.role === "LANDLORD") router.push("/landlord-dashboard");
@@ -43,6 +44,7 @@ export function LoginForm() {
       else router.push("/dashboard");
     } catch (err) {
       if (err instanceof ApiService) {
+        toast.error("An unexpected error occurred. Please try again.");
         setServerError(err.message);
       } else {
         setServerError("An unexpected error occurred. Please try again.");

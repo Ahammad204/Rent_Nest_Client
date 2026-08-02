@@ -4,13 +4,14 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowRight, Home, Lock, Mail, Phone, User } from "lucide-react";
+import { ArrowRight, Lock, Mail, Phone, User } from "lucide-react";
 import { BlueprintCard } from "./BlueprintCard";
 import { FormField } from "./FormField";
 import { RoleSelector } from "./RoleSelector";
 import { registerSchema, type RegisterFormData } from "@/lib/validations/auth";
 import { registerUser } from "../_actions/authActions";
 import { ApiService } from "@/service/api";
+import { toast } from "sonner";
 
 export function RegisterForm() {
   const router = useRouter();
@@ -47,15 +48,13 @@ export function RegisterForm() {
         password: data.password,
         role: data.role,
       });
-      setSuccessMessage(
-        "Account created successfully! Redirecting to login...",
-      );
+      toast.success("Account created successfully!");
       setTimeout(() => router.push("/login"), 1500);
     } catch (err) {
       if (err instanceof ApiService) {
-        setServerError(err.message);
+        toast.error("An unexpected error occurred. Please try again.");
       } else {
-        setServerError("An unexpected error occurred. Please try again.");
+        toast.error("An unexpected error occurred. Please try again.");
       }
     }
   };
