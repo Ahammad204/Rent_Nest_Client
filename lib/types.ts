@@ -1,3 +1,6 @@
+import { LucideProps } from "lucide-react";
+import { ForwardRefExoticComponent, RefAttributes } from "react";
+
 export interface ApiResponse<T = unknown> {
   success: boolean;
   statusCode: number;
@@ -135,3 +138,14 @@ export interface IRentalRequest {
     price: number;
   };
 }
+export type NavbarProps = {
+  user: UserProfile | null;
+};
+
+export type ISidebarItem = {
+  label: string;
+  href: string;
+  icon: ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+  >;
+};

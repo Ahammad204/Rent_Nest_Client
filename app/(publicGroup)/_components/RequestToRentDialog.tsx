@@ -199,7 +199,8 @@ export function RequestToRentDialog({
             <button
               type="button"
               onClick={() => handleOpenChange(false)}
-              className="px-4 py-2 border border-[#D8DBD3] hover:bg-[#F4F5F1] text-gray-600 text-xs font-bold rounded-md transition-colors cursor-pointer"
+              className="px-4 py-2 border border-[#D8DBD3] hover:bg-[#F4F5F1]
+               text-gray-600 text-xs font-bold rounded-md transition-colors cursor-pointer"
             >
               CANCEL
             </button>
