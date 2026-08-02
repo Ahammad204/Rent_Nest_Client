@@ -7,7 +7,7 @@ import { getMe } from "@/service/getMe";
 import { PropertyGallery } from "../../_components/PropertyGallery";
 import { PropertyInfo } from "../../_components/PropertyInfo";
 import { ReviewList } from "../../_components/ReviewList";
-import { RequestToRentButton } from "../../_components/RequestToRentButton";
+import { RequestToRentDialog } from "../../_components/RequestToRentDialog";
 
 interface PropertyDetailPageProps {
   params: Promise<{ id: string }>;
@@ -55,7 +55,8 @@ export default async function PropertyDetailPage({
                 </span>
                 <span className="text-sm text-gray-500 ml-1">/month</span>
               </div>
-              <RequestToRentButton
+              <RequestToRentDialog
+
                 user={user}
                 propertyId={property.id}
                 propertyTitle={property.title}
