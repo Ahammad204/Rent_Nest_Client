@@ -1,4 +1,5 @@
 import { getAllPropertiesAdmin } from "../../_actions/dashboardActions";
+import { StatusBadge } from "../../_components/StatusBadge";
 
 export default async function AdminPropertiesPage() {
   const res = await getAllPropertiesAdmin();
@@ -31,44 +32,44 @@ export default async function AdminPropertiesPage() {
             </tr>
           </thead>
           <tbody>
-            {properties.map(
-              (property: {
-                id: string;
-                title: string;
-                location: string;
-                price: number;
-                status: string;
-                landlord: { name: string };
-              }) => (
-                <tr
-                  key={property.id}
-                  className="border-b border-[#F4F5F1] last:border-0"
-                >
-                  <td className="px-4 py-3 font-medium text-[#1B211E]">
-                    {property.title}
-                  </td>
-                  <td className="px-4 py-3 text-gray-500">
-                    {property.location}
-                  </td>
-                  <td className="px-4 py-3 text-[#1B211E]">
-                    ৳{property.price.toLocaleString()}
-                  </td>
-                  <td className="px-4 py-3 text-gray-500">
-                    {property.landlord.name}
-                  </td>
-                  <td className="px-4 py-3">
-                    <span
-                      className={`px-2 py-0.5 text-[10px] font-bold uppercase rounded ${
-                        property.status === "AVAILABLE"
-                          ? "bg-green-100 text-green-700"
-                          : "bg-red-100 text-red-700"
-                      }`}
-                    >
-                      {property.status}
-                    </span>
-                  </td>
-                </tr>
-              ),
+            {properties.length === 0 ? (
+              <tr>
+                <td colSpan={5} className="px-4 py-8 text-center text-gray-500">
+                  No properties found.
+                </td>
+              </tr>
+            ) : (
+              properties.map(
+                (property: {
+                  id: string;
+                  title: string;
+                  location: string;
+                  price: number;
+                  status: string;
+                  landlord: { name: string };
+                }) => (
+                  <tr
+                    key={property.id}
+                    className="border-b border-[#F4F5F1] last:border-0"
+                  >
+                    <td className="px-4 py-3 font-medium text-[#1B211E]">
+                      {property.title}
+                    </td>
+                    <td className="px-4 py-3 text-gray-500">
+                      {property.location}
+                    </td>
+                    <td className="px-4 py-3 text-[#1B211E]">
+                      ৳{property.price.toLocaleString()}
+                    </td>
+                    <td className="px-4 py-3 text-gray-500">
+                      {property.landlord.name}
+                    </td>
+                    <td className="px-4 py-3">
+                      <StatusBadge status={property.status} />
+                    </td>
+                  </tr>
+                ),
+              )
             )}
           </tbody>
         </table>
