@@ -31,7 +31,9 @@ export const getMyPayments = async () => {
 };
 
 export const getRentalRequestById = async (id: string) => {
-  return authFetch(`${process.env.NEXT_PUBLIC_API_URL}/api/rentals/${id}`);
+  return authFetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/rentals/${id}`,
+  );
 };
 
 export const getAllUsers = async () => {
@@ -65,7 +67,9 @@ export const banUnbanUser = async (
 };
 
 export const getAllPropertiesAdmin = async () => {
-  return authFetch(`${process.env.NEXT_PUBLIC_API_URL}/api/admin/properties`);
+  return authFetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/admin/properties`,
+  );
 };
 
 export const getAllRentalsAdmin = async () => {
@@ -80,14 +84,17 @@ export const getLandlordProperties = async () => {
     return { success: false, data: {} };
   }
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/properties`, {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/properties`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      cache: "no-store",
     },
-    cache: "no-store",
-  });
+  );
 
   return res.json();
 };
@@ -158,14 +165,17 @@ export const createProperty = async (payload: {
     return { success: false, message: "Not authenticated" };
   }
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/properties`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${accessToken}`,
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/properties`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify(payload),
     },
-    body: JSON.stringify(payload),
-  });
+  );
 
   return res.json();
 };
