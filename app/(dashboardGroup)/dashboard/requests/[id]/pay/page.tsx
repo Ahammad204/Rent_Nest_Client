@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { getRentalRequestById } from "../../../../_actions/dashboardActions";
 import { getMe } from "@/service/getMe";
+import { PayNowButton } from "../../../../_components/PayNowButton";
+import Link from "next/link";
 
 interface PayPageProps {
   params: Promise<{ id: string }>;
@@ -23,13 +25,37 @@ export default async function PayPage({ params }: PayPageProps) {
 
   const rentalRequest = res.data.rentalRequest;
 
+  if (rentalRequest.status === "ACTIVE") {
+    return (
+      <div className="p-6">
+        <div className="bg-white border border-[#D8DBD3] rounded-lg p-8 text-center">
+          <p className="text-sm text-gray-500 mb-4">
+            This rental is already active. Payment has been completed.
+          </p>
+          <Link
+            href="/dashboard/requests"
+            className="text-sm font-bold text-[#1F4D3E] underline"
+          >
+            Back to Requests
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
   if (rentalRequest.status !== "APPROVED") {
     return (
       <div className="p-6">
         <div className="bg-white border border-[#D8DBD3] rounded-lg p-8 text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-500 mb-4">
             Payment can only be made for approved rental requests.
           </p>
+          <Link
+            href="/dashboard/requests"
+            className="text-sm font-bold text-[#1F4D3E] underline"
+          >
+            Back to Requests
+          </Link>
         </div>
       </div>
     );
@@ -57,11 +83,14 @@ export default async function PayPage({ params }: PayPageProps) {
             <span className="font-medium">Amount:</span> ৳
             {rentalRequest.property.price.toLocaleString()}/month
           </p>
+          {rentalRequest.moveInDate && (
+            <p className="text-sm text-[#1B211E]">
+              <span className="font-medium">Move-in Date:</span>{" "}
+              {new Date(rentalRequest.moveInDate).toLocaleDateString()}
+            </p>
+          )}
         </div>
-        <button className="mt-6 w-full py-3 px-4 bg-[#1F4D3E] hover:bg-[#173B2F]
-         text-white font-bold text-xs rounded-md transition-colors cursor-pointer">
-          PAY WITH STRIPE
-        </button>
+        <PayNowButton rentalRequestId={rentalRequest.id} />
       </div>
     </div>
   );
