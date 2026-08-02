@@ -43,7 +43,7 @@ export function Pagination({ page, total, limit }: PaginationProps) {
   };
 
   return (
-    <div className="mt-8 flex items-center justify-center gap-1">
+    <div className="mt-8 flex items-center justify-center gap-1 flex-wrap">
       <button
         onClick={() => goToPage(page - 1)}
         disabled={page <= 1}

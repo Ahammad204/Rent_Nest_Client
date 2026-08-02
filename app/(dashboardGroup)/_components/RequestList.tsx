@@ -96,7 +96,7 @@ export function RequestList({ requests }: RequestListProps) {
             key={request.id}
             className="bg-white border border-[#D8DBD3] rounded-lg p-4"
           >
-            <div className="flex items-start justify-between">
+            <div className=" flex flex-wrap items-start justify-between gap-2">
               <div className="flex-1">
                 <p className="text-sm font-bold text-[#1B211E]">
                   {request.property.title}
@@ -119,7 +119,7 @@ export function RequestList({ requests }: RequestListProps) {
                 )}
               </div>
 
-              <div className="flex items-center gap-2 ml-4">
+              <div className="flex items-center gap-2 flex-wrap">
                 {statusBadge(currentStatus)}
 
                 {isPending && (

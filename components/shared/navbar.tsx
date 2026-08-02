@@ -10,11 +10,19 @@ import {
   DropdownMenuTrigger,
   DropdownMenuGroup,
 } from "@/components/ui/dropdown-menu";
-import { ChevronDown, User, Home } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { ChevronDown, User, Home, Menu } from "lucide-react";
 import { logout } from "@/service/logout";
 import { navItems, userMenuItems } from "@/lib/nav-config";
 import type { UserProfile } from "@/lib/types";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 type NavbarProps = {
   user: UserProfile | null;
@@ -22,6 +30,7 @@ type NavbarProps = {
 
 export function Navbar({ user }: NavbarProps) {
   const router = useRouter();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleUserAction = async (action: string) => {
     if (action === "logout") {
@@ -35,6 +44,7 @@ export function Navbar({ user }: NavbarProps) {
         router.push("/dashboard");
       }
     }
+    setMobileOpen(false);
   };
 
   return (
@@ -53,6 +63,37 @@ export function Navbar({ user }: NavbarProps) {
             </Link>
           </div>
 
+          {/* Mobile Menu */}
+          <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
+            <SheetTrigger asChild>
+              <button className="md:hidden p-2 rounded-md hover:bg-[#F4F5F1] transition-colors">
+                <Menu className="w-5 h-5 text-[#1B211E]" />
+              </button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-64 bg-white">
+              <SheetHeader>
+                <SheetTitle className="font-heading text-[#1B211E]">
+                  Menu
+                </SheetTitle>
+              </SheetHeader>
+              <div className="flex flex-col gap-1 px-4">
+                {navItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-[#1B211E] hover:bg-[#F4F5F1] transition-colors"
+                    >
+                      <Icon className="w-4 h-4" />
+                      {item.label}
+                    </Link>
+                  );
+                })}
+              </div>
+            </SheetContent>
+          </Sheet>
           {/* Navigation Links - Hidden on mobile */}
           <div className="hidden md:flex md:gap-1">
             {navItems.map((item) => {
@@ -74,7 +115,6 @@ export function Navbar({ user }: NavbarProps) {
           {/* Right Side */}
           <div className="shrink-0">
             {user ? (
-              /* Logged in — User Dropdown */
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <button className="flex items-center gap-2 px-3 py-2 rounded-md border border-[#D8DBD3] hover:bg-[#F4F5F1] transition-colors text-sm font-medium text-[#1B211E] cursor-pointer">
@@ -121,7 +161,6 @@ export function Navbar({ user }: NavbarProps) {
                 </DropdownMenuContent>
               </DropdownMenu>
             ) : (
-              /* Not logged in — Login Button */
               <Link href="/login">
                 <Button className="bg-[#1F4D3E] hover:bg-[#173B2F] text-white font-mono-spec font-bold text-xs cursor-pointer">
                   LOGIN

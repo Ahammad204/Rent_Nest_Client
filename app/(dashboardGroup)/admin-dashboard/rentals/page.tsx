@@ -10,8 +10,8 @@ export default async function AdminRentalsPage() {
       <h1 className="font-heading text-2xl font-bold text-[#1B211E]">
         All Rentals
       </h1>
-      <div className="bg-white border border-[#D8DBD3] rounded-lg overflow-hidden">
-        <table className="w-full text-sm">
+      <div className="bg-white border border-[#D8DBD3] rounded-lg overflow-x-auto">
+        <table className="w-full text-sm min-w-150">
           <thead>
             <tr className="border-b border-[#D8DBD3] bg-[#F4F5F1]">
               <th className="text-left px-4 py-3 font-bold text-xs text-[#1F4D3E] uppercase tracking-wider">

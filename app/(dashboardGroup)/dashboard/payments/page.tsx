@@ -15,8 +15,8 @@ export default async function TenantPaymentsPage() {
           <p className="text-sm text-gray-500">No payments yet.</p>
         </div>
       ) : (
-        <div className="bg-white border border-[#D8DBD3] rounded-lg overflow-hidden">
-          <table className="w-full text-sm">
+        <div className="bg-white border border-[#D8DBD3] rounded-lg overflow-x-auto">
+          <table className="w-full text-sm min-w-150">
             <thead>
               <tr className="border-b border-[#D8DBD3] bg-[#F4F5F1]">
                 <th className="text-left px-4 py-3 font-bold text-xs text-[#1F4D3E] uppercase tracking-wider">

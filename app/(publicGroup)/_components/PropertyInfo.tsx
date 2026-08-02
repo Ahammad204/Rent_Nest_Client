@@ -94,16 +94,16 @@ export function PropertyInfo({ property }: PropertyInfoProps) {
           LANDLORD
         </h2>
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-[#1F4D3E] flex items-center justify-center">
+          <div className="w-10 h-10 rounded-full bg-[#1F4D3E] flex items-center justify-center shrink-0">
             <User className="w-5 h-5 text-white" />
           </div>
-          <div>
-            <p className="font-medium text-sm text-[#1B211E]">
+          <div className="min-w-0">
+           <p className="font-medium text-sm text-[#1B211E] truncate">
               {property.landlord.name}
             </p>
-            <div className="flex items-center gap-1 text-xs text-gray-500">
+            <div className="flex items-center gap-1 text-xs text-gray-500 min-w-0">
               <Mail className="w-3 h-3" />
-              {property.landlord.email}
+               <span className="truncate">{property.landlord.email}</span>
             </div>
             {property.landlord.profiles?.[0]?.phone && (
               <div className="flex items-center gap-1 text-xs text-gray-500 mt-0.5">
