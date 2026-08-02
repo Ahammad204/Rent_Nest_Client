@@ -169,3 +169,13 @@ export interface SearchFilters {
   bedrooms: number | "any";
   searchQuery: string;
 }
+
+export interface Testimonial {
+  id: string;
+  quote: string;
+  rating: number;
+  name: string;
+  role: string;
+  avatar: string | null;
+  badge: string;
+}
