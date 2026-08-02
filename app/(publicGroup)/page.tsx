@@ -4,6 +4,7 @@ import { PropertyGrid } from "./_components/PropertyGrid";
 import { Hero } from "./_components/Hero";
 import { ArrowRight } from "lucide-react";
 import { TrustStatsBar } from "./_components/TrustStatsBar";
+import { FeaturedLocations } from "./_components/FeaturedLocations";
 
 export default async function Home() {
   const res = await getProperties({ page: "1", limit: "6" });
@@ -12,9 +13,12 @@ export default async function Home() {
 
   return (
     <div className="min-h-screen bg-[#F4F5F1]">
-      <Hero totalListingsCount={total} featuredProperties={properties.slice(0, 3)} />
+      <Hero
+        totalListingsCount={total}
+        featuredProperties={properties.slice(0, 3)}
+      />
       <TrustStatsBar activeListingsCount={total} />
-
+      <FeaturedLocations />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Property Grid */}
