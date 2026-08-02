@@ -1,7 +1,8 @@
 import { ISidebarItem } from "@/lib/types";
-import { LayoutDashboard, FileText, Home } from "lucide-react";
+import { LayoutDashboard, FileText } from "lucide-react";
 import { LANDLORD_SIDEBAR_ITEMS } from "./landlordSidebarItems";
 import { ADMIN_SIDEBAR_ITEMS } from "./adminSidebarItems";
+
 
 const TENANT_SIDEBAR_ITEMS: ISidebarItem[] = [
   {

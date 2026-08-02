@@ -8,12 +8,14 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { sidebarMenuItems } from "../_config/sidebarMenuItems";
+
 import type { ISidebarItem, NavbarProps } from "@/lib/types";
+import { sidebarMenuItems } from "../_config/sidebarMenuItems";
 
 export default function DashboardSidebar({ user }: NavbarProps) {
   const pathname = usePathname();
