@@ -149,3 +149,23 @@ export type ISidebarItem = {
     Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
   >;
 };
+
+export type PropertyType =
+  | "All"
+  | "Apartment"
+  | "House"
+  | "Studio"
+  | "Room"
+  | "Sublet"
+  | "Duplex"
+  | "Bachelor Mess";
+
+export interface SearchFilters {
+  city: string;
+  neighborhood: string;
+  propertyType: PropertyType;
+  minPrice: number;
+  maxPrice: number;
+  bedrooms: number | "any";
+  searchQuery: string;
+}
