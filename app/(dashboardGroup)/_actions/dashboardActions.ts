@@ -89,7 +89,7 @@ export const getLandlordProperties = async () => {
       return { success: false, data: {} };
     }
 
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/properties`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/properties/landlord`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
