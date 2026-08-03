@@ -6,9 +6,9 @@ export default async function TenantReviewsPage() {
   const res = await getMyRentalRequests();
   const requests = res.data?.requests || [];
 
-  const completedRequests = requests.filter(
-    (r: { status: string }) => r.status === "COMPLETED",
-  );
+ const reviewableRequests = requests.filter(
+   (r: { status: string }) => ["ACTIVE", "COMPLETED"].includes(r.status),
+ );
 
   return (
     <div className="p-6 space-y-6">
@@ -16,7 +16,7 @@ export default async function TenantReviewsPage() {
         My Reviews
       </h1>
 
-      {completedRequests.length === 0 ? (
+      {reviewableRequests.length === 0 ? (
         <div className="bg-white border border-[#D8DBD3] rounded-lg p-8 text-center">
           <p className="text-sm text-gray-500">
             No completed rentals to review yet. Once a rental is completed, you
@@ -25,7 +25,7 @@ export default async function TenantReviewsPage() {
         </div>
       ) : (
         <div className="space-y-4">
-          {completedRequests.map(
+          {reviewableRequests.map(
             (request: {
               id: string;
               property: { id: string; title: string; location: string };
