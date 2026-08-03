@@ -233,7 +233,7 @@ export function PropertyForm({
           <input
             type="number"
             step="0.01"
-            {...register("price")}
+            {...register("price", { valueAsNumber: true })}
             className="w-full px-3 py-2 text-sm bg-white border border-[#D8DBD3] rounded-md text-[#1B211E] focus:outline-none focus:border-[#1F4D3E] focus:ring-1 focus:ring-[#1F4D3E]"
           />
           {errors.price && (
