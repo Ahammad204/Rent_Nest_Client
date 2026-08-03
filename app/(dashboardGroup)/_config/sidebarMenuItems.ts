@@ -1,5 +1,5 @@
 import { ISidebarItem } from "@/lib/types";
-import { LayoutDashboard, FileText } from "lucide-react";
+import { LayoutDashboard, FileText, UserCircle } from "lucide-react";
 import { LANDLORD_SIDEBAR_ITEMS } from "./landlordSidebarItems";
 import { ADMIN_SIDEBAR_ITEMS } from "./adminSidebarItems";
 
@@ -25,6 +25,11 @@ const TENANT_SIDEBAR_ITEMS: ISidebarItem[] = [
     href: "/dashboard/reviews",
     icon: FileText,
   },
+   {
+   label: "Profile",
+   href: "/profile",
+   icon: UserCircle,
+ },
 ];
 
 export const sidebarMenuItems = {

@@ -355,3 +355,38 @@ export const createReview = async (payload: {
     throw new Error("Network error. Please try again.");
   }
 };
+
+export const updateProfile = async (payload: {
+  name?: string;
+  phone?: string;
+  bio?: string;
+}) => {
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
+
+    if (!accessToken) {
+      throw new Error("Not authenticated");
+    }
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/me`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify(payload),
+    });
+
+    const result = await res.json();
+    if (!result.success) {
+      throw new Error(result.message);
+    }
+    return result;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw error;
+    }
+    throw new Error("Network error. Please try again.");
+  }
+};
