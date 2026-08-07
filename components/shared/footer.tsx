@@ -17,7 +17,7 @@ export function Footer() {
               RN
             </div>
             <span className="font-heading font-bold text-xl tracking-tight text-white">
-              Rent<span className="text-[#C98A2C]">Nest</span>
+              Thik<span className="text-[#C98A2C]">ana</span>
             </span>
           </Link>
 

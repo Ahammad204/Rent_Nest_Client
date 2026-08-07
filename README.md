@@ -4,7 +4,7 @@ A full-stack rental property marketplace built for Bangladesh with BDT pricing, 
 
 ## Live Demo
 
-- **Frontend:** [https://rentnesta.vercel.app/](https://rentnesta.vercel.app/)
+- **Frontend:** [https://thikanaa.vercel.app/](https://thikanaa.vercel.app/)
 - **Backend API:** [https://rent-nest-backend-brown.vercel.app/](https://rent-nest-backend-brown.vercel.app/)
 
 ---

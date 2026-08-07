@@ -71,16 +71,16 @@ export function FeaturedLocations() {
             <div
               key={city.name}
               onClick={() => router.push(`/properties?location=${city.name}`)}
-              className="min-w-[240px] md:min-w-0 snap-start cursor-pointer group"
+              className="min-w-60 md:min-w-0 snap-start cursor-pointer group"
             >
               <BlueprintCard className="p-2 h-full" accentTick>
-                <div className="relative aspect-[4/3] rounded overflow-hidden mb-3">
+                <div className="relative aspect-4/3 rounded overflow-hidden mb-3">
                   <img
                     src={city.image}
                     alt={city.name}
                     className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
 
                 
 

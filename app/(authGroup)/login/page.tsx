@@ -9,7 +9,7 @@ export default function LoginPage() {
         <div className="text-center space-y-2">
           <Link href="/" className="inline-flex items-center gap-2">
             <span className="font-heading font-bold text-2xl tracking-tight text-[#1B211E]">
-              Rent<span className="text-[#1F4D3E]">Nest</span>
+              Thik<span className="text-[#1F4D3E]">ana</span>
             </span>
           </Link>
           <h1 className="font-heading text-xl font-bold text-[#1B211E]">

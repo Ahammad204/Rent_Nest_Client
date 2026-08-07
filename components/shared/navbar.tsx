@@ -58,7 +58,7 @@ export function Navbar({ user }: NavbarProps) {
                 <Home className="w-4 h-4 text-[#C98A2C]" />
               </div>
               <span className="font-heading font-bold text-xl tracking-tight text-[#1B211E]">
-                Rent<span className="text-[#1F4D3E]">Nest</span>
+                Thik<span className="text-[#1F4D3E]">ana</span>
               </span>
             </Link>
           </div>

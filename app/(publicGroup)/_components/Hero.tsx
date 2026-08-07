@@ -305,7 +305,7 @@ export function Hero({
           </div>
 
           {/* Right Column: Photo Collage */}
-          <div className="lg:col-span-5 relative min-h-[380px] sm:min-h-[420px] flex items-center justify-center pt-4 lg:pt-0">
+          <div className="lg:col-span-5 relative min-h-95 sm:min-h-105 flex items-center justify-center pt-4 lg:pt-0">
             <div className="absolute inset-0 bg-[#1F4D3E]/5 rounded-xl -rotate-1 border border-[#1F4D3E]/10 pointer-events-none" />
 
             {featuredProperties.length > 0 ? (
