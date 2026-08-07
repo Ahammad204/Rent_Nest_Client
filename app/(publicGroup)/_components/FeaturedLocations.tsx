@@ -1,73 +1,40 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { ArrowUpRight, MapPin } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { BlueprintCard } from "@/components/BlueprintCard";
 
-// const citiesData = [
-//   {
-//     name: "Dhaka",
-//     subtitle: "Capital & Financial Hub",
-//     listingsCount: "248 LISTINGS",
-//     image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
-//     popularAreas: "Gulshan, Banani, Dhanmondi",
-//   },
-//   {
-//     name: "Chattogram",
-//     subtitle: "Port City & Business Center",
-//     listingsCount: "134 LISTINGS",
-//     image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
-//     popularAreas: "GEC, Nasirabad, Agrabad",
-//   },
-//   {
-//     name: "Sylhet",
-//     subtitle: "Green Valleys & Tech Hubs",
-//     listingsCount: "42 LISTINGS",
-//     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
-//     popularAreas: "Zindabazar, Upashahar, Shibganj",
-//   },
-//   {
-//     name: "Cox's Bazar",
-//     subtitle: "Coastal Living & Tourism",
-//     listingsCount: "28 LISTINGS",
-//     image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80",
-//     popularAreas: "Kolatoli, Sugandha Beach",
-//   },
-//   {
-//     name: "Rajshahi",
-//     subtitle: "Education & Clean City",
-//     listingsCount: "32 LISTINGS",
-//     image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80",
-//     popularAreas: "Kazla, Motihar, Padma Par",
-//   },
-// ];
+interface FeaturedLocationsProps {
+  locations: {
+    name: string;
+    listingsCount: number;
+    popularAreas: string;
+  }[];
+}
 
-export function FeaturedLocations() {
+export function FeaturedLocations({ locations }: FeaturedLocationsProps) {
   const router = useRouter();
 
+  // City image mapping (fallback to a default)
+  const cityImages: Record<string, string> = {
+    Dhaka: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
+    Chattogram: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80",
+    Sylhet: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+    "Cox's Bazar": "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80",
+    Rajshahi: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80",
+  };
+  const defaultImage = "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80";
+
+  if (locations.length === 0) return null;
+
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 border-t border-border bg-[background]">
+    <section className="py-12 px-4 sm:px-6 lg:px-8 border-t border-border bg-background">
       <div className="max-w-7xl mx-auto space-y-6">
+        {/* Section Header - same as before */}
 
-        {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-border pb-4">
-          <div>
-            <div className="font-mono-spec text-xs text-secondary font-semibold tracking-widest uppercase mb-1 flex items-center gap-1.5">
-              <MapPin className="w-3.5 h-3.5 text-primary" />
-              EXPLORE BANGLADESH
-            </div>
-            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">
-              Browse by City
-            </h2>
-          </div>
-          <p className="text-xs text-foreground/70 max-w-sm">
-            Select a key city to view verified neighborhood listings, average rent specs, and available flats.
-          </p>
-        </div>
-
-        {/* City Cards Grid / Horizontal Scroll on Mobile */}
+        {/* City Cards */}
         <div className="flex overflow-x-auto gap-4 snap-x pb-4 md:grid md:grid-cols-5 md:overflow-visible">
-          {citiesData.map((city) => (
+          {locations.map((city) => (
             <div
               key={city.name}
               onClick={() => router.push(`/properties?location=${city.name}`)}
@@ -76,38 +43,33 @@ export function FeaturedLocations() {
               <BlueprintCard className="p-2 h-full" accentTick>
                 <div className="relative aspect-4/3 rounded overflow-hidden mb-3">
                   <img
-                    src={city.image}
+                    src={cityImages[city.name] || defaultImage}
                     alt={city.name}
                     className="w-full h-full object-cover group-hover/card:scale-105 transition-transform duration-300"
                   />
                   <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
-
-                
-
                   <div className="absolute bottom-2 left-2 right-2 text-white">
                     <div className="font-heading font-bold text-base flex items-center justify-between">
                       <span>{city.name}</span>
                       <ArrowUpRight className="w-4 h-4 text-secondary group-hover/card:translate-x-0.5 group-hover/card:-translate-y-0.5 transition-transform" />
                     </div>
-                    <div className="text-[10px] text-white/80 truncate">
-                      {city.subtitle}
+                    <div className="text-[10px] text-white/80">
+                      {city.listingsCount} LISTINGS
                     </div>
                   </div>
                 </div>
-
                 <div className="px-1 pb-1">
                   <div className="font-mono-spec text-[10px] text-primary font-semibold uppercase">
                     Key Hubs:
                   </div>
                   <div className="text-xs text-foreground/80 truncate">
-                    {city.popularAreas}
+                    {city.popularAreas || "Various areas"}
                   </div>
                 </div>
               </BlueprintCard>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

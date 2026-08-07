@@ -170,3 +170,45 @@ export const getMyRentalRequests = async () => {
     };
   }
 };
+
+export const getFeaturedLocations = async () => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/properties?limit=1000`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      cache: "no-store",
+    });
+    const data = await res.json();
+    const properties = data.data?.properties || [];
+
+    // Extract unique cities from location field
+    const cityMap = new Map<string, { count: number; areas: Set<string> }>();
+
+    for (const p of properties) {
+      const parts = p.location.split(",").map((s: string) => s.trim());
+      const city = parts[parts.length - 1] || parts[0]; // last part is city
+      const area = parts.length > 1 ? parts[0] : "";
+
+      if (!cityMap.has(city)) {
+        cityMap.set(city, { count: 0, areas: new Set() });
+      }
+      const entry = cityMap.get(city)!;
+      entry.count++;
+      if (area) entry.areas.add(area);
+    }
+
+    // Sort by count, take top 5
+    const locations = Array.from(cityMap.entries())
+      .sort((a, b) => b[1].count - a[1].count)
+      .slice(0, 5)
+      .map(([city, data]) => ({
+        name: city,
+        listingsCount: data.count,
+        popularAreas: Array.from(data.areas).slice(0, 3).join(", "),
+      }));
+
+    return { success: true, data: { locations } };
+  } catch {
+    return { success: false, data: { locations: [] } };
+  }
+};
