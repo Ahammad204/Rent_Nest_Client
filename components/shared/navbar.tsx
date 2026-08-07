@@ -48,9 +48,9 @@ export function Navbar({ user }: NavbarProps) {
       }
     } else if (action === "profile") {
       router.push("/profile");
-    } else if (action === "requests") {
-      router.push("/dashboard/requests");
-    }
+    } else if (action === "settings") {
+    router.push("/settings");
+  }
     setMobileOpen(false);
   };
 

@@ -7,6 +7,7 @@ import {
   FileText,
   LogOut,
   LucideIcon,
+  Settings,
 } from "lucide-react";
 
 export interface NavItem {
@@ -80,9 +81,9 @@ export const userMenuItems: UserMenuItem[] = [
     icon: User,
   },
   {
-    label: "My Requests",
-    action: "requests",
-    icon: FileText,
+    label: "Settings",
+    action: "settings",
+    icon: Settings,
   },
   {
     label: "Sign Out",
