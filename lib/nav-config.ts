@@ -1,6 +1,11 @@
 import {
   Home,
   Search,
+  Info,
+  LayoutDashboard,
+  User,
+  FileText,
+  LogOut,
   LucideIcon,
 } from "lucide-react";
 
@@ -18,6 +23,7 @@ export interface UserMenuItem {
   isDangerous?: boolean;
 }
 
+// Logged out: 4 routes
 export const navItems: NavItem[] = [
   {
     label: "Home",
@@ -31,18 +37,62 @@ export const navItems: NavItem[] = [
     icon: Search,
     description: "Find your next home",
   },
+  {
+    label: "About",
+    href: "/about",
+    icon: Info,
+    description: "Learn about Thikana",
+  },
+  {
+    label: "Login",
+    href: "/login",
+    icon: LogOut,
+    description: "Sign in to your account",
+  },
+];
+
+// Logged in: 6 routes (4 nav + 2 dropdown)
+export const loggedInNavItems: NavItem[] = [
+  {
+    label: "Home",
+    href: "/",
+    icon: Home,
+    description: "Go to homepage",
+  },
+  {
+    label: "Browse Properties",
+    href: "/properties",
+    icon: Search,
+    description: "Find your next home",
+  },
+  {
+    label: "About",
+    href: "/about",
+    icon: Info,
+    description: "Learn about Thikana",
+  },
 ];
 
 export const userMenuItems: UserMenuItem[] = [
   {
     label: "My Dashboard",
     action: "dashboard",
-    icon: Search,
+    icon: LayoutDashboard,
+  },
+  {
+    label: "My Profile",
+    action: "profile",
+    icon: User,
+  },
+  {
+    label: "My Requests",
+    action: "requests",
+    icon: FileText,
   },
   {
     label: "Sign Out",
     action: "logout",
     isDangerous: true,
-    icon: Search,
+    icon: LogOut,
   },
 ];

@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/sheet";
 import { ChevronDown, User, Home, Menu } from "lucide-react";
 import { logout } from "@/service/logout";
-import { navItems, userMenuItems } from "@/lib/nav-config";
+import { navItems, loggedInNavItems, userMenuItems } from "@/lib/nav-config";
 import type { UserProfile } from "@/lib/types";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -33,6 +33,8 @@ export function Navbar({ user }: NavbarProps) {
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const activeNavItems = user ? loggedInNavItems : navItems;
+
   const handleUserAction = async (action: string) => {
     if (action === "logout") {
       await logout();
@@ -44,6 +46,10 @@ export function Navbar({ user }: NavbarProps) {
       } else {
         router.push("/dashboard");
       }
+    } else if (action === "profile") {
+      router.push("/profile");
+    } else if (action === "requests") {
+      router.push("/dashboard/requests");
     }
     setMobileOpen(false);
   };
@@ -67,7 +73,7 @@ export function Navbar({ user }: NavbarProps) {
           {/* Mobile Menu */}
           <Sheet open={mobileOpen} onOpenChange={setMobileOpen}>
             <SheetTrigger asChild>
-              <button className="md:hidden p-2 rounded-md hover:bg-background transition-colors">
+              <button className="md:hidden p-2 rounded-md hover:bg-muted transition-colors">
                 <Menu className="w-5 h-5 text-foreground" />
               </button>
             </SheetTrigger>
@@ -78,32 +84,52 @@ export function Navbar({ user }: NavbarProps) {
                 </SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-1 px-4">
-                {navItems.map((item) => {
+                {activeNavItems.map((item) => {
                   const Icon = item.icon;
                   return (
                     <Link
                       key={item.href}
                       href={item.href}
                       onClick={() => setMobileOpen(false)}
-                      className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-foreground hover:bg-background transition-colors"
+                      className="flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
                     >
                       <Icon className="w-4 h-4" />
                       {item.label}
                     </Link>
                   );
                 })}
+                {user && (
+                  <>
+                    <div className="border-t border-border my-2" />
+                    {userMenuItems.map((item) => (
+                      <button
+                        key={item.action}
+                        onClick={() => handleUserAction(item.action)}
+                        className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                          item.isDangerous
+                            ? "text-destructive hover:bg-destructive/10"
+                            : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                        }`}
+                      >
+                        <item.icon className="w-4 h-4" />
+                        {item.label}
+                      </button>
+                    ))}
+                  </>
+                )}
               </div>
             </SheetContent>
           </Sheet>
+
           {/* Navigation Links - Hidden on mobile */}
           <div className="hidden md:flex md:gap-1">
-            {navItems.map((item) => {
+            {activeNavItems.map((item) => {
               const Icon = item.icon;
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-gray-600 hover:text-foreground hover:bg-background transition-colors"
+                  className="inline-flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
                   title={item.description}
                 >
                   <Icon className="size-4" />
@@ -114,18 +140,16 @@ export function Navbar({ user }: NavbarProps) {
           </div>
 
           {/* Right Side */}
-          <div className="shrink-0">
+          <div className="shrink-0 flex items-center gap-2">
             <ThemeToggle />
-          </div>
-          <div className="shrink-0">
             {user ? (
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button className="flex items-center gap-2 px-3 py-2 rounded-md border border-border hover:bg-background transition-colors text-sm font-medium text-foreground cursor-pointer">
+                  <button className="flex items-center gap-2 px-3 py-2 rounded-md border border-border hover:bg-muted transition-colors text-sm font-medium text-foreground cursor-pointer">
                     <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
                       <User className="w-4 h-4 text-white" />
                     </div>
-                    <ChevronDown className="size-4 text-gray-500 transition-transform" />
+                    <ChevronDown className="size-4 text-muted-foreground transition-transform" />
                   </button>
                 </DropdownMenuTrigger>
 
@@ -135,7 +159,7 @@ export function Navbar({ user }: NavbarProps) {
                       <p className="text-sm font-medium text-foreground">
                         {user.name}
                       </p>
-                      <p className="text-xs text-gray-500 mt-0.5">
+                      <p className="text-xs text-muted-foreground mt-0.5">
                         {user.email}
                       </p>
                       <span className="inline-block mt-1 px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-primary/10 text-primary">
@@ -166,7 +190,7 @@ export function Navbar({ user }: NavbarProps) {
               </DropdownMenu>
             ) : (
               <Link href="/login">
-                <Button className="bg-primary hover:bg-primary/80 hover:bg-primary text-white font-mono-spec font-bold text-xs cursor-pointer">
+                <Button className="bg-primary hover:bg-primary/80 text-white font-mono-spec font-bold text-xs cursor-pointer">
                   LOGIN
                 </Button>
               </Link>
