@@ -374,7 +374,7 @@ export function PropertyForm({
           type="button"
           onClick={() => fileInputRef.current?.click()}
           disabled={images.some((img) => img.uploading)}
-          className="flex items-center gap-2 px-4 py-2 border border-border hover:bg-muted text-gray-600 text-xs font-bold rounded-md transition-colors cursor-pointer disabled:opacity-60"
+          className="flex items-center gap-2 px-4 py-2 border border-border hover:bg-muted text-muted-foreground text-xs font-bold rounded-md transition-colors cursor-pointer disabled:opacity-60"
         >
           <Upload className="w-4 h-4" />
           UPLOAD IMAGE

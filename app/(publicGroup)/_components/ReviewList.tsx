@@ -31,12 +31,12 @@ export function ReviewList({
                 className={`w-4 h-4 ${
                   star <= Math.round(averageRating)
                     ? "fill-[secondary] text-secondary"
-                    : "text-gray-300"
+                    : "text-muted-foreground/40"
                 }`}
               />
             ))}
           </div>
-          <p className="text-xs text-gray-500 mt-1">
+          <p className="text-xs text-muted-foreground mt-1">
             {totalReviews} {totalReviews === 1 ? "review" : "reviews"}
           </p>
         </div>
@@ -44,7 +44,7 @@ export function ReviewList({
 
       {/* Review List */}
       {reviews.length === 0 ? (
-        <p className="text-sm text-gray-500">No reviews yet.</p>
+        <p className="text-sm text-muted-foreground">No reviews yet.</p>
       ) : (
         <div className="space-y-4">
           {reviews.map((review) => (
@@ -68,16 +68,16 @@ export function ReviewList({
                       className={`w-3 h-3 ${
                         star <= review.rating
                           ? "fill-[secondary] text-secondary"
-                          : "text-gray-300"
+                          : "text-muted-foreground/40"
                       }`}
                     />
                   ))}
                 </div>
               </div>
               {review.comment && (
-                <p className="mt-2 text-sm text-gray-600">{review.comment}</p>
+                <p className="mt-2 text-sm text-muted-foreground">{review.comment}</p>
               )}
-              <p className="mt-2 text-[10px] text-gray-400">
+              <p className="mt-2 text-[10px] text-muted-foreground/60">
                 {new Date(review.createdAt).toLocaleDateString()}
               </p>
             </div>

@@ -34,7 +34,7 @@ export default async function AdminPropertiesPage() {
           <tbody>
             {properties.length === 0 ? (
               <tr>
-                <td colSpan={5} className="px-4 py-8 text-center text-gray-500">
+                <td colSpan={5} className="px-4 py-8 text-center text-muted-foreground">
                   No properties found.
                 </td>
               </tr>
@@ -55,13 +55,13 @@ export default async function AdminPropertiesPage() {
                     <td className="px-4 py-3 font-medium text-foreground">
                       {property.title}
                     </td>
-                    <td className="px-4 py-3 text-gray-500">
+                    <td className="px-4 py-3 text-muted-foreground">
                       {property.location}
                     </td>
                     <td className="px-4 py-3 text-foreground">
                       ৳{property.price.toLocaleString()}
                     </td>
-                    <td className="px-4 py-3 text-gray-500">
+                    <td className="px-4 py-3 text-muted-foreground">
                       {property.landlord.name}
                     </td>
                     <td className="px-4 py-3">

@@ -31,7 +31,7 @@ export default async function AdminRentalsPage() {
           <tbody>
             {rentals.length === 0 ? (
               <tr>
-                <td colSpan={4} className="px-4 py-8 text-center text-gray-500">
+                <td colSpan={4} className="px-4 py-8 text-center text-muted-foreground">
                   No rental requests found.
                 </td>
               </tr>
@@ -52,20 +52,20 @@ export default async function AdminRentalsPage() {
                       <p className="font-medium text-foreground">
                         {rental.property.title}
                       </p>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-muted-foreground">
                         {rental.property.location}
                       </p>
                     </td>
                     <td className="px-4 py-3">
                       <p className="text-foreground">{rental.tenant.name}</p>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-muted-foreground">
                         {rental.tenant.email}
                       </p>
                     </td>
                     <td className="px-4 py-3">
                       <StatusBadge status={rental.status} />
                     </td>
-                    <td className="px-4 py-3 text-gray-500 text-xs">
+                    <td className="px-4 py-3 text-muted-foreground text-xs">
                       {new Date(rental.createdAt).toLocaleDateString()}
                     </td>
                   </tr>

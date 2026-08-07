@@ -108,7 +108,7 @@ export function RequestToRentDialog({
     return (
       <button
         disabled
-        className="w-full py-3 px-4 bg-muted text-gray-500 font-mono-spec font-bold text-xs rounded-md flex items-center justify-center gap-2 cursor-not-allowed"
+        className="w-full py-3 px-4 bg-muted text-muted-foreground font-mono-spec font-bold text-xs rounded-md flex items-center justify-center gap-2 cursor-not-allowed"
       >
         <Clock className="w-4 h-4" />
         <span>REQUEST PENDING</span>
@@ -120,7 +120,7 @@ export function RequestToRentDialog({
     return (
       <button
         disabled
-        className="w-full py-3 px-4 bg-muted text-gray-500 font-mono-spec font-bold text-xs rounded-md flex items-center justify-center gap-2 cursor-not-allowed"
+        className="w-full py-3 px-4 bg-muted text-muted-foreground font-mono-spec font-bold text-xs rounded-md flex items-center justify-center gap-2 cursor-not-allowed"
       >
         <CheckCircle className="w-4 h-4" />
         <span>ALREADY RENTED</span>
@@ -145,7 +145,7 @@ export function RequestToRentDialog({
           <DialogTitle className="font-heading font-bold text-primary">
             REQUEST TO RENT
           </DialogTitle>
-          <p className="text-sm text-gray-500 mt-1">{propertyTitle}</p>
+          <p className="text-sm text-muted-foreground mt-1">{propertyTitle}</p>
         </DialogHeader>
 
         {rentalError && (
@@ -200,7 +200,7 @@ export function RequestToRentDialog({
               type="button"
               onClick={() => handleOpenChange(false)}
               className="px-4 py-2 border border-border hover:bg-muted
-               text-gray-600 text-xs font-bold rounded-md transition-colors cursor-pointer"
+               text-muted-foreground text-xs font-bold rounded-md transition-colors cursor-pointer"
             >
               CANCEL
             </button>

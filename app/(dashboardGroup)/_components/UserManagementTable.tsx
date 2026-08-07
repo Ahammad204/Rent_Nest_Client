@@ -93,7 +93,7 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
     <div className="space-y-4">
       {/* Search */}
       <div className="relative max-w-sm">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground/60" />
         <input
           type="text"
           placeholder="Search by name or email..."
@@ -134,7 +134,7 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
           <tbody>
             {paginatedUsers.length === 0 ? (
               <tr>
-                <td colSpan={6} className="px-4 py-8 text-center text-gray-500">
+                <td colSpan={6} className="px-4 py-8 text-center text-muted-foreground">
                   No users found.
                 </td>
               </tr>
@@ -153,7 +153,7 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
                     <td className="px-4 py-3 font-medium text-foreground">
                       {user.name}
                     </td>
-                    <td className="px-4 py-3 text-gray-500">{user.email}</td>
+                    <td className="px-4 py-3 text-muted-foreground">{user.email}</td>
                     <td className="px-4 py-3">
                       <span className="px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-primary/10 text-primary">
                         {user.role}
@@ -170,7 +170,7 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
                         {currentStatus}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-gray-500 text-xs">
+                    <td className="px-4 py-3 text-muted-foreground text-xs">
                       {new Date(user.createdAt).toLocaleDateString()}
                     </td>
                     <td className="px-4 py-3 text-right">
@@ -203,7 +203,7 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
                           </button>
                         )
                       ) : (
-                        <span className="text-xs text-gray-400">—</span>
+                        <span className="text-xs text-muted-foreground/60">—</span>
                       )}
                     </td>
                   </tr>
@@ -217,7 +217,7 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
       {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex items-center justify-between">
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-muted-foreground">
             Showing {startIndex + 1}–
             {Math.min(startIndex + PAGE_SIZE, filteredUsers.length)} of{" "}
             {filteredUsers.length} users
@@ -230,7 +230,7 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-muted-foreground">
               Page {currentPage} of {totalPages}
             </span>
             <button
@@ -251,7 +251,7 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
             <AlertDialogTitle className="font-heading text-foreground">
               Ban User
             </AlertDialogTitle>
-            <AlertDialogDescription className="text-sm text-gray-500">
+            <AlertDialogDescription className="text-sm text-muted-foreground">
               Are you sure you want to ban <strong>{banTarget?.name}</strong>?
               They will no longer be able to access the platform. This action can
               be reversed by unbanning them.

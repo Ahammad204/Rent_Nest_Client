@@ -116,7 +116,7 @@ export function LoginForm() {
       </form>
 
       <div className="mt-6 pt-5 border-t border-border text-center">
-        <p className="text-xs text-gray-600 font-sans">
+        <p className="text-xs text-muted-foreground font-sans">
           Don`t have an account?
           <Link
             href="/register"

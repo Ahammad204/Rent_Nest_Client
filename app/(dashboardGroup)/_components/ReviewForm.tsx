@@ -75,7 +75,7 @@ export function ReviewForm({ rentalRequestId }: ReviewFormProps) {
                 className={`w-6 h-6 transition-colors ${
                   star <= rating
                     ? "fill-secondary text-secondary"
-                    : "fill-none text-gray-300"
+                    : "fill-none text-muted-foreground/40"
                 }`}
               />
             </button>

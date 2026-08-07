@@ -15,7 +15,7 @@ export default async function PaymentSuccessPage({
     return (
       <div className="min-h-screen bg-[background] flex items-center justify-center px-4">
         <div className="bg-card border border-border rounded-lg p-8 max-w-md w-full text-center">
-          <p className="text-sm text-gray-500 mb-4">
+          <p className="text-sm text-muted-foreground mb-4">
             No session found. The payment link may have expired.
           </p>
           <Link
@@ -46,7 +46,7 @@ export default async function PaymentSuccessPage({
             <h1 className="font-heading text-xl font-bold text-foreground mb-2">
               Payment Successful!
             </h1>
-            <p className="text-sm text-gray-500 mb-6">
+            <p className="text-sm text-muted-foreground mb-6">
               Your rental request has been confirmed. The property is now yours!
             </p>
             <div className="space-y-2">
@@ -58,7 +58,7 @@ export default async function PaymentSuccessPage({
               </Link>
               <Link
                 href="/dashboard/requests"
-                className="block w-full py-3 px-4 border border-border hover:bg-muted text-gray-600 text-xs font-bold rounded-md transition-colors"
+                className="block w-full py-3 px-4 border border-border hover:bg-muted text-muted-foreground text-xs font-bold rounded-md transition-colors"
               >
                 VIEW MY REQUESTS
               </Link>
@@ -72,7 +72,7 @@ export default async function PaymentSuccessPage({
             <h1 className="font-heading text-xl font-bold text-foreground mb-2">
               Confirming Payment...
             </h1>
-            <p className="text-sm text-gray-500 mb-6">
+            <p className="text-sm text-muted-foreground mb-6">
               Your payment is being processed. This may take a few moments.
               We`ll update your status shortly.
             </p>
@@ -92,7 +92,7 @@ export default async function PaymentSuccessPage({
             <h1 className="font-heading text-xl font-bold text-foreground mb-2">
               Payment Received!
             </h1>
-            <p className="text-sm text-gray-500 mb-6">
+            <p className="text-sm text-muted-foreground mb-6">
               We received your payment. Your rental will be activated once
               confirmed by our system.
             </p>

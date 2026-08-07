@@ -18,7 +18,7 @@ export default async function TenantReviewsPage() {
 
       {reviewableRequests.length === 0 ? (
         <div className="bg-card border border-border rounded-lg p-8 text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             No completed rentals to review yet. Once a rental is completed, you
             can leave a review here.
           </p>
@@ -41,7 +41,7 @@ export default async function TenantReviewsPage() {
                   >
                     {request.property.title}
                   </Link>
-                  <p className="text-xs text-gray-500 mt-0.5">
+                  <p className="text-xs text-muted-foreground mt-0.5">
                     {request.property.location}
                   </p>
                 </div>

@@ -59,7 +59,7 @@ export function DeletePropertyButton({ propertyId }: DeletePropertyButtonProps) 
           <AlertDialogTitle className="font-heading text-foreground">
             Are you absolutely sure?
           </AlertDialogTitle>
-          <AlertDialogDescription className="text-sm text-gray-500">
+          <AlertDialogDescription className="text-sm text-muted-foreground">
             This will permanently delete this property and cannot be undone. Any
             pending rental requests on this property will be affected.
           </AlertDialogDescription>

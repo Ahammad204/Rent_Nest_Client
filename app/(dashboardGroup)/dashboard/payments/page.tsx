@@ -12,7 +12,7 @@ export default async function TenantPaymentsPage() {
 
       {payments.length === 0 ? (
         <div className="bg-card border border-border rounded-lg p-8 text-center">
-          <p className="text-sm text-gray-500">No payments yet.</p>
+          <p className="text-sm text-muted-foreground">No payments yet.</p>
         </div>
       ) : (
         <div className="bg-card border border-border rounded-lg overflow-x-auto">
@@ -58,7 +58,7 @@ export default async function TenantPaymentsPage() {
                     <td className="px-4 py-3 font-medium text-foreground">
                       ৳{payment.amount.toLocaleString()}
                     </td>
-                    <td className="px-4 py-3 text-gray-500 uppercase text-xs">
+                    <td className="px-4 py-3 text-muted-foreground uppercase text-xs">
                       {payment.method}
                     </td>
                     <td className="px-4 py-3">
@@ -74,7 +74,7 @@ export default async function TenantPaymentsPage() {
                         {payment.status}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-gray-500 text-xs">
+                    <td className="px-4 py-3 text-muted-foreground text-xs">
                       {new Date(payment.createdAt).toLocaleDateString()}
                     </td>
                   </tr>

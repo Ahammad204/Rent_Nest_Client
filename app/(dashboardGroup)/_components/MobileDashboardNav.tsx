@@ -54,7 +54,7 @@ export default function MobileDashboardNav({ user }: NavbarProps) {
                   className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     isActive
                       ? "bg-primary/10 text-primary"
-                      : "text-gray-600 hover:text-foreground hover:bg-muted"
+                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
                   }`}
                 >
                   <Icon className="w-4 h-4" />

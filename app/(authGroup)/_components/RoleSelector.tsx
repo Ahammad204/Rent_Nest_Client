@@ -36,7 +36,7 @@ export function RoleSelector({ value, onChange, error }: RoleSelectorProps) {
             <div className="font-heading font-bold text-sm text-foreground">
               I`m looking to rent
             </div>
-            <div className="font-sans text-[11px] text-gray-500 mt-0.5 leading-snug">
+            <div className="font-sans text-[11px] text-muted-foreground mt-0.5 leading-snug">
               Tenant profile to bookmark homes & send rental requests.
             </div>
           </div>
@@ -64,7 +64,7 @@ export function RoleSelector({ value, onChange, error }: RoleSelectorProps) {
             <div className="font-heading font-bold text-sm text-foreground">
               I want to list a property
             </div>
-            <div className="font-sans text-[11px] text-gray-500 mt-0.5 leading-snug">
+            <div className="font-sans text-[11px] text-muted-foreground mt-0.5 leading-snug">
               Landlord account to post apartments & manage inquiries.
             </div>
           </div>

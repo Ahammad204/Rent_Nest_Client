@@ -44,11 +44,11 @@ export function FormField({
           {label} {required && "*"}
         </label>
         {hint && (
-          <span className="text-[10px] text-gray-400 font-sans">{hint}</span>
+          <span className="text-[10px] text-muted-foreground/60 font-sans">{hint}</span>
         )}
       </div>
       <div className="relative">
-        <Icon className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+        <Icon className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground/60" />
         <input
           id={id}
           type={type}

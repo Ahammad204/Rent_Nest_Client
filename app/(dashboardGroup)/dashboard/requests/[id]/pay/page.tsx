@@ -29,7 +29,7 @@ export default async function PayPage({ params }: PayPageProps) {
     return (
       <div className="p-6">
         <div className="bg-card border border-border rounded-lg p-8 text-center">
-          <p className="text-sm text-gray-500 mb-4">
+          <p className="text-sm text-muted-foreground mb-4">
             This rental is already active. Payment has been completed.
           </p>
           <Link
@@ -47,7 +47,7 @@ export default async function PayPage({ params }: PayPageProps) {
     return (
       <div className="p-6">
         <div className="bg-card border border-border rounded-lg p-8 text-center">
-          <p className="text-sm text-gray-500 mb-4">
+          <p className="text-sm text-muted-foreground mb-4">
             Payment can only be made for approved rental requests.
           </p>
           <Link

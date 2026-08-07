@@ -9,7 +9,7 @@ export function PropertyGrid({ properties }: PropertyGridProps) {
   if (properties.length === 0) {
     return (
       <div className="text-center py-12">
-        <p className="text-gray-500 text-sm font-sans">
+        <p className="text-muted-foreground text-sm font-sans">
           No properties found matching your criteria.
         </p>
       </div>

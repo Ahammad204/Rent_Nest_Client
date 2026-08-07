@@ -42,7 +42,7 @@ export default async function EditPropertyPage({ params }: EditPropertyPageProps
         <h2 className="font-heading font-bold text-sm text-red-600 uppercase tracking-wider mb-3">
           Danger Zone
         </h2>
-        <p className="text-sm text-gray-500 mb-4">
+        <p className="text-sm text-muted-foreground mb-4">
           Permanently delete this property. This action cannot be undone.
         </p>
         <DeletePropertyButton propertyId={property.id} />

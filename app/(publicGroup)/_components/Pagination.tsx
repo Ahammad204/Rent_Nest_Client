@@ -54,7 +54,7 @@ export function Pagination({ page, total, limit }: PaginationProps) {
 
       {getPages().map((p, i) =>
         p === "..." ? (
-          <span key={`dots-${i}`} className="px-2 text-gray-400 text-sm">
+          <span key={`dots-${i}`} className="px-2 text-muted-foreground/60 text-sm">
             ...
           </span>
         ) : (
@@ -64,7 +64,7 @@ export function Pagination({ page, total, limit }: PaginationProps) {
             className={`w-8 h-8 rounded-md text-sm font-medium transition-colors cursor-pointer ${
               p === page
                 ? "bg-primary text-white"
-                : "border border-border text-gray-600 hover:bg-muted"
+                : "border border-border text-muted-foreground hover:bg-muted"
             }`}
           >
             {p}

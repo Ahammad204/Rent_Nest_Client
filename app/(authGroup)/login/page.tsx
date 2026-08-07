@@ -15,7 +15,7 @@ export default function LoginPage() {
           <h1 className="font-heading text-xl font-bold text-foreground">
             Sign in to your account
           </h1>
-          <p className="font-sans text-xs text-gray-600">
+          <p className="font-sans text-xs text-muted-foreground">
             Access verified listings, landlord inquiries, and saved properties.
           </p>
         </div>
@@ -26,7 +26,7 @@ export default function LoginPage() {
         <div className="text-center">
           <Link
             href="/"
-            className="font-mono-spec text-xs text-gray-500 hover:text-primary hover:underline"
+            className="font-mono-spec text-xs text-muted-foreground hover:text-primary hover:underline"
           >
             ← Back to Home
           </Link>

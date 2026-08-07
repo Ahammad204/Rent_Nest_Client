@@ -21,7 +21,7 @@ export function PropertyInfo({ property }: PropertyInfoProps) {
         <h1 className="font-heading text-2xl font-bold text-foreground">
           {property.title}
         </h1>
-        <div className="flex items-center gap-2 mt-1 text-gray-500">
+        <div className="flex items-center gap-2 mt-1 text-muted-foreground">
           <MapPin className="w-4 h-4" />
           <span className="text-sm">{property.location}</span>
         </div>
@@ -29,7 +29,7 @@ export function PropertyInfo({ property }: PropertyInfoProps) {
           <span className="font-heading text-3xl font-bold text-primary">
             ৳{property.price.toLocaleString()}
           </span>
-          <span className="text-sm text-gray-500 ml-1">/month</span>
+          <span className="text-sm text-muted-foreground ml-1">/month</span>
         </div>
       </div>
 
@@ -63,7 +63,7 @@ export function PropertyInfo({ property }: PropertyInfoProps) {
           <h2 className="font-heading font-bold text-sm text-primary uppercase tracking-wider mb-2">
             DESCRIPTION
           </h2>
-          <p className="text-sm text-gray-600 leading-relaxed">
+          <p className="text-sm text-muted-foreground leading-relaxed">
             {property.description}
           </p>
         </div>
@@ -79,7 +79,7 @@ export function PropertyInfo({ property }: PropertyInfoProps) {
             {property.amenities.map((amenity) => (
               <span
                 key={amenity}
-                className="px-3 py-1 text-xs bg-[background] border border-border rounded text-gray-600"
+                className="px-3 py-1 text-xs bg-muted border border-border rounded text-foreground"
               >
                 {amenity}
               </span>
@@ -89,7 +89,7 @@ export function PropertyInfo({ property }: PropertyInfoProps) {
       )}
 
       {/* Landlord Card */}
-      <div className="bg-[background] border border-border rounded-lg p-4">
+      <div className="bg-card border border-border rounded-lg p-4">
         <h2 className="font-heading font-bold text-sm text-primary uppercase tracking-wider mb-3">
           LANDLORD
         </h2>
@@ -101,12 +101,12 @@ export function PropertyInfo({ property }: PropertyInfoProps) {
            <p className="font-medium text-sm text-foreground truncate">
               {property.landlord.name}
             </p>
-            <div className="flex items-center gap-1 text-xs text-gray-500 min-w-0">
+            <div className="flex items-center gap-1 text-xs text-muted-foreground min-w-0">
               <Mail className="w-3 h-3" />
                <span className="truncate">{property.landlord.email}</span>
             </div>
             {property.landlord.profiles?.[0]?.phone && (
-              <div className="flex items-center gap-1 text-xs text-gray-500 mt-0.5">
+              <div className="flex items-center gap-1 text-xs text-muted-foreground mt-0.5">
                 <Phone className="w-3 h-3" />
                 {property.landlord.profiles[0].phone}
               </div>

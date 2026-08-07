@@ -13,7 +13,7 @@ export default async function TenantRequestsPage() {
 
       {requests.length === 0 ? (
         <div className="bg-card border border-border rounded-lg p-8 text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             No rental requests yet.{" "}
             <Link href="/properties" className="text-primary underline">
               Browse properties
@@ -47,12 +47,12 @@ export default async function TenantRequestsPage() {
                     >
                       {request.property.title}
                     </Link>
-                    <p className="text-xs text-gray-500 mt-0.5">
+                    <p className="text-xs text-muted-foreground mt-0.5">
                       {request.property.location} — ৳
                       {request.property.price.toLocaleString()}/month
                     </p>
                     {request.moveInDate && (
-                      <p className="text-xs text-gray-500 mt-0.5">
+                      <p className="text-xs text-muted-foreground mt-0.5">
                         Move-in:{" "}
                         {new Date(request.moveInDate).toLocaleDateString()}
                       </p>

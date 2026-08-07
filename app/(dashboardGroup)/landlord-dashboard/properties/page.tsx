@@ -22,7 +22,7 @@ export default async function LandlordPropertiesPage() {
 
       {properties.length === 0 ? (
         <div className="bg-card border border-border rounded-lg p-8 text-center">
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             No properties yet. Add your first property to get started.
           </p>
         </div>
@@ -45,7 +45,7 @@ export default async function LandlordPropertiesPage() {
                   <p className="text-sm font-bold text-foreground">
                     {property.title}
                   </p>
-                  <p className="text-xs text-gray-500 mt-0.5">
+                  <p className="text-xs text-muted-foreground mt-0.5">
                     {property.location} — ৳{property.price.toLocaleString()}
                     /month
                   </p>

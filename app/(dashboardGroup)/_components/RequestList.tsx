@@ -101,19 +101,19 @@ export function RequestList({ requests }: RequestListProps) {
                 <p className="text-sm font-bold text-foreground">
                   {request.property.title}
                 </p>
-                <p className="text-xs text-gray-500 mt-0.5">
+                <p className="text-xs text-muted-foreground mt-0.5">
                   {request.property.location}
                 </p>
-                <p className="text-xs text-gray-500 mt-0.5">
+                <p className="text-xs text-muted-foreground mt-0.5">
                   Tenant: {request.tenant.name} ({request.tenant.email})
                 </p>
                 {request.moveInDate && (
-                  <p className="text-xs text-gray-500 mt-0.5">
+                  <p className="text-xs text-muted-foreground mt-0.5">
                     Move-in: {new Date(request.moveInDate).toLocaleDateString()}
                   </p>
                 )}
                 {request.message && (
-                  <p className="text-xs text-gray-500 mt-1 italic">
+                  <p className="text-xs text-muted-foreground mt-1 italic">
                     `{request.message}`
                   </p>
                 )}

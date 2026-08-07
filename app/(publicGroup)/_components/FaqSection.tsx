@@ -76,8 +76,9 @@ export function FaqSection() {
               <div key={faq.id} className="border-b border-border">
                 <button
                   onClick={() => toggle(faq.id)}
-                  className="flex flex-1 items-center justify-between w-full py-4 text-left text-sm sm:text-base font-heading font-semibold transition-all hover:text-primary group"
-                  style={{ color: isOpen ? "primary" : "#1B211E" }}
+                  className={`flex flex-1 items-center justify-between w-full py-4 text-left text-sm sm:text-base font-heading font-semibold transition-all hover:text-primary group ${
+                    isOpen ? "text-primary" : "text-foreground"
+                  }`}
                 >
                   <span>{faq.question}</span>
                   <ChevronDown

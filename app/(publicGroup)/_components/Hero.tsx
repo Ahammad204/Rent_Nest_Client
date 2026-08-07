@@ -270,7 +270,7 @@ export function Hero({
               {/* Bottom Search & Buttons */}
               <div className="mt-4 pt-3 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-3">
                 <div className="relative w-full sm:w-2/3">
-                  <Search className="w-4 h-4 text-gray-400 absolute left-3 top-2.5 z-10" />
+                  <Search className="w-4 h-4 text-muted-foreground/60 absolute left-3 top-2.5 z-10" />
                   <input
                     type="text"
                     value={filters.searchQuery}
@@ -354,7 +354,7 @@ export function Hero({
                             />
                           ) : (
                             <div className="w-full h-full flex items-center justify-center">
-                              <Home className="w-10 h-10 text-gray-300" />
+                              <Home className="w-10 h-10 text-muted-foreground/40" />
                             </div>
                           )}
                           <div className={`absolute ${layout.badgePos}`}>
@@ -397,7 +397,7 @@ export function Hero({
                   <p className="font-heading font-bold text-sm text-foreground">
                     Properties Coming Soon
                   </p>
-                  <p className="text-xs text-gray-500 mt-1">
+                  <p className="text-xs text-muted-foreground mt-1">
                     Browse our listings to find your next home
                   </p>
                 </BlueprintCard>

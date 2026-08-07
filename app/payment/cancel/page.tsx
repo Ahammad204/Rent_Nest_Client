@@ -6,12 +6,12 @@ export default function PaymentCancelPage() {
     <div className="min-h-screen bg-[background] flex items-center justify-center px-4">
       <div className="bg-card border border-border rounded-lg p-8 max-w-md w-full text-center">
         <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-gray-100 flex items-center justify-center">
-          <XCircle className="w-8 h-8 text-gray-400" />
+          <XCircle className="w-8 h-8 text-muted-foreground/60" />
         </div>
         <h1 className="font-heading text-xl font-bold text-foreground mb-2">
           Payment Cancelled
         </h1>
-        <p className="text-sm text-gray-500 mb-6">
+        <p className="text-sm text-muted-foreground mb-6">
           No worries — you haven`t been charged. You can try again whenever
           you`re ready.
         </p>
@@ -24,7 +24,7 @@ export default function PaymentCancelPage() {
           </Link>
           <Link
             href="/"
-            className="block w-full py-3 px-4 border border-border hover:bg-muted text-gray-600 text-xs font-bold rounded-md transition-colors"
+            className="block w-full py-3 px-4 border border-border hover:bg-muted text-muted-foreground text-xs font-bold rounded-md transition-colors"
           >
             BACK TO HOME
           </Link>

@@ -51,7 +51,7 @@ export default async function TenantDashboardPage() {
         <h1 className="font-heading text-2xl font-bold text-foreground">
           Welcome back, {user?.name}
         </h1>
-        <p className="text-sm text-gray-500 mt-1">
+        <p className="text-sm text-muted-foreground mt-1">
           Here`s an overview of your rental activity.
         </p>
       </div>
@@ -64,7 +64,7 @@ export default async function TenantDashboardPage() {
           >
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">
+                <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">
                   {stat.label}
                 </p>
                 <p className="font-heading text-2xl font-bold text-foreground mt-1">
@@ -86,7 +86,7 @@ export default async function TenantDashboardPage() {
           Recent Requests
         </h2>
         {rentals.length === 0 ? (
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-muted-foreground">
             No rental requests yet. Browse properties to get started.
           </p>
         ) : (
@@ -105,7 +105,7 @@ export default async function TenantDashboardPage() {
                     <p className="text-sm font-medium text-foreground">
                       {rental.property.title}
                     </p>
-                    <p className="text-xs text-gray-500">
+                    <p className="text-xs text-muted-foreground">
                       {rental.property.location}
                     </p>
                   </div>

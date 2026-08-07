@@ -62,7 +62,7 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
             Location
           </label>
           <div className="relative">
-            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+            <Search className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground/60" />
             <input
               type="text"
               placeholder="Search by location..."
@@ -150,7 +150,7 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
           </button>
           <button
             onClick={clearFilters}
-            className="px-4 py-2 border border-border hover:bg-muted text-gray-600 text-xs font-bold rounded-md transition-colors cursor-pointer"
+            className="px-4 py-2 border border-border hover:bg-muted text-muted-foreground text-xs font-bold rounded-md transition-colors cursor-pointer"
           >
             CLEAR
           </button>

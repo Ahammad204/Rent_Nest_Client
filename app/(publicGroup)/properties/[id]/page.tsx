@@ -66,7 +66,7 @@ export default async function PropertyDetailPage({
                 <span className="font-heading text-2xl font-bold text-primary">
                   ৳{property.price.toLocaleString()}
                 </span>
-                <span className="text-sm text-gray-500 ml-1">/month</span>
+                <span className="text-sm text-muted-foreground ml-1">/month</span>
               </div>
               <RequestToRentDialog
                 user={user}

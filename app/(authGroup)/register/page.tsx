@@ -16,7 +16,7 @@ export default function RegisterPage() {
           <h1 className="font-heading text-xl font-bold text-foreground">
             Create your Thikana Account
           </h1>
-          <p className="font-sans text-xs text-gray-600">
+          <p className="font-sans text-xs text-muted-foreground">
             Join thousands of verified tenants and landlords across Bangladesh.
           </p>
         </div>
@@ -27,7 +27,7 @@ export default function RegisterPage() {
         <div className="text-center">
           <Link
             href="/"
-            className="font-mono-spec text-xs text-gray-500 hover:text-primary hover:underline"
+            className="font-mono-spec text-xs text-muted-foreground hover:text-primary hover:underline"
           >
             ← Back to Home
           </Link>

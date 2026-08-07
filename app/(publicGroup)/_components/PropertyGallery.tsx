@@ -15,7 +15,7 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
   if (!images || images.length === 0) {
     return (
       <div className="w-full h-96 bg-[background] rounded-lg flex items-center justify-center">
-        <Home className="w-16 h-16 text-gray-300" />
+        <Home className="w-16 h-16 text-muted-foreground/40" />
       </div>
     );
   }

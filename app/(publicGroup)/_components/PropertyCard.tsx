@@ -25,7 +25,7 @@ export function PropertyCard({ property }: PropertyCardProps) {
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">
-              <Home className="w-12 h-12 text-gray-300" />
+              <Home className="w-12 h-12 text-muted-foreground/40" />
             </div>
           )}
           <span className="absolute top-2 left-2 px-2 py-1 text-[10px] font-bold uppercase rounded bg-primary text-white">
@@ -39,7 +39,7 @@ export function PropertyCard({ property }: PropertyCardProps) {
             {property.title}
           </h3>
 
-          <div className="flex items-center gap-1 mt-1 text-gray-500">
+          <div className="flex items-center gap-1 mt-1 text-muted-foreground">
             <MapPin className="w-3 h-3" />
             <span className="text-xs truncate">{property.location}</span>
           </div>
@@ -53,7 +53,7 @@ export function PropertyCard({ property }: PropertyCardProps) {
           <div className="mt-3 pt-3 border-t border-border flex items-center justify-between">
             <span className="font-heading font-bold text-lg text-primary">
               ৳{property.price.toLocaleString()}
-              <span className="text-xs font-normal text-gray-500">/month</span>
+              <span className="text-xs font-normal text-muted-foreground">/month</span>
             </span>
           </div>
         </div>

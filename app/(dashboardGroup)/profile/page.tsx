@@ -13,7 +13,7 @@ export default async function ProfilePage() {
     <div className="p-6 space-y-6">
       <div>
         <h1 className="font-heading text-2xl font-bold text-foreground">My Profile</h1>
-        <p className="text-xs text-gray-500 mt-1">Manage your account information</p>
+        <p className="text-xs text-muted-foreground mt-1">Manage your account information</p>
       </div>
       <ProfileForm user={userRes.data.profile} />
     </div>

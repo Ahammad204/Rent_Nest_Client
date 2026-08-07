@@ -13,7 +13,7 @@ export default async function LandlordRequestsPage() {
 
       {requests.length === 0 ? (
         <div className="bg-card border border-border rounded-lg p-8 text-center">
-          <p className="text-sm text-gray-500">No rental requests yet.</p>
+          <p className="text-sm text-muted-foreground">No rental requests yet.</p>
         </div>
       ) : (
         <RequestList requests={requests} />
