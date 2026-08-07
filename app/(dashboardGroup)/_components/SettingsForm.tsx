@@ -66,7 +66,7 @@ export function SettingsForm({ user }: SettingsFormProps) {
       </div>
 
       {/* Notifications */}
-      <div className="p-4 bg-card border border-border rounded-lg space-y-4">
+      {/* <div className="p-4 bg-card border border-border rounded-lg space-y-4">
         <h2 className="font-heading font-bold text-sm text-foreground uppercase tracking-wider flex items-center gap-2">
           <Bell className="w-4 h-4 text-primary" />
           Notifications
@@ -106,7 +106,7 @@ export function SettingsForm({ user }: SettingsFormProps) {
             </div>
           </label>
         </div>
-      </div>
+      </div> */}
 
       {/* Account */}
       <div className="p-4 bg-card border border-border rounded-lg space-y-4">
