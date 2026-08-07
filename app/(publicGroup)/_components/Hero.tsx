@@ -106,7 +106,7 @@ export function Hero({
             ]),
           ];
   return (
-    <section className="relative pt-6 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 border-b border-border bg-[background]">
+   <section className="relative min-h-[60vh] flex items-center pt-6 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 border-b border-border bg-[background]">
       {/* Background Dot Grid Pattern */}
       <div
         className="absolute inset-0 opacity-15 pointer-events-none -z-10"
