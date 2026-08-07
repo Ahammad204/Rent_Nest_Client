@@ -43,12 +43,7 @@ export const navItems: NavItem[] = [
     icon: Info,
     description: "Learn about Thikana",
   },
-  {
-    label: "Login",
-    href: "/login",
-    icon: LogOut,
-    description: "Sign in to your account",
-  },
+
 ];
 
 // Logged in: 6 routes (4 nav + 2 dropdown)

@@ -2,6 +2,7 @@ import Link from "next/link";
 import {
   getFeaturedLocations,
   getProperties,
+  getPublicStats,
   getReviewsByProperty,
 } from "./_actions/propertyActions";
 import { PropertyGrid } from "./_components/PropertyGrid";
@@ -55,6 +56,13 @@ export default async function Home() {
   const locations = locationsRes.data?.locations || [];
   const userRes = await getMe();
   const user = userRes.success ? userRes.data.profile : null;
+  const statsRes = await getPublicStats();
+  const stats = statsRes.data || {
+    activeListings: 0,
+    verifiedLandlords: 0,
+    happyTenants: 0,
+    citiesCount: 0,
+  };
 
   return (
     <div className="min-h-screen bg-[background]">
@@ -62,7 +70,12 @@ export default async function Home() {
         totalListingsCount={total}
         featuredProperties={properties.slice(0, 3)}
       />
-      <TrustStatsBar activeListingsCount={total} />
+      <TrustStatsBar
+        activeListingsCount={stats.activeListings}
+        verifiedLandlordsCount={stats.verifiedLandlords}
+        happyTenantsCount={stats.happyTenants}
+        citiesCount={stats.citiesCount}
+      />
       <FeaturedLocations locations={locations} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

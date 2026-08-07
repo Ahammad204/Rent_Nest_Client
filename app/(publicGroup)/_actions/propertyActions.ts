@@ -212,3 +212,19 @@ export const getFeaturedLocations = async () => {
     return { success: false, data: { locations: [] } };
   }
 };
+
+export const getPublicStats = async () => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stats`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      cache: "no-store",
+    });
+    return await res.json();
+  } catch {
+    return {
+      success: false,
+      data: { activeListings: 0, verifiedLandlords: 0, happyTenants: 0, citiesCount: 0 },
+    };
+  }
+};
