@@ -1,4 +1,4 @@
-# RentNest
+# Thikana
 
 A full-stack rental property marketplace built for Bangladesh with BDT pricing, role-based dashboards, Stripe payment integration, and JWT authentication.
 
@@ -122,20 +122,20 @@ app/(routeGroup)/
 **Backend:**
 
 ```bash
-cd RentNestBackend
+cd ThikanaBackend
 npm install
 ```
 
 **Frontend:**
 
 ```bash
-cd rentnestfrontend
+cd Thikanafrontend
 pnpm install
 ```
 
 ### Environment Variables
 
-**Backend** (`RentNestBackend/.env`):
+**Backend** (`ThikanaBackend/.env`):
 
 ```env
 DATABASE_URL="your-postgresql-connection-string"
@@ -152,7 +152,7 @@ STRIPE_SECRET_KEY=your-stripe-secret-key
 STRIPE_WEBHOOK_SECRET=your-stripe-webhook-secret
 ```
 
-**Frontend** (`rentnestfrontend/.env`):
+**Frontend** (`Thikanafrontend/.env`):
 
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:5000
@@ -163,7 +163,7 @@ NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET=your-upload-preset
 ### Database Setup
 
 ```bash
-cd RentNestBackend
+cd ThikanaBackend
 npx prisma migrate dev
 npx prisma db seed
 ```
@@ -173,14 +173,14 @@ npx prisma db seed
 **Backend** (terminal 1):
 
 ```bash
-cd RentNestBackend
+cd ThikanaBackend
 npm run dev
 ```
 
 **Frontend** (terminal 2):
 
 ```bash
-cd rentnestfrontend
+cd Thikanafrontend
 pnpm dev
 ```
 
@@ -303,7 +303,7 @@ PENDING ──┬──> APPROVED ──> ACTIVE ──> COMPLETED
 ### Frontend
 
 ```
-rentnestfrontend/
+Thikanafrontend/
 ├── app/
 │   ├── (authGroup)/          → Login, Register
 │   │   ├── _actions/         → authActions.ts
@@ -341,7 +341,7 @@ rentnestfrontend/
 ### Backend
 
 ```
-RentNestBackend/
+ThikanaBackend/
 ├── src/
 │   ├── modules/
 │   │   ├── auth/             → Login, token refresh

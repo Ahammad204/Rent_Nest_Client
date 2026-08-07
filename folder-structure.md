@@ -1,4 +1,4 @@
-rentnest_client/
+Thikana_client/
 ├── .env                            # BACKEND_API_URL, JWT/cookie secret if needed
 ├── .env.example
 ├── next.config.ts

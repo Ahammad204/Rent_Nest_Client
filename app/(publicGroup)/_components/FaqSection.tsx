@@ -7,7 +7,7 @@ const faqsData = [
   {
     id: "faq-1",
     question:
-      "How does the rental request and approval process work on RentNest?",
+      "How does the rental request and approval process work on Thikana?",
     answer:
       "Tenants browse verified property listings and submit an online request specifying their preferred move-in date and tenant profile. The landlord receives an instant alert in their dashboard to review the tenant's details and approve or decline the request.",
   },

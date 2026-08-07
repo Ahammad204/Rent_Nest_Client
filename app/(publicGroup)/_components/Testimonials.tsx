@@ -7,7 +7,7 @@ import type { Testimonial } from "@/lib/types";
 const fallbackTestimonials: Testimonial[] = [
   {
     id: "t1",
-    quote: "Finding an apartment in Gulshan without dealing with unauthorized media brokers used to be impossible. Through RentNest, I inspected the verified floor plan online and moved in within 4 days.",
+    quote: "Finding an apartment in Gulshan without dealing with unauthorized media brokers used to be impossible. Through Thikana, I inspected the verified floor plan online and moved in within 4 days.",
     rating: 5,
     name: "Tanvir Ahmed",
     role: "Tenant, Gulshan 2, Dhaka",
@@ -16,7 +16,7 @@ const fallbackTestimonials: Testimonial[] = [
   },
   {
     id: "t2",
-    quote: "As a landlord with 3 flats in Dhanmondi, managing tenant applications and verifying NID identity was always stressful. RentNest lets me approve genuine requests and receive rent deposits securely.",
+    quote: "As a landlord with 3 flats in Dhanmondi, managing tenant applications and verifying NID identity was always stressful. Thikana lets me approve genuine requests and receive rent deposits securely.",
     rating: 5,
     name: "Engr. Masud Alam",
     role: "Landlord, 3 Properties",

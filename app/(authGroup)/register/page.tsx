@@ -14,7 +14,7 @@ export default function RegisterPage() {
             </span>
           </Link>
           <h1 className="font-heading text-xl font-bold text-[#1B211E]">
-            Create your RentNest Account
+            Create your Thikana Account
           </h1>
           <p className="font-sans text-xs text-gray-600">
             Join thousands of verified tenants and landlords across Bangladesh.

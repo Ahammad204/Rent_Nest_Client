@@ -142,11 +142,11 @@ export function Footer() {
           <div className="space-y-2 text-xs text-white/80">
             <div className="flex items-center gap-2">
               <PhoneCall className="w-3.5 h-3.5 text-[#C98A2C]" />
-              <span>+880 9612-736863 (RentNest Helpline)</span>
+              <span>+880 9612-736863 (Thikana Helpline)</span>
             </div>
             <div className="flex items-center gap-2">
               <Mail className="w-3.5 h-3.5 text-[#C98A2C]" />
-              <span>support@rentnest.com.bd</span>
+              <span>support@thikana.com.bd</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-3.5 h-3.5 text-[#C98A2C]" />
@@ -159,7 +159,7 @@ export function Footer() {
       {/* Copyright & Disclaimer */}
       <div className="max-w-7xl mx-auto pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-white/60 font-mono-spec">
         <div>
-          © {new Date().getFullYear()} RentNest Technologies BD Ltd. All rights
+          © {new Date().getFullYear()} Thikana Technologies BD Ltd. All rights
           reserved.
         </div>
         <div className="mt-2 sm:mt-0 flex items-center gap-4">

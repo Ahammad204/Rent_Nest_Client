@@ -108,7 +108,7 @@ export function LoginForm() {
             <span>SIGNING IN...</span>
           ) : (
             <>
-              <span>SIGN IN TO RENTNEST</span>
+              <span>SIGN IN TO Thikana</span>
               <ArrowRight className="w-4 h-4 text-[#C98A2C]" />
             </>
           )}

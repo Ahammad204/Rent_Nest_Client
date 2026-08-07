@@ -28,7 +28,7 @@ export function HowItWorks() {
             SIMPLE THREE-STEP PROCESS
           </div>
           <h2 className="font-heading text-2xl sm:text-3xl font-bold text-[#1B211E]">
-            How RentNest Works
+            How Thikana Works
           </h2>
           <p className="text-xs sm:text-sm text-[#1B211E]/80 leading-relaxed">
             Eliminating media fees and agent confusion with direct digital rentals for tenants and landlords.
