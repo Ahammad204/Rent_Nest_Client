@@ -14,7 +14,7 @@ export function Footer() {
         <div className="space-y-3">
           <Link href="/" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-md bg-secondary text-white font-mono flex items-center justify-center font-bold text-sm tracking-tighter">
-              RN
+              TK
             </div>
             <span className="font-heading font-bold text-xl tracking-tight text-white">
               Thik<span className="text-secondary">ana</span>
@@ -29,6 +29,34 @@ export function Footer() {
 
           <div className="font-mono-spec text-[10px] text-secondary bg-black/20 px-2.5 py-1 rounded border border-[secondary]/30 inline-block">
             ALL PRICING IN BANGLADESHI TAKA (BDT)
+          </div>
+
+          {/* Social Links */}
+          <div className="flex items-center gap-3 pt-2">
+            <a
+              href="https://facebook.com/thikana"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 rounded-md bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors"
+            >
+              <Mail className="w-4 h-4" />
+            </a>
+            <a
+              href="https://linkedin.com/company/thikana"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 rounded-md bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors"
+            >
+              <MapPin className="w-4 h-4" />
+            </a>
+            <a
+              href="https://instagram.com/thikana"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-8 h-8 rounded-md bg-white/10 flex items-center justify-center hover:bg-secondary transition-colors"
+            >
+              <PhoneCall className="w-4 h-4" />
+            </a>
           </div>
         </div>
 
@@ -109,7 +137,7 @@ export function Footer() {
             </li>
             <li>
               <Link
-                href="/properties"
+                href="/tenant-verification"
                 className="hover:text-secondary transition-colors"
               >
                 Tenant Verification Process
@@ -117,7 +145,7 @@ export function Footer() {
             </li>
             <li>
               <Link
-                href="/properties"
+                href="/rental-agreement"
                 className="hover:text-secondary transition-colors"
               >
                 Standard Rental Agreement (BD Law)
@@ -125,7 +153,7 @@ export function Footer() {
             </li>
             <li>
               <Link
-                href="/properties"
+                href="/service-charges"
                 className="hover:text-secondary transition-colors"
               >
                 Service Charge & Titas Gas FAQs
@@ -163,13 +191,13 @@ export function Footer() {
           reserved.
         </div>
         <div className="mt-2 sm:mt-0 flex items-center gap-4">
-          <Link href="/properties" className="hover:text-white">
+          <Link href="/privacy" className="hover:text-white">
             Privacy Policy
           </Link>
-          <Link href="/properties" className="hover:text-white">
+          <Link href="/terms" className="hover:text-white">
             Terms of Service
           </Link>
-          <Link href="/properties" className="hover:text-white">
+          <Link href="/landlord-guidelines" className="hover:text-white">
             Landlord Guidelines
           </Link>
         </div>
