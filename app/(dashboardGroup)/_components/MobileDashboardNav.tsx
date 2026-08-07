@@ -32,13 +32,13 @@ export default function MobileDashboardNav({ user }: NavbarProps) {
     <div className="md:hidden">
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetTrigger asChild>
-          <button className="fixed top-20 left-4 z-40 p-2 bg-white border border-[#D8DBD3] rounded-lg shadow-sm hover:bg-[#F4F5F1] transition-colors">
-            <Menu className="w-5 h-5 text-[#1B211E]" />
+          <button className="fixed top-20 left-4 z-40 p-2 bg-card border border-border rounded-lg shadow-sm hover:bg-muted transition-colors">
+            <Menu className="w-5 h-5 text-foreground" />
           </button>
         </SheetTrigger>
-        <SheetContent side="left" className="w-64 bg-white p-0">
-          <SheetHeader className="p-4 border-b border-[#D8DBD3]">
-            <SheetTitle className="font-heading text-[#1B211E]">
+        <SheetContent side="left" className="w-64 bg-card p-0">
+          <SheetHeader className="p-4 border-b border-border">
+            <SheetTitle className="font-heading text-foreground">
               Navigation
             </SheetTitle>
           </SheetHeader>
@@ -53,8 +53,8 @@ export default function MobileDashboardNav({ user }: NavbarProps) {
                   onClick={() => setOpen(false)}
                   className={`flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
                     isActive
-                      ? "bg-[#1F4D3E]/10 text-[#1F4D3E]"
-                      : "text-gray-600 hover:text-[#1B211E] hover:bg-[#F4F5F1]"
+                      ? "bg-primary/10 text-primary"
+                      : "text-gray-600 hover:text-foreground hover:bg-muted"
                   }`}
                 >
                   <Icon className="w-4 h-4" />

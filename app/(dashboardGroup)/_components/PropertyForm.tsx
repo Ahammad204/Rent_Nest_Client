@@ -197,12 +197,12 @@ export function PropertyForm({
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1">
+          <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1">
             Title
           </label>
           <input
             {...register("title")}
-            className="w-full px-3 py-2 text-sm bg-white border border-[#D8DBD3] rounded-md text-[#1B211E] focus:outline-none focus:border-[#1F4D3E] focus:ring-1 focus:ring-[#1F4D3E]"
+            className="w-full px-3 py-2 text-sm bg-card border border-border rounded-md text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
           />
           {errors.title && (
             <p className="text-xs text-red-500 mt-1">
@@ -212,12 +212,12 @@ export function PropertyForm({
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1">
+          <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1">
             Location
           </label>
           <input
             {...register("location")}
-            className="w-full px-3 py-2 text-sm bg-white border border-[#D8DBD3] rounded-md text-[#1B211E] focus:outline-none focus:border-[#1F4D3E] focus:ring-1 focus:ring-[#1F4D3E]"
+            className="w-full px-3 py-2 text-sm bg-card border border-border rounded-md text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
           />
           {errors.location && (
             <p className="text-xs text-red-500 mt-1">
@@ -227,14 +227,14 @@ export function PropertyForm({
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1">
+          <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1">
             Price (৳/month)
           </label>
           <input
             type="number"
             step="0.01"
             {...register("price", { valueAsNumber: true })}
-            className="w-full px-3 py-2 text-sm bg-white border border-[#D8DBD3] rounded-md text-[#1B211E] focus:outline-none focus:border-[#1F4D3E] focus:ring-1 focus:ring-[#1F4D3E]"
+            className="w-full px-3 py-2 text-sm bg-card border border-border rounded-md text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
           />
           {errors.price && (
             <p className="text-xs text-red-500 mt-1">
@@ -244,12 +244,12 @@ export function PropertyForm({
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1">
+          <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1">
             Property Type
           </label>
           <select
             {...register("propertyType")}
-            className="w-full px-3 py-2 text-sm bg-white border border-[#D8DBD3] rounded-md text-[#1B211E] focus:outline-none focus:border-[#1F4D3E] focus:ring-1 focus:ring-[#1F4D3E]"
+            className="w-full px-3 py-2 text-sm bg-card border border-border rounded-md text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
           >
             <option value="">Select type</option>
             <option value="APARTMENT">Apartment</option>
@@ -266,12 +266,12 @@ export function PropertyForm({
         </div>
 
         <div>
-          <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1">
+          <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1">
             Category
           </label>
           <select
             {...register("categoryId")}
-            className="w-full px-3 py-2 text-sm bg-white border border-[#D8DBD3] rounded-md text-[#1B211E] focus:outline-none focus:border-[#1F4D3E] focus:ring-1 focus:ring-[#1F4D3E]"
+            className="w-full px-3 py-2 text-sm bg-card border border-border rounded-md text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
           >
             <option value="">No category</option>
             {categories.map((cat) => (
@@ -284,12 +284,12 @@ export function PropertyForm({
 
         {mode === "edit" && (
           <div>
-            <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1">
               Status
             </label>
             <select
               {...register("status")}
-              className="w-full px-3 py-2 text-sm bg-white border border-[#D8DBD3] rounded-md text-[#1B211E] focus:outline-none focus:border-[#1F4D3E] focus:ring-1 focus:ring-[#1F4D3E]"
+              className="w-full px-3 py-2 text-sm bg-card border border-border rounded-md text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
             >
               <option value="AVAILABLE">Available</option>
               <option value="RENTED">Rented</option>
@@ -299,30 +299,30 @@ export function PropertyForm({
       </div>
 
       <div>
-        <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1">
+        <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1">
           Description
         </label>
         <textarea
           {...register("description")}
           rows={3}
-          className="w-full px-3 py-2 text-sm bg-white border border-[#D8DBD3] rounded-md text-[#1B211E] focus:outline-none focus:border-[#1F4D3E] focus:ring-1 focus:ring-[#1F4D3E] resize-none"
+          className="w-full px-3 py-2 text-sm bg-card border border-border rounded-md text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary resize-none"
         />
       </div>
 
       <div>
-        <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1">
+        <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1">
           Amenities (comma separated)
         </label>
         <input
           {...register("amenities")}
           placeholder="e.g. WiFi, Parking, AC"
-          className="w-full px-3 py-2 text-sm bg-white border border-[#D8DBD3] rounded-md text-[#1B211E] focus:outline-none focus:border-[#1F4D3E] focus:ring-1 focus:ring-[#1F4D3E]"
+          className="w-full px-3 py-2 text-sm bg-card border border-border rounded-md text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
         />
       </div>
 
       {/* Image Upload Section */}
       <div>
-        <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-2">
+        <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-2">
           Property Images
         </label>
 
@@ -332,11 +332,11 @@ export function PropertyForm({
             {images.map((img, index) => (
               <div
                 key={index}
-                className="relative aspect-square rounded-md overflow-hidden border border-[#D8DBD3] bg-gray-100"
+                className="relative aspect-square rounded-md overflow-hidden border border-border bg-gray-100"
               >
                 {img.uploading ? (
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <Loader2 className="w-6 h-6 text-[#1F4D3E] animate-spin" />
+                    <Loader2 className="w-6 h-6 text-primary animate-spin" />
                   </div>
                 ) : img.url ? (
                   <>
@@ -374,7 +374,7 @@ export function PropertyForm({
           type="button"
           onClick={() => fileInputRef.current?.click()}
           disabled={images.some((img) => img.uploading)}
-          className="flex items-center gap-2 px-4 py-2 border border-[#D8DBD3] hover:bg-[#F4F5F1] text-gray-600 text-xs font-bold rounded-md transition-colors cursor-pointer disabled:opacity-60"
+          className="flex items-center gap-2 px-4 py-2 border border-border hover:bg-muted text-gray-600 text-xs font-bold rounded-md transition-colors cursor-pointer disabled:opacity-60"
         >
           <Upload className="w-4 h-4" />
           UPLOAD IMAGE
@@ -384,7 +384,7 @@ export function PropertyForm({
       <button
         type="submit"
         disabled={isSubmitting || images.some((img) => img.uploading)}
-        className="w-full py-3 px-4 bg-[#1F4D3E] hover:bg-[#173B2F] disabled:opacity-60 text-white text-xs font-bold rounded-md transition-colors cursor-pointer"
+        className="w-full py-3 px-4 bg-primary hover:bg-primary/80 disabled:opacity-60 text-white text-xs font-bold rounded-md transition-colors cursor-pointer"
       >
         {isSubmitting
           ? "SAVING..."

@@ -13,12 +13,12 @@ export const BlueprintCard: React.FC<BlueprintCardProps> = ({
   onClick,
   accentTick = false,
 }) => {
-  const tickColor = accentTick ? "text-[#C98A2C]" : "text-[#1F4D3E]";
+  const tickColor = accentTick ? "text-secondary" : "text-primary";
 
   return (
     <div
       onClick={onClick}
-      className={`group relative bg-white border border-[#D8DBD3] rounded-md transition-all duration-200 hover:border-[#1F4D3E] ${
+      className={`group relative bg-card border border-border rounded-lg transition-all duration-200 hover:border-primary ${
         onClick ? "cursor-pointer" : ""
       } ${className}`}
     >

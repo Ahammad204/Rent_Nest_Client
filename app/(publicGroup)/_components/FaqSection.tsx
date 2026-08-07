@@ -53,17 +53,17 @@ export function FaqSection() {
   };
 
   return (
-    <section className="py-12 px-4 sm:px-6 lg:px-8 border-t border-[#D8DBD3] bg-[#F4F5F1]">
+    <section className="py-12 px-4 sm:px-6 lg:px-8 border-t border-border bg-[background]">
       <div className="max-w-4xl mx-auto space-y-8">
         <div className="text-center space-y-2">
-          <div className="font-mono-spec text-xs text-[#C98A2C] font-semibold tracking-widest uppercase flex items-center justify-center gap-1.5">
-            <HelpCircle className="w-3.5 h-3.5 text-[#1F4D3E]" />
+          <div className="font-mono-spec text-xs text-secondary font-semibold tracking-widest uppercase flex items-center justify-center gap-1.5">
+            <HelpCircle className="w-3.5 h-3.5 text-primary" />
             FREQUENTLY ASKED QUESTIONS
           </div>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-[#1B211E]">
+          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">
             Got Questions? We Have Answers.
           </h2>
-          <p className="text-xs sm:text-sm text-[#1B211E]/80 leading-relaxed max-w-xl mx-auto">
+          <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed max-w-xl mx-auto">
             Everything you need to know about renting homes, landlord
             verification, and secure BDT transactions.
           </p>
@@ -73,15 +73,15 @@ export function FaqSection() {
           {faqsData.map((faq) => {
             const isOpen = openId === faq.id;
             return (
-              <div key={faq.id} className="border-b border-[#D8DBD3]">
+              <div key={faq.id} className="border-b border-border">
                 <button
                   onClick={() => toggle(faq.id)}
-                  className="flex flex-1 items-center justify-between w-full py-4 text-left text-sm sm:text-base font-heading font-semibold transition-all hover:text-[#1F4D3E] group"
-                  style={{ color: isOpen ? "#1F4D3E" : "#1B211E" }}
+                  className="flex flex-1 items-center justify-between w-full py-4 text-left text-sm sm:text-base font-heading font-semibold transition-all hover:text-primary group"
+                  style={{ color: isOpen ? "primary" : "#1B211E" }}
                 >
                   <span>{faq.question}</span>
                   <ChevronDown
-                    className="h-4 w-4 shrink-0 text-[#1F4D3E] transition-transform duration-200 ml-4"
+                    className="h-4 w-4 shrink-0 text-primary transition-transform duration-200 ml-4"
                     style={{
                       transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
                     }}
@@ -94,7 +94,7 @@ export function FaqSection() {
                     opacity: isOpen ? 1 : 0,
                   }}
                 >
-                  <div className="pb-4 pt-0 text-xs sm:text-sm text-[#1B211E]/80 leading-relaxed">
+                  <div className="pb-4 pt-0 text-xs sm:text-sm text-foreground/80 leading-relaxed">
                     {faq.answer}
                   </div>
                 </div>

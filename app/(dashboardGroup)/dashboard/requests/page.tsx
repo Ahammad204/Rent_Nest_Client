@@ -7,15 +7,15 @@ export default async function TenantRequestsPage() {
 
   return (
     <div className="p-6 space-y-6">
-      <h1 className="font-heading text-2xl font-bold text-[#1B211E]">
+      <h1 className="font-heading text-2xl font-bold text-foreground">
         My Rental Requests
       </h1>
 
       {requests.length === 0 ? (
-        <div className="bg-white border border-[#D8DBD3] rounded-lg p-8 text-center">
+        <div className="bg-card border border-border rounded-lg p-8 text-center">
           <p className="text-sm text-gray-500">
             No rental requests yet.{" "}
-            <Link href="/properties" className="text-[#1F4D3E] underline">
+            <Link href="/properties" className="text-primary underline">
               Browse properties
             </Link>
           </p>
@@ -37,13 +37,13 @@ export default async function TenantRequestsPage() {
             }) => (
               <div
                 key={request.id}
-                className="bg-white border border-[#D8DBD3] rounded-lg p-4"
+                className="bg-card border border-border rounded-lg p-4"
               >
                 <div className="flex items-center justify-between">
                   <div>
                     <Link
                       href={`/properties/${request.property.id}`}
-                      className="text-sm font-bold text-[#1F4D3E] hover:underline"
+                      className="text-sm font-bold text-primary hover:underline"
                     >
                       {request.property.title}
                     </Link>
@@ -77,7 +77,7 @@ export default async function TenantRequestsPage() {
                     {request.status === "APPROVED" && (
                       <Link
                         href={`/dashboard/requests/${request.id}/pay`}
-                        className="px-3 py-1 bg-[#C98A2C] hover:bg-[#AF7623] text-white text-[10px] font-bold uppercase rounded transition-colors"
+                        className="px-3 py-1 bg-secondary hover:bg-[#AF7623] text-white text-[10px] font-bold uppercase rounded transition-colors"
                       >
                         PAY NOW
                       </Link>

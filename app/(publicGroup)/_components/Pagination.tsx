@@ -47,7 +47,7 @@ export function Pagination({ page, total, limit }: PaginationProps) {
       <button
         onClick={() => goToPage(page - 1)}
         disabled={page <= 1}
-        className="p-2 rounded-md border border-[#D8DBD3] hover:bg-[#F4F5F1] disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+        className="p-2 rounded-md border border-border hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
       >
         <ChevronLeft className="w-4 h-4" />
       </button>
@@ -63,8 +63,8 @@ export function Pagination({ page, total, limit }: PaginationProps) {
             onClick={() => goToPage(p)}
             className={`w-8 h-8 rounded-md text-sm font-medium transition-colors cursor-pointer ${
               p === page
-                ? "bg-[#1F4D3E] text-white"
-                : "border border-[#D8DBD3] text-gray-600 hover:bg-[#F4F5F1]"
+                ? "bg-primary text-white"
+                : "border border-border text-gray-600 hover:bg-muted"
             }`}
           >
             {p}
@@ -75,7 +75,7 @@ export function Pagination({ page, total, limit }: PaginationProps) {
       <button
         onClick={() => goToPage(page + 1)}
         disabled={page >= totalPages}
-        className="p-2 rounded-md border border-[#D8DBD3] hover:bg-[#F4F5F1] disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+        className="p-2 rounded-md border border-border hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
       >
         <ChevronRight className="w-4 h-4" />
       </button>

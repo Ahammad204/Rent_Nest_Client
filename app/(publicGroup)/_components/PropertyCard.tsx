@@ -12,9 +12,9 @@ export function PropertyCard({ property }: PropertyCardProps) {
 
   return (
     <Link href={`/properties/${property.id}`}>
-      <div className="group bg-white border border-[#D8DBD3] rounded-lg overflow-hidden hover:shadow-md transition-all duration-200 hover:border-[#1F4D3E]">
+      <div className="group bg-card border border-border rounded-lg overflow-hidden hover:shadow-md transition-all duration-200 hover:border-primary">
         {/* Image */}
-        <div className="relative w-full h-48 bg-[#F4F5F1]">
+        <div className="relative w-full h-48 bg-[background]">
           {imageUrl ? (
             <Image
               src={imageUrl}
@@ -28,14 +28,14 @@ export function PropertyCard({ property }: PropertyCardProps) {
               <Home className="w-12 h-12 text-gray-300" />
             </div>
           )}
-          <span className="absolute top-2 left-2 px-2 py-1 text-[10px] font-bold uppercase rounded bg-[#1F4D3E] text-white">
+          <span className="absolute top-2 left-2 px-2 py-1 text-[10px] font-bold uppercase rounded bg-primary text-white">
             {property.propertyType}
           </span>
         </div>
 
         {/* Content */}
         <div className="p-4">
-          <h3 className="font-heading font-bold text-sm text-[#1B211E] truncate">
+          <h3 className="font-heading font-bold text-sm text-foreground truncate">
             {property.title}
           </h3>
 
@@ -45,13 +45,13 @@ export function PropertyCard({ property }: PropertyCardProps) {
           </div>
 
           {property.category && (
-            <span className="inline-block mt-2 px-2 py-0.5 text-[10px] font-medium rounded bg-[#C98A2C]/10 text-[#C98A2C]">
+            <span className="inline-block mt-2 px-2 py-0.5 text-[10px] font-medium rounded bg-secondary/10 text-secondary">
               {property.category.name}
             </span>
           )}
 
-          <div className="mt-3 pt-3 border-t border-[#D8DBD3] flex items-center justify-between">
-            <span className="font-heading font-bold text-lg text-[#1F4D3E]">
+          <div className="mt-3 pt-3 border-t border-border flex items-center justify-between">
+            <span className="font-heading font-bold text-lg text-primary">
               ৳{property.price.toLocaleString()}
               <span className="text-xs font-normal text-gray-500">/month</span>
             </span>

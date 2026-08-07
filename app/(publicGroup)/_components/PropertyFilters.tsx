@@ -44,13 +44,13 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
   };
 
   const inputClass =
-    "w-full px-3 py-2 text-sm bg-white border border-[#D8DBD3] rounded-md text-[#1B211E] focus:outline-none focus:border-[#1F4D3E] focus:ring-1 focus:ring-[#1F4D3E] transition-colors";
+    "w-full px-3 py-2 text-sm bg-card border border-border rounded-md text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors";
 
   return (
-    <div className="bg-white border border-[#D8DBD3] rounded-lg p-4 mb-6">
+    <div className="bg-card border border-border rounded-lg p-4 mb-6">
       <div className="flex items-center gap-2 mb-4">
-        <SlidersHorizontal className="w-4 h-4 text-[#1F4D3E]" />
-        <h3 className="font-heading font-bold text-sm text-[#1B211E]">
+        <SlidersHorizontal className="w-4 h-4 text-primary" />
+        <h3 className="font-heading font-bold text-sm text-foreground">
           FILTER PROPERTIES
         </h3>
       </div>
@@ -58,7 +58,7 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {/* Location Search */}
         <div className="lg:col-span-2">
-          <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1.5">
             Location
           </label>
           <div className="relative">
@@ -76,7 +76,7 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
 
         {/* Min Price */}
         <div>
-          <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1.5">
             Min Price
           </label>
           <input
@@ -90,7 +90,7 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
 
         {/* Max Price */}
         <div>
-          <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1.5">
             Max Price
           </label>
           <input
@@ -104,7 +104,7 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
 
         {/* Property Type */}
         <div>
-          <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1.5">
             Type
           </label>
           <select
@@ -124,7 +124,7 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
       {/* Category + Actions */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-4">
         <div>
-          <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1.5">
+          <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1.5">
             Category
           </label>
           <select
@@ -144,13 +144,13 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
         <div className="flex items-end gap-2 lg:col-span-4">
           <button
             onClick={applyFilters}
-            className="px-4 py-2 bg-[#1F4D3E] hover:bg-[#173B2F] text-white text-xs font-bold rounded-md transition-colors cursor-pointer"
+            className="px-4 py-2 bg-primary hover:bg-primary/80 text-white text-xs font-bold rounded-md transition-colors cursor-pointer"
           >
             SEARCH
           </button>
           <button
             onClick={clearFilters}
-            className="px-4 py-2 border border-[#D8DBD3] hover:bg-[#F4F5F1] text-gray-600 text-xs font-bold rounded-md transition-colors cursor-pointer"
+            className="px-4 py-2 border border-border hover:bg-muted text-gray-600 text-xs font-bold rounded-md transition-colors cursor-pointer"
           >
             CLEAR
           </button>

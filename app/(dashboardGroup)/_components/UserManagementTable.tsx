@@ -102,31 +102,31 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
             setSearch(e.target.value);
             setCurrentPage(1);
           }}
-          className="w-full pl-10 pr-3 py-2 text-sm bg-white border border-[#D8DBD3] rounded-md text-[#1B211E] focus:outline-none focus:border-[#1F4D3E] focus:ring-1 focus:ring-[#1F4D3E]"
+          className="w-full pl-10 pr-3 py-2 text-sm bg-card border border-border rounded-md text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
         />
       </div>
 
       {/* Table */}
-      <div className="bg-white border border-[#D8DBD3] rounded-lg overflow-x-auto">
+      <div className="bg-card border border-border rounded-lg overflow-x-auto">
         <table className="w-full text-sm min-w-150">
           <thead>
-            <tr className="border-b border-[#D8DBD3] bg-[#F4F5F1]">
-              <th className="text-left px-4 py-3 font-bold text-xs text-[#1F4D3E] uppercase tracking-wider">
+            <tr className="border-b border-border bg-[background]">
+              <th className="text-left px-4 py-3 font-bold text-xs text-primary uppercase tracking-wider">
                 Name
               </th>
-              <th className="text-left px-4 py-3 font-bold text-xs text-[#1F4D3E] uppercase tracking-wider">
+              <th className="text-left px-4 py-3 font-bold text-xs text-primary uppercase tracking-wider">
                 Email
               </th>
-              <th className="text-left px-4 py-3 font-bold text-xs text-[#1F4D3E] uppercase tracking-wider">
+              <th className="text-left px-4 py-3 font-bold text-xs text-primary uppercase tracking-wider">
                 Role
               </th>
-              <th className="text-left px-4 py-3 font-bold text-xs text-[#1F4D3E] uppercase tracking-wider">
+              <th className="text-left px-4 py-3 font-bold text-xs text-primary uppercase tracking-wider">
                 Status
               </th>
-              <th className="text-left px-4 py-3 font-bold text-xs text-[#1F4D3E] uppercase tracking-wider">
+              <th className="text-left px-4 py-3 font-bold text-xs text-primary uppercase tracking-wider">
                 Joined
               </th>
-              <th className="text-right px-4 py-3 font-bold text-xs text-[#1F4D3E] uppercase tracking-wider">
+              <th className="text-right px-4 py-3 font-bold text-xs text-primary uppercase tracking-wider">
                 Actions
               </th>
             </tr>
@@ -148,14 +148,14 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
                 return (
                   <tr
                     key={user.id}
-                    className="border-b border-[#F4F5F1] last:border-0"
+                    className="border-b border-[background] last:border-0"
                   >
-                    <td className="px-4 py-3 font-medium text-[#1B211E]">
+                    <td className="px-4 py-3 font-medium text-foreground">
                       {user.name}
                     </td>
                     <td className="px-4 py-3 text-gray-500">{user.email}</td>
                     <td className="px-4 py-3">
-                      <span className="px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-[#1F4D3E]/10 text-[#1F4D3E]">
+                      <span className="px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-primary/10 text-primary">
                         {user.role}
                       </span>
                     </td>
@@ -226,7 +226,7 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
             <button
               onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
               disabled={currentPage === 1}
-              className="p-1.5 border border-[#D8DBD3] rounded hover:bg-[#F4F5F1] disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+              className="p-1.5 border border-border rounded hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
@@ -236,7 +236,7 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
             <button
               onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
               disabled={currentPage === totalPages}
-              className="p-1.5 border border-[#D8DBD3] rounded hover:bg-[#F4F5F1] disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
+              className="p-1.5 border border-border rounded hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed transition-colors cursor-pointer"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -246,9 +246,9 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
 
       {/* Ban Confirmation Dialog */}
       <AlertDialog open={!!banTarget} onOpenChange={(open) => !open && setBanTarget(null)}>
-        <AlertDialogContent className="bg-white">
+        <AlertDialogContent className="bg-card">
           <AlertDialogHeader>
-            <AlertDialogTitle className="font-heading text-[#1B211E]">
+            <AlertDialogTitle className="font-heading text-foreground">
               Ban User
             </AlertDialogTitle>
             <AlertDialogDescription className="text-sm text-gray-500">

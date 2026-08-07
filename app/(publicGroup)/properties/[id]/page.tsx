@@ -49,7 +49,7 @@ export default async function PropertyDetailPage({
   }
 
   return (
-    <div className="min-h-screen bg-[#F4F5F1]">
+    <div className="min-h-screen bg-[background]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Left — Gallery + Info */}
@@ -61,9 +61,9 @@ export default async function PropertyDetailPage({
           {/* Right — CTA + Reviews */}
           <div className="space-y-6">
             {/* Request to Rent */}
-            <div className="bg-white border border-[#D8DBD3] rounded-lg p-4 sticky top-20">
+            <div className="bg-card border border-border rounded-lg p-4 sticky top-20">
               <div className="text-center mb-3">
-                <span className="font-heading text-2xl font-bold text-[#1F4D3E]">
+                <span className="font-heading text-2xl font-bold text-primary">
                   ৳{property.price.toLocaleString()}
                 </span>
                 <span className="text-sm text-gray-500 ml-1">/month</span>
@@ -77,7 +77,7 @@ export default async function PropertyDetailPage({
             </div>
 
             {/* Reviews */}
-            <div className="bg-white border border-[#D8DBD3] rounded-lg p-4">
+            <div className="bg-card border border-border rounded-lg p-4">
               <ReviewList
                 reviews={reviews}
                 averageRating={averageRating}

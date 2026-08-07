@@ -5,13 +5,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ArrowRight, Lock, Mail, Phone, User } from "lucide-react";
-import { BlueprintCard } from "./BlueprintCard";
 import { FormField } from "./FormField";
 import { RoleSelector } from "./RoleSelector";
 import { registerSchema, type RegisterFormData } from "@/lib/validations/auth";
 import { registerUser } from "../_actions/authActions";
 import { ApiService } from "@/service/api";
 import { toast } from "sonner";
+import { BlueprintCard } from "@/components/BlueprintCard";
 
 export function RegisterForm() {
   const router = useRouter();
@@ -61,7 +61,7 @@ export function RegisterForm() {
 
   return (
     <BlueprintCard
-      className="p-6 sm:p-8 bg-white shadow-md border border-[#D8DBD3]"
+      className="p-6 sm:p-8 bg-card shadow-md border border-border"
       accentTick
     >
       {serverError && (
@@ -85,7 +85,7 @@ export function RegisterForm() {
         <FormField
           id="name"
           label="FULL NAME"
-          placeholder="e.g. Masud Parvez"
+          placeholder="Enter your full name"
           icon={User}
           required
           autoComplete="name"
@@ -97,7 +97,7 @@ export function RegisterForm() {
           id="email"
           label="EMAIL ADDRESS"
           type="email"
-          placeholder="e.g. masud@example.com"
+          placeholder="your@email.com"
           icon={Mail}
           required
           autoComplete="email"
@@ -109,7 +109,7 @@ export function RegisterForm() {
           id="phone"
           label="PHONE NUMBER"
           type="tel"
-          placeholder="+880 1711-000000"
+          placeholder="01XXXXXXXXX"
           icon={Phone}
           required
           autoComplete="tel"
@@ -132,25 +132,25 @@ export function RegisterForm() {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full py-2.5 px-4 bg-[#1F4D3E] hover:bg-[#173B2F] disabled:opacity-60 disabled:cursor-not-allowed text-white font-mono-spec font-bold text-xs rounded-md shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+          className="w-full py-2.5 px-4 bg-primary hover:bg-primary/80 disabled:opacity-60 disabled:cursor-not-allowed text-white font-mono-spec font-bold text-xs rounded-md shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
         >
           {isSubmitting ? (
             <span>CREATING ACCOUNT...</span>
           ) : (
             <>
               <span>COMPLETE REGISTRATION</span>
-              <ArrowRight className="w-4 h-4 text-[#C98A2C]" />
+              <ArrowRight className="w-4 h-4 text-secondary" />
             </>
           )}
         </button>
       </form>
 
-      <div className="mt-6 pt-5 border-t border-[#D8DBD3] text-center">
+      <div className="mt-6 pt-5 border-t border-border text-center">
         <p className="text-xs text-gray-600 font-sans">
           Already have an account?{" "}
           <Link
             href="/login"
-            className="font-mono-spec font-bold text-[#1F4D3E] hover:underline"
+            className="font-mono-spec font-bold text-primary hover:underline"
           >
             Sign in instead
           </Link>

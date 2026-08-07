@@ -28,13 +28,13 @@ export default async function PayPage({ params }: PayPageProps) {
   if (rentalRequest.status === "ACTIVE") {
     return (
       <div className="p-6">
-        <div className="bg-white border border-[#D8DBD3] rounded-lg p-8 text-center">
+        <div className="bg-card border border-border rounded-lg p-8 text-center">
           <p className="text-sm text-gray-500 mb-4">
             This rental is already active. Payment has been completed.
           </p>
           <Link
             href="/dashboard/requests"
-            className="text-sm font-bold text-[#1F4D3E] underline"
+            className="text-sm font-bold text-primary underline"
           >
             Back to Requests
           </Link>
@@ -46,13 +46,13 @@ export default async function PayPage({ params }: PayPageProps) {
   if (rentalRequest.status !== "APPROVED") {
     return (
       <div className="p-6">
-        <div className="bg-white border border-[#D8DBD3] rounded-lg p-8 text-center">
+        <div className="bg-card border border-border rounded-lg p-8 text-center">
           <p className="text-sm text-gray-500 mb-4">
             Payment can only be made for approved rental requests.
           </p>
           <Link
             href="/dashboard/requests"
-            className="text-sm font-bold text-[#1F4D3E] underline"
+            className="text-sm font-bold text-primary underline"
           >
             Back to Requests
           </Link>
@@ -63,28 +63,28 @@ export default async function PayPage({ params }: PayPageProps) {
 
   return (
     <div className="p-6 space-y-6">
-      <h1 className="font-heading text-2xl font-bold text-[#1B211E]">
+      <h1 className="font-heading text-2xl font-bold text-foreground">
         Make Payment
       </h1>
-      <div className="bg-white border border-[#D8DBD3] rounded-lg p-6">
-        <h2 className="font-heading font-bold text-sm text-[#1F4D3E] uppercase tracking-wider mb-3">
+      <div className="bg-card border border-border rounded-lg p-6">
+        <h2 className="font-heading font-bold text-sm text-primary uppercase tracking-wider mb-3">
           Rental Details
         </h2>
         <div className="space-y-2">
-          <p className="text-sm text-[#1B211E]">
+          <p className="text-sm text-foreground">
             <span className="font-medium">Property:</span>{" "}
             {rentalRequest.property.title}
           </p>
-          <p className="text-sm text-[#1B211E]">
+          <p className="text-sm text-foreground">
             <span className="font-medium">Location:</span>{" "}
             {rentalRequest.property.location}
           </p>
-          <p className="text-sm text-[#1B211E]">
+          <p className="text-sm text-foreground">
             <span className="font-medium">Amount:</span> ৳
             {rentalRequest.property.price.toLocaleString()}/month
           </p>
           {rentalRequest.moveInDate && (
-            <p className="text-sm text-[#1B211E]">
+            <p className="text-sm text-foreground">
               <span className="font-medium">Move-in Date:</span>{" "}
               {new Date(rentalRequest.moveInDate).toLocaleDateString()}
             </p>

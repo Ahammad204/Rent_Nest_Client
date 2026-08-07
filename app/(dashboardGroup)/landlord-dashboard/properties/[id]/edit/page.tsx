@@ -26,10 +26,10 @@ export default async function EditPropertyPage({ params }: EditPropertyPageProps
 
   return (
     <div className="p-6 space-y-6">
-      <h1 className="font-heading text-2xl font-bold text-[#1B211E]">
+      <h1 className="font-heading text-2xl font-bold text-foreground">
         Edit Property
       </h1>
-      <div className="bg-white border border-[#D8DBD3] rounded-lg p-6">
+      <div className="bg-card border border-border rounded-lg p-6">
         <PropertyForm
           mode="edit"
           categories={categories}
@@ -38,7 +38,7 @@ export default async function EditPropertyPage({ params }: EditPropertyPageProps
         />
       </div>
 
-      <div className="bg-white border border-[#D8DBD3] rounded-lg p-6">
+      <div className="bg-card border border-border rounded-lg p-6">
         <h2 className="font-heading font-bold text-sm text-red-600 uppercase tracking-wider mb-3">
           Danger Zone
         </h2>

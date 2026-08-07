@@ -3,39 +3,38 @@
 import { useState } from "react";
 import { Star } from "lucide-react";
 import { toast } from "sonner";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { createReview } from "../_actions/dashboardActions";
+import { reviewSchema, type ReviewFormData } from "@/lib/validations/review";
 
 interface ReviewFormProps {
   rentalRequestId: string;
   propertyTitle: string;
 }
 
-export function ReviewForm({
-  rentalRequestId
-}: ReviewFormProps) {
-  const [rating, setRating] = useState(0);
-  const [hoveredStar, setHoveredStar] = useState(0);
-  const [comment, setComment] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+export function ReviewForm({ rentalRequestId }: ReviewFormProps) {
   const [submitted, setSubmitted] = useState(false);
-  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    watch,
+    formState: { errors, isSubmitting },
+  } = useForm<ReviewFormData>({
+    resolver: zodResolver(reviewSchema),
+    defaultValues: { rating: 0, comment: "" },
+  });
 
-    if (rating === 0) {
-      setError("Please select a rating.");
-      return;
-    }
+  const rating = watch("rating");
 
-    setIsSubmitting(true);
-
+  const onSubmit = async (data: ReviewFormData) => {
     try {
       await createReview({
         rentalRequestId,
-        rating,
-        comment: comment || undefined,
+        rating: data.rating,
+        comment: data.comment || undefined,
       });
       toast.success("Review submitted successfully!");
       setSubmitted(true);
@@ -43,12 +42,10 @@ export function ReviewForm({
       const msg =
         err instanceof Error ? err.message : "Failed to submit review.";
       if (msg.toLowerCase().includes("already reviewed")) {
-        setError(msg);
+        toast.error(msg);
       } else {
         toast.error(msg);
       }
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -61,15 +58,9 @@ export function ReviewForm({
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3">
-      {error && (
-        <div className="p-3 text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded-md">
-          {error}
-        </div>
-      )}
-
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
       <div>
-        <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1">
+        <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1">
           Rating
         </label>
         <div className="flex gap-1">
@@ -77,42 +68,44 @@ export function ReviewForm({
             <button
               key={star}
               type="button"
-              onClick={() => setRating(star)}
-              onMouseEnter={() => setHoveredStar(star)}
-              onMouseLeave={() => setHoveredStar(0)}
+              onClick={() => setValue("rating", star, { shouldValidate: true })}
               className="cursor-pointer"
             >
               <Star
                 className={`w-6 h-6 transition-colors ${
-                  star <= (hoveredStar || rating)
-                    ? "fill-[#C98A2C] text-[#C98A2C]"
+                  star <= rating
+                    ? "fill-secondary text-secondary"
                     : "fill-none text-gray-300"
                 }`}
               />
             </button>
           ))}
         </div>
+        {errors.rating && (
+          <p className="text-xs text-destructive mt-1">{errors.rating.message}</p>
+        )}
       </div>
 
       <div>
-        <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1">
+        <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1">
           Comment (optional)
         </label>
         <textarea
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
+          {...register("comment")}
           placeholder="Share your experience with this property..."
           rows={3}
-          className="w-full px-3 py-2 text-sm bg-white border border-[#D8DBD3] rounded-md text-[#1B211E] focus:outline-none focus:border-[#1F4D3E] focus:ring-1
-           focus:ring-[#1F4D3E] resize-none"
+          className="w-full px-3 py-2 text-sm bg-card border border-border rounded-md text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary resize-none"
         />
+        {errors.comment && (
+          <p className="text-xs text-destructive mt-1">{errors.comment.message}</p>
+        )}
       </div>
 
       <button
         type="submit"
         disabled={isSubmitting}
-        className="px-4 py-2 bg-[#1F4D3E] hover:bg-[#173B2F] disabled:opacity-60
-         text-white text-xs font-bold rounded-md transition-colors cursor-pointer"
+        className="px-4 py-2 bg-primary hover:bg-primary/80 disabled:opacity-60
+         text-primary-foreground text-xs font-bold rounded-md transition-colors cursor-pointer"
       >
         {isSubmitting ? "SUBMITTING..." : "SUBMIT REVIEW"}
       </button>

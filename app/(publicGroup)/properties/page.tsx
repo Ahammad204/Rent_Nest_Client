@@ -34,11 +34,11 @@ export default async function PropertiesPage({
   const categories = categoriesRes.data?.categories || [];
 
   return (
-    <div className="min-h-screen bg-[#F4F5F1]">
+    <div className="min-h-screen bg-[background]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="mb-6">
-          <h1 className="font-heading text-3xl font-bold text-[#1B211E]">
+          <h1 className="font-heading text-3xl font-bold text-foreground">
             Browse Properties
           </h1>
           <p className="mt-2 text-gray-600 text-sm">

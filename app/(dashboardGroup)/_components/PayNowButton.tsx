@@ -36,7 +36,7 @@ export function PayNowButton({ rentalRequestId }: PayNowButtonProps) {
     <button
       onClick={handlePay}
       disabled={isLoading}
-      className="mt-6 w-full py-3 px-4 bg-[#C98A2C] hover:bg-[#AF7623] disabled:opacity-60 text-white font-bold text-xs rounded-md flex items-center justify-center gap-2 transition-colors cursor-pointer"
+      className="mt-6 w-full py-3 px-4 bg-secondary hover:bg-[#AF7623] disabled:opacity-60 text-white font-bold text-xs rounded-md flex items-center justify-center gap-2 transition-colors cursor-pointer"
     >
       <CreditCard className="w-4 h-4" />
       {isLoading ? "REDIRECTING TO STRIPE..." : "PAY WITH STRIPE"}

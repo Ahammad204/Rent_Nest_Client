@@ -47,7 +47,7 @@ export default async function Home() {
 
 
   return (
-    <div className="min-h-screen bg-[#F4F5F1]">
+    <div className="min-h-screen bg-[background]">
       <Hero
         totalListingsCount={total}
         featuredProperties={properties.slice(0, 3)}
@@ -61,10 +61,10 @@ export default async function Home() {
         <div className="mt-10 text-center">
           <Link
             href="/properties"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#1F4D3E] hover:bg-[#173B2F] text-white font-mono-spec font-bold text-xs rounded-md transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-primary/80 text-white font-mono-spec font-bold text-xs rounded-md transition-colors"
           >
             <span>BROWSE ALL PROPERTIES</span>
-            <ArrowRight className="w-4 h-4 text-[#C98A2C]" />
+            <ArrowRight className="w-4 h-4 text-secondary" />
           </Link>
         </div>
       </div>

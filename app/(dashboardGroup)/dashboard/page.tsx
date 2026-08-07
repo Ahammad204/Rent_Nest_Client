@@ -48,7 +48,7 @@ export default async function TenantDashboardPage() {
   return (
     <div className="p-6 space-y-6">
       <div>
-        <h1 className="font-heading text-2xl font-bold text-[#1B211E]">
+        <h1 className="font-heading text-2xl font-bold text-foreground">
           Welcome back, {user?.name}
         </h1>
         <p className="text-sm text-gray-500 mt-1">
@@ -60,14 +60,14 @@ export default async function TenantDashboardPage() {
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="bg-white border border-[#D8DBD3] rounded-lg p-4"
+            className="bg-card border border-border rounded-lg p-4"
           >
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">
                   {stat.label}
                 </p>
-                <p className="font-heading text-2xl font-bold text-[#1B211E] mt-1">
+                <p className="font-heading text-2xl font-bold text-foreground mt-1">
                   {stat.value}
                 </p>
               </div>
@@ -81,8 +81,8 @@ export default async function TenantDashboardPage() {
         ))}
       </div>
 
-      <div className="bg-white border border-[#D8DBD3] rounded-lg p-4">
-        <h2 className="font-heading font-bold text-sm text-[#1F4D3E] uppercase tracking-wider mb-3">
+      <div className="bg-card border border-border rounded-lg p-4">
+        <h2 className="font-heading font-bold text-sm text-primary uppercase tracking-wider mb-3">
           Recent Requests
         </h2>
         {rentals.length === 0 ? (
@@ -99,10 +99,10 @@ export default async function TenantDashboardPage() {
               }) => (
                 <div
                   key={rental.id}
-                  className="flex items-center justify-between py-2 border-b border-[#F4F5F1] last:border-0"
+                  className="flex items-center justify-between py-2 border-b border-[background] last:border-0"
                 >
                   <div>
-                    <p className="text-sm font-medium text-[#1B211E]">
+                    <p className="text-sm font-medium text-foreground">
                       {rental.property.title}
                     </p>
                     <p className="text-xs text-gray-500">

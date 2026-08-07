@@ -13,14 +13,14 @@ export default async function PaymentSuccessPage({
 
   if (!session_id) {
     return (
-      <div className="min-h-screen bg-[#F4F5F1] flex items-center justify-center px-4">
-        <div className="bg-white border border-[#D8DBD3] rounded-lg p-8 max-w-md w-full text-center">
+      <div className="min-h-screen bg-[background] flex items-center justify-center px-4">
+        <div className="bg-card border border-border rounded-lg p-8 max-w-md w-full text-center">
           <p className="text-sm text-gray-500 mb-4">
             No session found. The payment link may have expired.
           </p>
           <Link
             href="/dashboard/requests"
-            className="inline-block px-4 py-2 bg-[#1F4D3E] hover:bg-[#173B2F] text-white text-xs font-bold rounded-md transition-colors"
+            className="inline-block px-4 py-2 bg-primary hover:bg-primary/80 text-white text-xs font-bold rounded-md transition-colors"
           >
             GO TO MY REQUESTS
           </Link>
@@ -36,14 +36,14 @@ export default async function PaymentSuccessPage({
   const isPending = payment?.status === "PENDING";
 
   return (
-    <div className="min-h-screen bg-[#F4F5F1] flex items-center justify-center px-4">
-      <div className="bg-white border border-[#D8DBD3] rounded-lg p-8 max-w-md w-full text-center">
+    <div className="min-h-screen bg-[background] flex items-center justify-center px-4">
+      <div className="bg-card border border-border rounded-lg p-8 max-w-md w-full text-center">
         {isCompleted ? (
           <>
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
               <CheckCircle className="w-8 h-8 text-green-600" />
             </div>
-            <h1 className="font-heading text-xl font-bold text-[#1B211E] mb-2">
+            <h1 className="font-heading text-xl font-bold text-foreground mb-2">
               Payment Successful!
             </h1>
             <p className="text-sm text-gray-500 mb-6">
@@ -52,13 +52,13 @@ export default async function PaymentSuccessPage({
             <div className="space-y-2">
               <Link
                 href="/dashboard"
-                className="block w-full py-3 px-4 bg-[#1F4D3E] hover:bg-[#173B2F] text-white text-xs font-bold rounded-md transition-colors"
+                className="block w-full py-3 px-4 bg-primary hover:bg-primary/80 text-white text-xs font-bold rounded-md transition-colors"
               >
                 GO TO DASHBOARD
               </Link>
               <Link
                 href="/dashboard/requests"
-                className="block w-full py-3 px-4 border border-[#D8DBD3] hover:bg-[#F4F5F1] text-gray-600 text-xs font-bold rounded-md transition-colors"
+                className="block w-full py-3 px-4 border border-border hover:bg-muted text-gray-600 text-xs font-bold rounded-md transition-colors"
               >
                 VIEW MY REQUESTS
               </Link>
@@ -69,7 +69,7 @@ export default async function PaymentSuccessPage({
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-yellow-100 flex items-center justify-center">
               <Clock className="w-8 h-8 text-yellow-600" />
             </div>
-            <h1 className="font-heading text-xl font-bold text-[#1B211E] mb-2">
+            <h1 className="font-heading text-xl font-bold text-foreground mb-2">
               Confirming Payment...
             </h1>
             <p className="text-sm text-gray-500 mb-6">
@@ -78,7 +78,7 @@ export default async function PaymentSuccessPage({
             </p>
             <Link
               href="/dashboard/requests"
-              className="block w-full py-3 px-4 bg-[#1F4D3E] hover:bg-[#173B2F]
+              className="block w-full py-3 px-4 bg-primary hover:bg-primary/80
                text-white text-xs font-bold rounded-md transition-colors"
             >
               CHECK STATUS IN DASHBOARD
@@ -89,7 +89,7 @@ export default async function PaymentSuccessPage({
             <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
               <CheckCircle className="w-8 h-8 text-green-600" />
             </div>
-            <h1 className="font-heading text-xl font-bold text-[#1B211E] mb-2">
+            <h1 className="font-heading text-xl font-bold text-foreground mb-2">
               Payment Received!
             </h1>
             <p className="text-sm text-gray-500 mb-6">
@@ -98,7 +98,7 @@ export default async function PaymentSuccessPage({
             </p>
             <Link
               href="/dashboard/requests"
-              className="block w-full py-3 px-4 bg-[#1F4D3E] hover:bg-[#173B2F]
+              className="block w-full py-3 px-4 bg-primary hover:bg-primary/80
                text-white text-xs font-bold rounded-md transition-colors"
             >
               GO TO MY REQUESTS

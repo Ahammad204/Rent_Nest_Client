@@ -43,7 +43,7 @@ export default async function AdminDashboardPage() {
       label: "Total Users",
       value: users.length,
       icon: Users,
-      color: "bg-[#1F4D3E]",
+      color: "bg-primary",
     },
     {
       label: "Total Properties",
@@ -79,21 +79,21 @@ export default async function AdminDashboardPage() {
 
   return (
     <div className="p-6 space-y-6">
-      <h1 className="font-heading text-2xl font-bold text-[#1B211E]">
+      <h1 className="font-heading text-2xl font-bold text-foreground">
         Admin Dashboard
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {stats.map((stat) => (
           <div
             key={stat.label}
-            className="bg-white border border-[#D8DBD3] rounded-lg p-4"
+            className="bg-card border border-border rounded-lg p-4"
           >
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs font-bold text-gray-500 uppercase tracking-wider">
                   {stat.label}
                 </p>
-                <p className="font-heading text-2xl font-bold text-[#1B211E] mt-1">
+                <p className="font-heading text-2xl font-bold text-foreground mt-1">
                   {stat.value}
                 </p>
               </div>

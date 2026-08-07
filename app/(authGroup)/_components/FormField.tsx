@@ -28,18 +28,18 @@ export function FormField({
   hint,
 }: FormFieldProps) {
   const inputClass =
-    "w-full pl-9 pr-3 py-2 text-sm bg-white border rounded-md text-[#1B211E] focus:outline-none focus:ring-1 transition-colors";
+    "w-full pl-9 pr-3 py-2 text-sm bg-card border rounded-md text-foreground focus:outline-none focus:ring-1 transition-colors";
 
   const inputStyle = error
     ? `${inputClass} border-red-500 focus:border-red-500 focus:ring-red-500`
-    : `${inputClass} border-[#D8DBD3] focus:border-[#1F4D3E] focus:ring-[#1F4D3E]`;
+    : `${inputClass} border-border focus:border-primary focus:ring-primary`;
 
   return (
     <div>
       <div className="flex items-center justify-between mb-1.5">
         <label
           htmlFor={id}
-          className="block font-mono-spec text-xs font-bold text-[#1F4D3E] uppercase tracking-wider"
+          className="block font-mono-spec text-xs font-bold text-primary uppercase tracking-wider"
         >
           {label} {required && "*"}
         </label>

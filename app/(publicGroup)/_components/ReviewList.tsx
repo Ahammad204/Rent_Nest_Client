@@ -14,14 +14,14 @@ export function ReviewList({
 }: ReviewListProps) {
   return (
     <div>
-      <h2 className="font-heading font-bold text-sm text-[#1F4D3E] uppercase tracking-wider mb-4">
+      <h2 className="font-heading font-bold text-sm text-primary uppercase tracking-wider mb-4">
         REVIEWS
       </h2>
 
       {/* Average Rating */}
-      <div className="flex items-center gap-3 mb-6 p-4 bg-[#F4F5F1] border border-[#D8DBD3] rounded-lg">
+      <div className="flex items-center gap-3 mb-6 p-4 bg-[background] border border-border rounded-lg">
         <div className="text-center">
-          <div className="font-heading text-3xl font-bold text-[#1F4D3E]">
+          <div className="font-heading text-3xl font-bold text-primary">
             {averageRating || "—"}
           </div>
           <div className="flex gap-0.5 mt-1">
@@ -30,7 +30,7 @@ export function ReviewList({
                 key={star}
                 className={`w-4 h-4 ${
                   star <= Math.round(averageRating)
-                    ? "fill-[#C98A2C] text-[#C98A2C]"
+                    ? "fill-[secondary] text-secondary"
                     : "text-gray-300"
                 }`}
               />
@@ -50,14 +50,14 @@ export function ReviewList({
           {reviews.map((review) => (
             <div
               key={review.id}
-              className="border border-[#D8DBD3] rounded-lg p-4"
+              className="border border-border rounded-lg p-4"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-[#1F4D3E] flex items-center justify-center text-white text-xs font-bold">
+                  <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold">
                     {review.tenant.name.charAt(0).toUpperCase()}
                   </div>
-                  <span className="text-sm font-medium text-[#1B211E]">
+                  <span className="text-sm font-medium text-foreground">
                     {review.tenant.name}
                   </span>
                 </div>
@@ -67,7 +67,7 @@ export function ReviewList({
                       key={star}
                       className={`w-3 h-3 ${
                         star <= review.rating
-                          ? "fill-[#C98A2C] text-[#C98A2C]"
+                          ? "fill-[secondary] text-secondary"
                           : "text-gray-300"
                       }`}
                     />

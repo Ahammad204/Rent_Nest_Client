@@ -8,12 +8,12 @@ export default async function LandlordPropertiesPage() {
   return (
     <div className="p-6 space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="font-heading text-2xl font-bold text-[#1B211E]">
+        <h1 className="font-heading text-2xl font-bold text-foreground">
           My Properties
         </h1>
         <Link
           href="/landlord-dashboard/properties/new"
-          className="px-4 py-2 bg-[#1F4D3E] hover:bg-[#173B2F] text-white text-xs
+          className="px-4 py-2 bg-primary hover:bg-primary/80 text-white text-xs
            font-bold rounded-md transition-colors"
         >
           + ADD PROPERTY
@@ -21,7 +21,7 @@ export default async function LandlordPropertiesPage() {
       </div>
 
       {properties.length === 0 ? (
-        <div className="bg-white border border-[#D8DBD3] rounded-lg p-8 text-center">
+        <div className="bg-card border border-border rounded-lg p-8 text-center">
           <p className="text-sm text-gray-500">
             No properties yet. Add your first property to get started.
           </p>
@@ -38,11 +38,11 @@ export default async function LandlordPropertiesPage() {
             }) => (
               <div
                 key={property.id}
-                className="bg-white border border-[#D8DBD3] rounded-lg p-4 flex 
+                className="bg-card border border-border rounded-lg p-4 flex 
                 items-center justify-between"
               >
                 <div>
-                  <p className="text-sm font-bold text-[#1B211E]">
+                  <p className="text-sm font-bold text-foreground">
                     {property.title}
                   </p>
                   <p className="text-xs text-gray-500 mt-0.5">
@@ -62,7 +62,7 @@ export default async function LandlordPropertiesPage() {
                   </span>
                   <Link
                     href={`/landlord-dashboard/properties/${property.id}/edit`}
-                    className="px-3 py-1 text-xs font-bold text-[#1F4D3E] border border-[#D8DBD3] rounded hover:bg-[#F4F5F1] transition-colors"
+                    className="px-3 py-1 text-xs font-bold text-primary border border-border rounded hover:bg-muted transition-colors"
                   >
                     EDIT
                   </Link>

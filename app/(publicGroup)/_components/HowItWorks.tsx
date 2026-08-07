@@ -20,17 +20,17 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section className="py-14 px-4 sm:px-6 lg:px-8 border-t border-[#D8DBD3] bg-[#F4F5F1]">
+    <section className="py-14 px-4 sm:px-6 lg:px-8 border-t border-border bg-[background]">
       <div className="max-w-7xl mx-auto space-y-8">
 
         <div className="text-center max-w-2xl mx-auto space-y-2">
-          <div className="font-mono-spec text-xs text-[#C98A2C] font-semibold tracking-widest uppercase">
+          <div className="font-mono-spec text-xs text-secondary font-semibold tracking-widest uppercase">
             SIMPLE THREE-STEP PROCESS
           </div>
-          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-[#1B211E]">
+          <h2 className="font-heading text-2xl sm:text-3xl font-bold text-foreground">
             How Thikana Works
           </h2>
-          <p className="text-xs sm:text-sm text-[#1B211E]/80 leading-relaxed">
+          <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed">
             Eliminating media fees and agent confusion with direct digital rentals for tenants and landlords.
           </p>
         </div>
@@ -38,13 +38,13 @@ export function HowItWorks() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-4">
           {steps.map((step) => (
             <div key={step.number} className="flex flex-col items-center text-center space-y-3 px-4">
-              <div className="w-12 h-12 rounded-full bg-[#C98A2C] text-white font-mono-spec font-bold text-lg flex items-center justify-center shadow-xs">
+              <div className="w-12 h-12 rounded-full bg-secondary text-white font-mono-spec font-bold text-lg flex items-center justify-center shadow-xs">
                 {step.number}
               </div>
-              <h3 className="font-heading font-bold text-lg text-[#1B211E]">
+              <h3 className="font-heading font-bold text-lg text-foreground">
                 {step.title}
               </h3>
-              <p className="text-xs sm:text-sm text-[#1B211E]/80 leading-relaxed max-w-sm">
+              <p className="text-xs sm:text-sm text-foreground/80 leading-relaxed max-w-sm">
                 {step.description}
               </p>
             </div>

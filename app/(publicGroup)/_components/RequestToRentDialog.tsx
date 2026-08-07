@@ -108,7 +108,7 @@ export function RequestToRentDialog({
     return (
       <button
         disabled
-        className="w-full py-3 px-4 bg-gray-200 text-gray-500 font-mono-spec font-bold text-xs rounded-md flex items-center justify-center gap-2 cursor-not-allowed"
+        className="w-full py-3 px-4 bg-muted text-gray-500 font-mono-spec font-bold text-xs rounded-md flex items-center justify-center gap-2 cursor-not-allowed"
       >
         <Clock className="w-4 h-4" />
         <span>REQUEST PENDING</span>
@@ -120,7 +120,7 @@ export function RequestToRentDialog({
     return (
       <button
         disabled
-        className="w-full py-3 px-4 bg-gray-200 text-gray-500 font-mono-spec font-bold text-xs rounded-md flex items-center justify-center gap-2 cursor-not-allowed"
+        className="w-full py-3 px-4 bg-muted text-gray-500 font-mono-spec font-bold text-xs rounded-md flex items-center justify-center gap-2 cursor-not-allowed"
       >
         <CheckCircle className="w-4 h-4" />
         <span>ALREADY RENTED</span>
@@ -133,16 +133,16 @@ export function RequestToRentDialog({
       <DialogTrigger asChild>
         <button
           onClick={handleTriggerClick}
-          className="w-full py-3 px-4 bg-[#C98A2C] hover:bg-[#AF7623] text-white font-mono-spec font-bold text-xs rounded-md flex items-center justify-center gap-2 transition-colors cursor-pointer"
+          className="w-full py-3 px-4 bg-secondary hover:bg-[#AF7623] text-white font-mono-spec font-bold text-xs rounded-md flex items-center justify-center gap-2 transition-colors cursor-pointer"
         >
           <Key className="w-4 h-4" />
           <span>{user ? "REQUEST TO RENT" : "LOGIN TO REQUEST"}</span>
         </button>
       </DialogTrigger>
 
-      <DialogContent className="sm:max-w-md bg-white">
+      <DialogContent className="sm:max-w-md bg-card">
         <DialogHeader>
-          <DialogTitle className="font-heading font-bold text-[#1F4D3E]">
+          <DialogTitle className="font-heading font-bold text-primary">
             REQUEST TO RENT
           </DialogTitle>
           <p className="text-sm text-gray-500 mt-1">{propertyTitle}</p>
@@ -156,13 +156,13 @@ export function RequestToRentDialog({
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 mt-2">
           <div>
-            <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1">
               Move-in Date (optional)
             </label>
             <input
               type="date"
               {...register("moveInDate")}
-              className="w-full px-3 py-2 text-sm bg-white border border-[#D8DBD3] rounded-md text-[#1B211E] focus:outline-none focus:border-[#1F4D3E] focus:ring-1 focus:ring-[#1F4D3E]"
+              className="w-full px-3 py-2 text-sm bg-card border border-border rounded-md text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary"
             />
             {errors.moveInDate && (
               <p className="text-xs text-red-500 mt-1">
@@ -172,14 +172,14 @@ export function RequestToRentDialog({
           </div>
 
           <div>
-            <label className="block text-xs font-bold text-[#1F4D3E] uppercase tracking-wider mb-1">
+            <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1">
               Message (optional)
             </label>
             <textarea
               {...register("message")}
               placeholder="Tell the landlord about yourself..."
               rows={3}
-              className="w-full px-3 py-2 text-sm bg-white border border-[#D8DBD3] rounded-md text-[#1B211E] focus:outline-none focus:border-[#1F4D3E] focus:ring-1 focus:ring-[#1F4D3E] resize-none"
+              className="w-full px-3 py-2 text-sm bg-card border border-border rounded-md text-foreground focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary resize-none"
             />
             {errors.message && (
               <p className="text-xs text-red-500 mt-1">
@@ -192,14 +192,14 @@ export function RequestToRentDialog({
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-4 py-2 bg-[#1F4D3E] hover:bg-[#173B2F] disabled:opacity-60 text-white text-xs font-bold rounded-md transition-colors cursor-pointer"
+              className="px-4 py-2 bg-primary hover:bg-primary/80 disabled:opacity-60 text-white text-xs font-bold rounded-md transition-colors cursor-pointer"
             >
               {isSubmitting ? "SUBMITTING..." : "SUBMIT REQUEST"}
             </button>
             <button
               type="button"
               onClick={() => handleOpenChange(false)}
-              className="px-4 py-2 border border-[#D8DBD3] hover:bg-[#F4F5F1]
+              className="px-4 py-2 border border-border hover:bg-muted
                text-gray-600 text-xs font-bold rounded-md transition-colors cursor-pointer"
             >
               CANCEL

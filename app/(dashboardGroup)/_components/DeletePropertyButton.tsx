@@ -54,9 +54,9 @@ export function DeletePropertyButton({ propertyId }: DeletePropertyButtonProps) 
           {isDeleting ? "DELETING..." : "DELETE PROPERTY"}
         </button>
       </AlertDialogTrigger>
-      <AlertDialogContent className="bg-white">
+      <AlertDialogContent className="bg-card">
         <AlertDialogHeader>
-          <AlertDialogTitle className="font-heading text-[#1B211E]">
+          <AlertDialogTitle className="font-heading text-foreground">
             Are you absolutely sure?
           </AlertDialogTitle>
           <AlertDialogDescription className="text-sm text-gray-500">

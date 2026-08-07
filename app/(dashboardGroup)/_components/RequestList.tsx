@@ -94,11 +94,11 @@ export function RequestList({ requests }: RequestListProps) {
         return (
           <div
             key={request.id}
-            className="bg-white border border-[#D8DBD3] rounded-lg p-4"
+            className="bg-card border border-border rounded-lg p-4"
           >
             <div className=" flex flex-wrap items-start justify-between gap-2">
               <div className="flex-1">
-                <p className="text-sm font-bold text-[#1B211E]">
+                <p className="text-sm font-bold text-foreground">
                   {request.property.title}
                 </p>
                 <p className="text-xs text-gray-500 mt-0.5">

@@ -14,7 +14,7 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
 
   if (!images || images.length === 0) {
     return (
-      <div className="w-full h-96 bg-[#F4F5F1] rounded-lg flex items-center justify-center">
+      <div className="w-full h-96 bg-[background] rounded-lg flex items-center justify-center">
         <Home className="w-16 h-16 text-gray-300" />
       </div>
     );
@@ -28,7 +28,7 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
   return (
     <div className="space-y-3">
       {/* Main Image */}
-      <div className="relative w-full h-96 bg-[#F4F5F1] rounded-lg overflow-hidden">
+      <div className="relative w-full h-96 bg-[background] rounded-lg overflow-hidden">
         <Image
           src={images[selectedIndex]}
           alt={`${title} - Image ${selectedIndex + 1}`}
@@ -40,13 +40,13 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
           <>
             <button
               onClick={prev}
-              className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow cursor-pointer"
+              className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-card/80 hover:bg-card rounded-full flex items-center justify-center shadow cursor-pointer"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
               onClick={next}
-              className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-white/80 hover:bg-white rounded-full flex items-center justify-center shadow cursor-pointer"
+              className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 bg-card/80 hover:bg-card rounded-full flex items-center justify-center shadow cursor-pointer"
             >
               <ChevronRight className="w-4 h-4" />
             </button>
@@ -66,8 +66,8 @@ export function PropertyGallery({ images, title }: PropertyGalleryProps) {
               onClick={() => setSelectedIndex(i)}
               className={`relative w-20 h-16 rounded-md overflow-hidden shrink-0 border-2 transition-colors cursor-pointer ${
                 i === selectedIndex
-                  ? "border-[#1F4D3E]"
-                  : "border-transparent hover:border-[#D8DBD3]"
+                  ? "border-primary"
+                  : "border-transparent hover:border-border"
               }`}
             >
               <Image

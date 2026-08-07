@@ -6,32 +6,32 @@ export default async function TenantPaymentsPage() {
 
   return (
     <div className="p-6 space-y-6">
-      <h1 className="font-heading text-2xl font-bold text-[#1B211E]">
+      <h1 className="font-heading text-2xl font-bold text-foreground">
         My Payments
       </h1>
 
       {payments.length === 0 ? (
-        <div className="bg-white border border-[#D8DBD3] rounded-lg p-8 text-center">
+        <div className="bg-card border border-border rounded-lg p-8 text-center">
           <p className="text-sm text-gray-500">No payments yet.</p>
         </div>
       ) : (
-        <div className="bg-white border border-[#D8DBD3] rounded-lg overflow-x-auto">
+        <div className="bg-card border border-border rounded-lg overflow-x-auto">
           <table className="w-full text-sm min-w-150">
             <thead>
-              <tr className="border-b border-[#D8DBD3] bg-[#F4F5F1]">
-                <th className="text-left px-4 py-3 font-bold text-xs text-[#1F4D3E] uppercase tracking-wider">
+              <tr className="border-b border-border bg-[background]">
+                <th className="text-left px-4 py-3 font-bold text-xs text-primary uppercase tracking-wider">
                   Property
                 </th>
-                <th className="text-left px-4 py-3 font-bold text-xs text-[#1F4D3E] uppercase tracking-wider">
+                <th className="text-left px-4 py-3 font-bold text-xs text-primary uppercase tracking-wider">
                   Amount
                 </th>
-                <th className="text-left px-4 py-3 font-bold text-xs text-[#1F4D3E] uppercase tracking-wider">
+                <th className="text-left px-4 py-3 font-bold text-xs text-primary uppercase tracking-wider">
                   Method
                 </th>
-                <th className="text-left px-4 py-3 font-bold text-xs text-[#1F4D3E] uppercase tracking-wider">
+                <th className="text-left px-4 py-3 font-bold text-xs text-primary uppercase tracking-wider">
                   Status
                 </th>
-                <th className="text-left px-4 py-3 font-bold text-xs text-[#1F4D3E] uppercase tracking-wider">
+                <th className="text-left px-4 py-3 font-bold text-xs text-primary uppercase tracking-wider">
                   Date
                 </th>
               </tr>
@@ -50,12 +50,12 @@ export default async function TenantPaymentsPage() {
                 }) => (
                   <tr
                     key={payment.id}
-                    className="border-b border-[#F4F5F1] last:border-0"
+                    className="border-b border-[background] last:border-0"
                   >
-                    <td className="px-4 py-3 text-[#1B211E]">
+                    <td className="px-4 py-3 text-foreground">
                       {payment.rentalRequest.property.title}
                     </td>
-                    <td className="px-4 py-3 font-medium text-[#1B211E]">
+                    <td className="px-4 py-3 font-medium text-foreground">
                       ৳{payment.amount.toLocaleString()}
                     </td>
                     <td className="px-4 py-3 text-gray-500 uppercase text-xs">
