@@ -1,3 +1,5 @@
+"use client";
+
 import { Metadata } from "next";
 import { useState } from "react";
 import { ChevronDown, Flame, Zap, Droplets } from "lucide-react";
