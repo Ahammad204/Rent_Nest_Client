@@ -80,6 +80,8 @@ export interface IProperty {
     name: string;
     description: string | null;
   } | null;
+  averageRating: number | null;
+  reviewCount: number;
 }
 
 export interface ICategory {

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Home, ArrowRight } from "lucide-react";
+import { MapPin, Home, ArrowRight, Star } from "lucide-react";
 import type { IProperty } from "@/lib/types";
 
 interface PropertyCardProps {
@@ -55,13 +55,41 @@ export function PropertyCard({ property }: PropertyCardProps) {
             <span className="text-xs truncate">{property.location}</span>
           </div>
 
+          {/* Rating */}
+          <div className="flex items-center gap-1 mt-2">
+            {property.averageRating !== null ? (
+              <>
+                <div className="flex items-center gap-0.5">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star
+                      key={star}
+                      className={`w-3 h-3 ${
+                        star <= Math.round(property.averageRating!)
+                          ? "fill-secondary text-secondary"
+                          : "fill-none text-muted-foreground/30"
+                      }`}
+                    />
+                  ))}
+                </div>
+                <span className="text-[10px] text-muted-foreground font-medium">
+                  {property.averageRating!.toFixed(1)}
+                </span>
+                <span className="text-[10px] text-muted-foreground">
+                  ({property.reviewCount})
+                </span>
+              </>
+            ) : (
+              <span className="text-[10px] text-muted-foreground">No reviews</span>
+            )}
+          </div>
+
           {property.category && (
             <span className="inline-block mt-2 px-2 py-0.5 text-[10px] font-medium rounded bg-secondary/10 text-secondary self-start">
               {property.category.name}
             </span>
           )}
 
-          {/* Spacer to push bottom content down */}
+          {/* Spacer */}
           <div className="flex-1" />
 
           {/* Price + Date */}
