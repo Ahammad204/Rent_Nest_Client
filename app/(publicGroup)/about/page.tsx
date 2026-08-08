@@ -33,7 +33,7 @@ export default function AboutPage() {
         </div>
 
         {/* Mission */}
-        <BlueprintCard className="p-8 max-w-4xl mx-auto" accentTick>
+        <BlueprintCard className="p-8 max-w-4xl mb-10 mx-auto" accentTick>
           <div className="space-y-4">
             <h2 className="font-heading text-xl font-bold text-foreground">
               Our Mission

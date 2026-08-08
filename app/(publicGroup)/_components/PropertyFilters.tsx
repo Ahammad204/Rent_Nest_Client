@@ -125,7 +125,8 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
       </div>
 
       {/* Category + Actions */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      {/* Category + Sort By */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
         <div>
           <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1.5">
             Category
@@ -158,6 +159,22 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
             <option value="price_desc">Price: High to Low</option>
           </select>
         </div>
+      </div>
+
+      {/* Buttons */}
+      <div className="flex items-center gap-2 mt-4">
+        <button
+          onClick={applyFilters}
+          className="px-4 py-2 bg-primary hover:bg-primary/80 text-white text-xs font-bold rounded-md transition-colors cursor-pointer"
+        >
+          SEARCH
+        </button>
+        <button
+          onClick={clearFilters}
+          className="px-4 py-2 border border-border hover:bg-muted text-muted-foreground text-xs font-bold rounded-md transition-colors cursor-pointer"
+        >
+          CLEAR
+        </button>
       </div>
     </div>
   );
