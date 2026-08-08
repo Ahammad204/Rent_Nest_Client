@@ -3,12 +3,14 @@ import {
   getPropertyById,
   getReviewsByProperty,
   getMyRentalRequests,
+  getRelatedProperties,
 } from "../../_actions/propertyActions";
 import { getMe } from "@/service/getMe";
 import { PropertyGallery } from "../../_components/PropertyGallery";
 import { PropertyInfo } from "../../_components/PropertyInfo";
 import { ReviewList } from "../../_components/ReviewList";
 import { RequestToRentDialog } from "../../_components/RequestToRentDialog";
+import { RelatedProperties } from "../../_components/RelatedProperties";
 
 interface PropertyDetailPageProps {
   params: Promise<{ id: string }>;
@@ -35,6 +37,8 @@ export default async function PropertyDetailPage({
   const reviews = reviewsRes.data?.reviews || [];
   const averageRating = reviewsRes.data?.averageRating || 0;
   const totalReviews = reviewsRes.data?.totalReviews || 0;
+  const relatedRes = await getRelatedProperties(id, property.location);
+  const relatedProperties = relatedRes.data?.properties || [];
 
   let rentalStatus: string | null = null;
   if (user?.role === "TENANT") {
@@ -66,7 +70,9 @@ export default async function PropertyDetailPage({
                 <span className="font-heading text-2xl font-bold text-primary">
                   ৳{property.price.toLocaleString()}
                 </span>
-                <span className="text-sm text-muted-foreground ml-1">/month</span>
+                <span className="text-sm text-muted-foreground ml-1">
+                  /month
+                </span>
               </div>
               <RequestToRentDialog
                 user={user}
@@ -86,6 +92,8 @@ export default async function PropertyDetailPage({
             </div>
           </div>
         </div>
+
+        <RelatedProperties properties={relatedProperties} />
       </div>
     </div>
   );

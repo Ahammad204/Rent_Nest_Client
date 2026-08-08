@@ -1,5 +1,6 @@
 "use server";
 
+import { IProperty } from "@/lib/types";
 import { cookies } from "next/headers";
 
 export const getProperties = async (params?: {
@@ -173,11 +174,14 @@ export const getMyRentalRequests = async () => {
 
 export const getFeaturedLocations = async () => {
   try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/properties?limit=1000`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/properties?limit=1000`,
+      {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        cache: "no-store",
+      },
+    );
     const data = await res.json();
     const properties = data.data?.properties || [];
 
@@ -224,7 +228,36 @@ export const getPublicStats = async () => {
   } catch {
     return {
       success: false,
-      data: { activeListings: 0, verifiedLandlords: 0, happyTenants: 0, citiesCount: 0 },
+      data: {
+        activeListings: 0,
+        verifiedLandlords: 0,
+        happyTenants: 0,
+        citiesCount: 0,
+      },
     };
   }
 };
+
+export async function getRelatedProperties(
+  propertyId: string,
+  location: string,
+) {
+  try {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/properties?location=${encodeURIComponent(location)}&limit=4`,
+      { cache: "no-store" },
+    );
+    const data = await res.json();
+
+    if (!data.success) return { success: false, data: { properties: [] } };
+
+    // Filter out the current property and limit to 3
+    const related = (data.data?.properties || [])
+      .filter((p: IProperty) => p.id !== propertyId)
+      .slice(0, 3);
+
+    return { success: true, data: { properties: related } };
+  } catch {
+    return { success: false, data: { properties: [] } };
+  }
+}
