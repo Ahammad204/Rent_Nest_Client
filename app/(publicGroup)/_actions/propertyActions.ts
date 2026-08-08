@@ -11,6 +11,7 @@ export const getProperties = async (params?: {
   maxPrice?: string;
   propertyType?: string;
   categoryId?: string;
+  sortBy?: string;
 }) => {
   try {
     const searchParams = new URLSearchParams();
@@ -21,7 +22,7 @@ export const getProperties = async (params?: {
     if (params?.maxPrice) searchParams.set("maxPrice", params.maxPrice);
     if (params?.propertyType)
       searchParams.set("propertyType", params.propertyType);
-    if (params?.categoryId) searchParams.set("categoryId", params.categoryId);
+    if (params?.sortBy) searchParams.set("sortBy", params.sortBy);
 
     const queryString = searchParams.toString();
     const url = `${process.env.NEXT_PUBLIC_API_URL}/api/properties${queryString ? `?${queryString}` : ""}`;

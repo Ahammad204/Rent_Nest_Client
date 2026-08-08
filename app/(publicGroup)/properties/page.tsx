@@ -6,15 +6,16 @@ import { Pagination } from "../_components/Pagination";
 import { SkeletonGrid } from "../_components/SkeletonGrid";
 
 interface PropertiesPageProps {
-  searchParams: Promise<{
-    page?: string;
-    limit?: string;
-    location?: string;
-    minPrice?: string;
-    maxPrice?: string;
-    propertyType?: string;
-    categoryId?: string;
-  }>;
+searchParams: Promise<{
+  page?: string;
+  limit?: string;
+  location?: string;
+  minPrice?: string;
+  maxPrice?: string;
+  propertyType?: string;
+  categoryId?: string;
+  sortBy?: string;
+}>;
 }
 
 export default async function PropertiesPage({

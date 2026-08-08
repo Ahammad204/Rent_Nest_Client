@@ -22,6 +22,7 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
   const [categoryId, setCategoryId] = useState(
     searchParams.get("categoryId") || "",
   );
+  const [sortBy, setSortBy] = useState(searchParams.get("sortBy") || "");
 
   const applyFilters = () => {
     const params = new URLSearchParams();
@@ -30,6 +31,7 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
     if (maxPrice) params.set("maxPrice", maxPrice);
     if (propertyType) params.set("propertyType", propertyType);
     if (categoryId) params.set("categoryId", categoryId);
+    if (sortBy) params.set("sortBy", sortBy);
     params.set("page", "1"); // reset to page 1 on filter change
     router.push(`/properties?${params.toString()}`);
   };
@@ -40,6 +42,7 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
     setMaxPrice("");
     setPropertyType("");
     setCategoryId("");
+    setSortBy("");
     router.push("/properties");
   };
 
@@ -122,7 +125,7 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
       </div>
 
       {/* Category + Actions */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1.5">
             Category
@@ -140,20 +143,20 @@ export function PropertyFilters({ categories }: PropertyFiltersProps) {
             ))}
           </select>
         </div>
-
-        <div className="flex items-end gap-2 lg:col-span-4">
-          <button
-            onClick={applyFilters}
-            className="px-4 py-2 bg-primary hover:bg-primary/80 text-white text-xs font-bold rounded-md transition-colors cursor-pointer"
+        <div>
+          <label className="block text-xs font-bold text-primary uppercase tracking-wider mb-1.5">
+            Sort By
+          </label>
+          <select
+            value={sortBy}
+            onChange={(e) => setSortBy(e.target.value)}
+            className={inputClass}
           >
-            SEARCH
-          </button>
-          <button
-            onClick={clearFilters}
-            className="px-4 py-2 border border-border hover:bg-muted text-muted-foreground text-xs font-bold rounded-md transition-colors cursor-pointer"
-          >
-            CLEAR
-          </button>
+            <option value="">Newest First</option>
+            <option value="oldest">Oldest First</option>
+            <option value="price_asc">Price: Low to High</option>
+            <option value="price_desc">Price: High to Low</option>
+          </select>
         </div>
       </div>
     </div>
