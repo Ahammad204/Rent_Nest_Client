@@ -10,7 +10,7 @@ export default function RegisterPage() {
           <Link href="/" className="inline-flex items-center gap-2">
           
             <span className="font-heading font-bold text-2xl tracking-tight text-foreground">
-              Rent<span className="text-primary">Nest</span>
+              Thik<span className="text-primary">ana</span>
             </span>
           </Link>
           <h1 className="font-heading text-xl font-bold text-foreground">

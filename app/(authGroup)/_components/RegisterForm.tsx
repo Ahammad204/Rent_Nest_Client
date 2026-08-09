@@ -12,6 +12,7 @@ import { registerUser } from "../_actions/authActions";
 import { ApiService } from "@/service/api";
 import { toast } from "sonner";
 import { BlueprintCard } from "@/components/BlueprintCard";
+import { GoogleLoginButton } from "./GoogleLoginButton";
 
 export function RegisterForm() {
   const router = useRouter();
@@ -144,6 +145,18 @@ export function RegisterForm() {
           )}
         </button>
       </form>
+      {/* Divider */}
+<div className="mt-6 pt-5 border-t border-border">
+  <div className="flex items-center gap-3 mb-4">
+    <div className="flex-1 h-px bg-border" />
+    <span className="font-mono-spec text-[10px] text-muted-foreground uppercase">
+      or continue with
+    </span>
+    <div className="flex-1 h-px bg-border" />
+  </div>
+
+  <GoogleLoginButton />
+</div>
 
       <div className="mt-6 pt-5 border-t border-border text-center">
         <p className="text-xs text-muted-foreground font-sans">
