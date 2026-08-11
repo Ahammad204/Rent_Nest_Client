@@ -390,3 +390,96 @@ export const updateProfile = async (payload: {
     throw new Error("Network error. Please try again.");
   }
 };
+
+// --- Stats ---
+export const getAdminStats = async () => {
+  return authFetch(`${process.env.NEXT_PUBLIC_API_URL}/api/stats/admin`);
+};
+
+// --- Categories ---
+export const getAllCategories = async () => {
+  return authFetch(`${process.env.NEXT_PUBLIC_API_URL}/api/category`);
+};
+
+export const createCategory = async (payload: {
+  name: string;
+  description?: string;
+}) => {
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
+
+    if (!accessToken) {
+      return { success: false, message: "Not authenticated" };
+    }
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/category`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify(payload),
+    });
+
+    return res.json();
+  } catch {
+    return { success: false, message: "Network error. Please try again." };
+  }
+};
+
+export const updateCategory = async (
+  categoryId: string,
+  payload: { name?: string; description?: string },
+) => {
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
+
+    if (!accessToken) {
+      return { success: false, message: "Not authenticated" };
+    }
+
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/category/${categoryId}`,
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        body: JSON.stringify(payload),
+      },
+    );
+
+    return res.json();
+  } catch {
+    return { success: false, message: "Network error. Please try again." };
+  }
+};
+
+export const deleteCategory = async (categoryId: string) => {
+  try {
+    const cookieStore = await cookies();
+    const accessToken = cookieStore.get("accessToken")?.value;
+
+    if (!accessToken) {
+      return { success: false, message: "Not authenticated" };
+    }
+
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/category/${categoryId}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+      },
+    );
+
+    return res.json();
+  } catch {
+    return { success: false, message: "Network error. Please try again." };
+  }
+};

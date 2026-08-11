@@ -1,5 +1,13 @@
 import { ISidebarItem } from "@/lib/types";
-import { LayoutDashboard, Users, Building, FileText,UserCircle } from "lucide-react";
+import {
+  LayoutDashboard,
+  Users,
+  Building,
+  FileText,
+  UserCircle,
+  BarChart3,
+  Tags,
+} from "lucide-react";
 
 export const ADMIN_SIDEBAR_ITEMS: ISidebarItem[] = [
   {
@@ -22,9 +30,19 @@ export const ADMIN_SIDEBAR_ITEMS: ISidebarItem[] = [
     href: "/admin-dashboard/rentals",
     icon: FileText,
   },
-    {
-   label: "Profile",
-   href: "/profile",
-   icon: UserCircle,
- },
+  {
+    label: "Analytics",
+    href: "/admin-dashboard/analytics",
+    icon: BarChart3,
+  },
+  {
+    label: "Categories",
+    href: "/admin-dashboard/categories",
+    icon: Tags,
+  },
+  {
+    label: "Profile",
+    href: "/profile",
+    icon: UserCircle,
+  },
 ];
