@@ -5,7 +5,6 @@ import {
   Building,
   FileText,
   UserCircle,
-  BarChart3,
   Tags,
 } from "lucide-react";
 
@@ -29,11 +28,6 @@ export const ADMIN_SIDEBAR_ITEMS: ISidebarItem[] = [
     label: "Rentals",
     href: "/admin-dashboard/rentals",
     icon: FileText,
-  },
-  {
-    label: "Analytics",
-    href: "/admin-dashboard/analytics",
-    icon: BarChart3,
   },
   {
     label: "Categories",

@@ -5,26 +5,36 @@ import {
   CheckCircle,
   Clock,
   DollarSign,
+  TrendingUp,
+  Star,
 } from "lucide-react";
 import {
   getAllPropertiesAdmin,
   getAllRentalsAdmin,
   getAllUsers,
   getMyPayments,
+  getAdminStats,
 } from "../_actions/dashboardActions";
+import { MonthlyRevenueChart, PropertiesByCategoryChart, RentalsByStatusChart, UsersByRoleChart } from "../_components/AnalyticsCharts";
+
+
+export const dynamic = "force-dynamic";
 
 export default async function AdminDashboardPage() {
-  const [usersRes, propertiesRes, rentalsRes, paymentsRes] = await Promise.all([
-    getAllUsers(),
-    getAllPropertiesAdmin(),
-    getAllRentalsAdmin(),
-    getMyPayments(),
-  ]);
+  const [usersRes, propertiesRes, rentalsRes, paymentsRes, statsRes] =
+    await Promise.all([
+      getAllUsers(),
+      getAllPropertiesAdmin(),
+      getAllRentalsAdmin(),
+      getMyPayments(),
+      getAdminStats(),
+    ]);
 
   const users = usersRes.data?.users || [];
   const properties = propertiesRes.data?.properties || [];
   const rentals = rentalsRes.data?.rentals || [];
   const payments = paymentsRes.data?.payments || [];
+  const stats = statsRes.data;
 
   const pendingRequests = rentals.filter(
     (r: { status: string }) => r.status === "PENDING",
@@ -38,7 +48,7 @@ export default async function AdminDashboardPage() {
     .filter((p: { status: string }) => p.status === "COMPLETED")
     .reduce((sum: number, p: { amount: number }) => sum + p.amount, 0);
 
-  const stats = [
+  const statCards = [
     {
       label: "Total Users",
       value: users.length,
@@ -82,8 +92,10 @@ export default async function AdminDashboardPage() {
       <h1 className="font-heading text-2xl font-bold text-foreground">
         Admin Dashboard
       </h1>
+
+      {/* Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {stats.map((stat) => (
+        {statCards.map((stat) => (
           <div
             key={stat.label}
             className="bg-card border border-border rounded-lg p-4"
@@ -106,6 +118,43 @@ export default async function AdminDashboardPage() {
           </div>
         ))}
       </div>
+
+      {/* Charts */}
+      {stats && (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="bg-card border border-border rounded-lg p-6">
+            <h2 className="font-heading text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-primary" />
+              Monthly Revenue
+            </h2>
+            <MonthlyRevenueChart data={stats.monthlyRevenue} />
+          </div>
+
+          <div className="bg-card border border-border rounded-lg p-6">
+            <h2 className="font-heading text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+              <Users className="w-5 h-5 text-primary" />
+              Users by Role
+            </h2>
+            <UsersByRoleChart data={stats.usersByRole} />
+          </div>
+
+          <div className="bg-card border border-border rounded-lg p-6">
+            <h2 className="font-heading text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+              <Building className="w-5 h-5 text-primary" />
+              Properties by Category
+            </h2>
+            <PropertiesByCategoryChart data={stats.propertiesByCategory} />
+          </div>
+
+          <div className="bg-card border border-border rounded-lg p-6">
+            <h2 className="font-heading text-lg font-bold text-foreground mb-4 flex items-center gap-2">
+              <FileText className="w-5 h-5 text-primary" />
+              Rentals by Status
+            </h2>
+            <RentalsByStatusChart data={stats.rentalsByStatus} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
