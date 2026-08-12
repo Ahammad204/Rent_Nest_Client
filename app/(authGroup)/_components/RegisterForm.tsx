@@ -66,12 +66,12 @@ export function RegisterForm() {
       accentTick
     >
       {serverError && (
-        <div className="mb-4 px-4 py-3 rounded-md bg-red-50 border border-red-200 text-red-700 text-xs font-sans">
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm dark:bg-red-950 dark:border-red-800 dark:text-red-300">
           {serverError}
         </div>
       )}
       {successMessage && (
-        <div className="mb-4 px-4 py-3 rounded-md bg-green-50 border border-green-200 text-green-700 text-xs font-sans">
+        <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg text-sm dark:bg-green-950 dark:border-green-800 dark:text-green-300">
           {successMessage}
         </div>
       )}
@@ -146,17 +146,17 @@ export function RegisterForm() {
         </button>
       </form>
       {/* Divider */}
-<div className="mt-6 pt-5 border-t border-border">
-  <div className="flex items-center gap-3 mb-4">
-    <div className="flex-1 h-px bg-border" />
-    <span className="font-mono-spec text-[10px] text-muted-foreground uppercase">
-      or continue with
-    </span>
-    <div className="flex-1 h-px bg-border" />
-  </div>
+      <div className="mt-6 pt-5 border-t border-border">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="flex-1 h-px bg-border" />
+          <span className="font-mono-spec text-[10px] text-muted-foreground uppercase">
+            or continue with
+          </span>
+          <div className="flex-1 h-px bg-border" />
+        </div>
 
-  <GoogleLoginButton />
-</div>
+        <GoogleLoginButton />
+      </div>
 
       <div className="mt-6 pt-5 border-t border-border text-center">
         <p className="text-xs text-muted-foreground font-sans">

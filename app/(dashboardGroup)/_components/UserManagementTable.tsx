@@ -56,7 +56,10 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
 
   const totalPages = Math.ceil(filteredUsers.length / PAGE_SIZE);
   const startIndex = (currentPage - 1) * PAGE_SIZE;
-  const paginatedUsers = filteredUsers.slice(startIndex, startIndex + PAGE_SIZE);
+  const paginatedUsers = filteredUsers.slice(
+    startIndex,
+    startIndex + PAGE_SIZE,
+  );
 
   const handleBanUnban = async (user: User, newStatus: "ACTIVE" | "BANNED") => {
     const previousStatus = localUsers.get(user.id) || user.status;
@@ -134,7 +137,10 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
           <tbody>
             {paginatedUsers.length === 0 ? (
               <tr>
-                <td colSpan={6} className="px-4 py-8 text-center text-muted-foreground">
+                <td
+                  colSpan={6}
+                  className="px-4 py-8 text-center text-muted-foreground"
+                >
                   No users found.
                 </td>
               </tr>
@@ -153,7 +159,9 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
                     <td className="px-4 py-3 font-medium text-foreground">
                       {user.name}
                     </td>
-                    <td className="px-4 py-3 text-muted-foreground">{user.email}</td>
+                    <td className="px-4 py-3 text-muted-foreground">
+                      {user.email}
+                    </td>
                     <td className="px-4 py-3">
                       <span className="px-2 py-0.5 text-[10px] font-bold uppercase rounded bg-primary/10 text-primary">
                         {user.role}
@@ -163,8 +171,8 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
                       <span
                         className={`px-2 py-0.5 text-[10px] font-bold uppercase rounded ${
                           currentStatus === "ACTIVE"
-                            ? "bg-green-100 text-green-700"
-                            : "bg-red-100 text-red-700"
+                            ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                            : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
                         }`}
                       >
                         {currentStatus}
@@ -179,7 +187,7 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
                           <button
                             onClick={() => handleBanUnban(user, "ACTIVE")}
                             disabled={isProcessing}
-                            className="inline-flex items-center gap-1 px-2 py-1 text-[10px] font-bold uppercase text-green-700 bg-green-50 hover:bg-green-100 border border-green-200 rounded transition-colors cursor-pointer disabled:opacity-50"
+                            className="inline-flex items-center gap-1 px-2 py-1 text-[10px] font-bold uppercase text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 rounded transition-colors cursor-pointer disabled:opacity-50 dark:text-red-400 dark:bg-red-950 dark:hover:bg-red-900 dark:border-red-800"
                           >
                             {isProcessing ? (
                               <Loader2 className="w-3 h-3 animate-spin" />
@@ -192,7 +200,7 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
                           <button
                             onClick={() => setBanTarget(user)}
                             disabled={isProcessing}
-                            className="inline-flex items-center gap-1 px-2 py-1 text-[10px] font-bold uppercase text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 rounded transition-colors cursor-pointer disabled:opacity-50"
+                            className="inline-flex items-center gap-1 px-2 py-1 text-[10px] font-bold uppercase text-green-700 bg-green-50 hover:bg-green-100 border border-green-200 rounded transition-colors cursor-pointer disabled:opacity-50 dark:text-green-400 dark:bg-green-950 dark:hover:bg-green-900 dark:border-green-800"
                           >
                             {isProcessing ? (
                               <Loader2 className="w-3 h-3 animate-spin" />
@@ -203,7 +211,9 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
                           </button>
                         )
                       ) : (
-                        <span className="text-xs text-muted-foreground/60">—</span>
+                        <span className="text-xs text-muted-foreground/60">
+                          —
+                        </span>
                       )}
                     </td>
                   </tr>
@@ -245,7 +255,10 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
       )}
 
       {/* Ban Confirmation Dialog */}
-      <AlertDialog open={!!banTarget} onOpenChange={(open) => !open && setBanTarget(null)}>
+      <AlertDialog
+        open={!!banTarget}
+        onOpenChange={(open) => !open && setBanTarget(null)}
+      >
         <AlertDialogContent className="bg-card">
           <AlertDialogHeader>
             <AlertDialogTitle className="font-heading text-foreground">
@@ -253,8 +266,8 @@ export function UserManagementTable({ users }: UserManagementTableProps) {
             </AlertDialogTitle>
             <AlertDialogDescription className="text-sm text-muted-foreground">
               Are you sure you want to ban <strong>{banTarget?.name}</strong>?
-              They will no longer be able to access the platform. This action can
-              be reversed by unbanning them.
+              They will no longer be able to access the platform. This action
+              can be reversed by unbanning them.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

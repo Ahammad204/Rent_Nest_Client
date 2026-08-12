@@ -98,7 +98,10 @@ export function PaymentsTable({ payments }: PaymentsTableProps) {
           <tbody>
             {paginatedPayments.length === 0 ? (
               <tr>
-                <td colSpan={5} className="px-4 py-8 text-center text-muted-foreground">
+                <td
+                  colSpan={5}
+                  className="px-4 py-8 text-center text-muted-foreground"
+                >
                   No payments found.
                 </td>
               </tr>
@@ -121,10 +124,10 @@ export function PaymentsTable({ payments }: PaymentsTableProps) {
                     <span
                       className={`px-2 py-0.5 text-[10px] font-bold uppercase rounded ${
                         payment.status === "COMPLETED"
-                          ? "bg-green-100 text-green-700"
+                          ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
                           : payment.status === "PENDING"
-                            ? "bg-yellow-100 text-yellow-700"
-                            : "bg-red-100 text-red-700"
+                            ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400"
+                            : "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
                       }`}
                     >
                       {payment.status}

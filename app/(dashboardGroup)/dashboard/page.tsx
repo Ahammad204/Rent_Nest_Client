@@ -1,6 +1,9 @@
 import { getMe } from "@/service/getMe";
 import { Home, FileText, CreditCard, Star } from "lucide-react";
-import { getMyPayments, getMyRentalRequests } from "../_actions/dashboardActions";
+import {
+  getMyPayments,
+  getMyRentalRequests,
+} from "../_actions/dashboardActions";
 
 export default async function TenantDashboardPage() {
   const userRes = await getMe();
@@ -23,17 +26,15 @@ export default async function TenantDashboardPage() {
     },
     {
       label: "Active Rentals",
-      value: rentals.filter(
-        (r: { status: string }) => r.status === "ACTIVE",
-      ).length,
+      value: rentals.filter((r: { status: string }) => r.status === "ACTIVE")
+        .length,
       icon: Home,
       color: "bg-green-500",
     },
     {
       label: "Pending Requests",
-      value: rentals.filter(
-        (r: { status: string }) => r.status === "PENDING",
-      ).length,
+      value: rentals.filter((r: { status: string }) => r.status === "PENDING")
+        .length,
       icon: FileText,
       color: "bg-yellow-500",
     },
@@ -91,40 +92,42 @@ export default async function TenantDashboardPage() {
           </p>
         ) : (
           <div className="space-y-2">
-            {rentals.slice(0, 5).map(
-              (rental: {
-                id: string;
-                status: string;
-                property: { title: string; location: string };
-              }) => (
-                <div
-                  key={rental.id}
-                  className="flex items-center justify-between py-2 border-b border-[background] last:border-0"
-                >
-                  <div>
-                    <p className="text-sm font-medium text-foreground">
-                      {rental.property.title}
-                    </p>
-                    <p className="text-xs text-muted-foreground">
-                      {rental.property.location}
-                    </p>
-                  </div>
-                  <span
-                    className={`px-2 py-0.5 text-[10px] font-bold uppercase rounded ${
-                      rental.status === "ACTIVE"
-                        ? "bg-green-100 text-green-700"
-                        : rental.status === "PENDING"
-                          ? "bg-yellow-100 text-yellow-700"
-                          : rental.status === "REJECTED"
-                            ? "bg-red-100 text-red-700"
-                            : "bg-gray-100 text-gray-700"
-                    }`}
+            {rentals
+              .slice(0, 5)
+              .map(
+                (rental: {
+                  id: string;
+                  status: string;
+                  property: { title: string; location: string };
+                }) => (
+                  <div
+                    key={rental.id}
+                    className="flex items-center justify-between py-2 border-b border-[background] last:border-0"
                   >
-                    {rental.status}
-                  </span>
-                </div>
-              ),
-            )}
+                    <div>
+                      <p className="text-sm font-medium text-foreground">
+                        {rental.property.title}
+                      </p>
+                      <p className="text-xs text-muted-foreground">
+                        {rental.property.location}
+                      </p>
+                    </div>
+                    <span
+                      className={`px-2 py-0.5 text-[10px] font-bold uppercase rounded ${
+                        rental.status === "ACTIVE"
+                          ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                          : rental.status === "PENDING"
+                            ? "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400"
+                            : rental.status === "REJECTED"
+                              ? "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+                              : "bg-gray-100 text-gray-700"
+                      }`}
+                    >
+                      {rental.status}
+                    </span>
+                  </div>
+                ),
+              )}
           </div>
         )}
       </div>

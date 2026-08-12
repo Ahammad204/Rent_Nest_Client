@@ -51,7 +51,7 @@ export function ReviewForm({ rentalRequestId }: ReviewFormProps) {
 
   if (submitted) {
     return (
-      <div className="p-3 text-sm text-green-800 bg-green-50 border border-green-200 rounded-md">
+      <div className="text-green-800 bg-green-50 border border-green-200 px-4 py-3 rounded-lg text-sm dark:text-green-300 dark:bg-green-950 dark:border-green-800">
         Thank you! Your review has been submitted.
       </div>
     );

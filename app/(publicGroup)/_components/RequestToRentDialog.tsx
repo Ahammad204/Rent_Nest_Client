@@ -149,7 +149,7 @@ export function RequestToRentDialog({
         </DialogHeader>
 
         {rentalError && (
-          <div className="p-3 text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded-md">
+          <div className="text-amber-800 bg-amber-50 border border-amber-200 px-4 py-3 rounded-lg text-sm dark:text-amber-300 dark:bg-amber-950 dark:border-amber-800">
             {rentalError}
           </div>
         )}

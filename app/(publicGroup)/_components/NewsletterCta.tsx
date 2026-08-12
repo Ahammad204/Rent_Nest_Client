@@ -11,7 +11,8 @@ export function NewsletterCta() {
 
   const validateEmail = (value: string) => {
     if (!value.trim()) return "Email is required";
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) return "Please enter a valid email address";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+      return "Please enter a valid email address";
     return "";
   };
 
@@ -32,7 +33,6 @@ export function NewsletterCta() {
 
   return (
     <section className="bg-primary text-primary-foreground py-12 px-4 sm:px-6 lg:px-8 border-t border-primary/80 relative overflow-hidden">
-
       {/* Decorative Corner Lines */}
       <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-secondary opacity-60" />
       <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-secondary opacity-60" />
@@ -40,7 +40,6 @@ export function NewsletterCta() {
       <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-secondary opacity-60" />
 
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
-
         <div className="space-y-2 text-center md:text-left max-w-lg">
           <div className="inline-flex items-center gap-1.5 font-mono-spec text-xs tracking-widest text-secondary uppercase font-semibold">
             <Shield className="w-3.5 h-3.5 text-secondary" />
@@ -50,7 +49,8 @@ export function NewsletterCta() {
             Get Fresh Rental Alerts in Your Inbox
           </h2>
           <p className="text-xs sm:text-sm text-primary-foreground/80 leading-relaxed">
-            Subscribe for weekly updates on newly verified apartments in Gulshan, Banani, Dhanmondi, and Chattogram.
+            Subscribe for weekly updates on newly verified apartments in
+            Gulshan, Banani, Dhanmondi, and Chattogram.
           </p>
         </div>
 
@@ -76,7 +76,7 @@ export function NewsletterCta() {
                     if (error) setError("");
                   }}
                   placeholder="Enter your email address..."
-                  className={`bg-white text-foreground placeholder:text-muted-foreground border rounded-lg h-10 text-xs px-3.5 w-full focus:outline-none focus:ring-2 focus:ring-secondary ${
+                  className={`bg-background text-foreground placeholder:text-muted-foreground border border-border rounded-lg h-10 text-xs px-3.5 w-full focus:outline-none focus:ring-2 focus:ring-secondary ${
                     error ? "border-destructive" : "border-border"
                   }`}
                 />
@@ -104,9 +104,7 @@ export function NewsletterCta() {
             No spam. Unsubscribe anytime with 1-click.
           </p>
         </div>
-
       </div>
-
     </section>
   );
 }

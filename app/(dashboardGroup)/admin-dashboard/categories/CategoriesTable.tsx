@@ -326,7 +326,7 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
                           <button
                             onClick={() => handleUpdate(category.id)}
                             disabled={isProcessing}
-                            className="inline-flex items-center gap-1 px-2 py-1 text-[10px] font-bold uppercase text-green-700 bg-green-50 hover:bg-green-100 border border-green-200 rounded transition-colors cursor-pointer disabled:opacity-50"
+                            className="inline-flex items-center gap-1 px-2 py-1 text-[10px] font-bold uppercase text-green-700 bg-green-50 hover:bg-green-100 border border-green-200 rounded transition-colors cursor-pointer disabled:opacity-50 dark:text-green-400 dark:bg-green-950 dark:hover:bg-green-900 dark:border-green-800"
                           >
                             {isProcessing ? (
                               <Loader2 className="w-3 h-3 animate-spin" />
@@ -351,14 +351,14 @@ export function CategoriesTable({ categories }: CategoriesTableProps) {
                               setEditName(category.name);
                               setEditDescription(category.description || "");
                             }}
-                            className="inline-flex items-center gap-1 px-2 py-1 text-[10px] font-bold uppercase text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded transition-colors cursor-pointer"
+                            className="inline-flex items-center gap-1 px-2 py-1 text-[10px] font-bold uppercase text-blue-700 bg-blue-50 hover:bg-blue-100 border border-blue-200 rounded transition-colors cursor-pointer dark:text-blue-400 dark:bg-blue-950 dark:hover:bg-blue-900 dark:border-blue-800"
                           >
                             <Pencil className="w-3 h-3" />
                             Edit
                           </button>
                           <button
                             onClick={() => setDeleteTarget(category)}
-                            className="inline-flex items-center gap-1 px-2 py-1 text-[10px] font-bold uppercase text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 rounded transition-colors cursor-pointer"
+                            className="inline-flex items-center gap-1 px-2 py-1 text-[10px] font-bold uppercase text-red-700 bg-red-50 hover:bg-red-100 border border-red-200 rounded transition-colors cursor-pointer dark:text-red-400 dark:bg-red-950 dark:hover:bg-red-900 dark:border-red-800"
                           >
                             <Trash2 className="w-3 h-3" />
                             Delete

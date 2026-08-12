@@ -17,7 +17,11 @@ import { GoogleLoginButton } from "./GoogleLoginButton";
 
 const DEMO_ACCOUNTS = [
   { label: "Admin", email: "Admin@gmail.com", password: "123456" },
-  { label: "Landlord", email: "landlord.demo@rentnest.com", password: "Landlord@2026" },
+  {
+    label: "Landlord",
+    email: "landlord.demo@rentnest.com",
+    password: "Landlord@2026",
+  },
   { label: "Tenant", email: "Masud@gmail.com", password: "123456" },
 ];
 
@@ -82,7 +86,7 @@ export function LoginForm() {
       accentTick
     >
       {serverError && (
-        <div className="mb-4 px-4 py-3 rounded-md bg-red-50 border border-red-200 text-red-700 text-xs font-sans">
+        <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm dark:bg-red-950 dark:border-red-800 dark:text-red-300">
           {serverError}
         </div>
       )}
@@ -162,18 +166,18 @@ export function LoginForm() {
       </form>
 
       {/* Divider */}
-  
-<div className="mt-6 pt-5 border-t border-border">
-  <div className="flex items-center gap-3 mb-4">
-    <div className="flex-1 h-px bg-border" />
-    <span className="font-mono-spec text-[10px] text-muted-foreground uppercase">
-      or continue with
-    </span>
-    <div className="flex-1 h-px bg-border" />
-  </div>
 
-  <GoogleLoginButton />
-</div>
+      <div className="mt-6 pt-5 border-t border-border">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="flex-1 h-px bg-border" />
+          <span className="font-mono-spec text-[10px] text-muted-foreground uppercase">
+            or continue with
+          </span>
+          <div className="flex-1 h-px bg-border" />
+        </div>
+
+        <GoogleLoginButton />
+      </div>
 
       <div className="mt-6 pt-5 border-t border-border text-center">
         <p className="text-xs text-muted-foreground font-sans">
